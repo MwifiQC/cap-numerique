@@ -1197,6 +1197,8 @@
       .top-controls { justify-content: space-between; flex-wrap: wrap; }
       .curriculum-nav { flex-direction: column; }
       .teacher-active-card { padding: 24px; }
+    }
+
     /* Effets Coeurs Volants pour le Coucou à Dominique */
     .floating-heart {
       position: fixed;
@@ -1213,17 +1215,201 @@
 
     /* Styles Diplôme Officiel & Impression */
     .diplome-container {
-      background: #ffffff;
-      border: 8px double #d97706;
-      border-radius: 24px;
-      padding: 36px 30px;
-      max-width: 680px;
-      width: 100%;
-      text-align: center;
+      background: #ffffff !important;
+      color: #0f172a !important;
+      border: 8px double #d97706 !important;
+      border-radius: 26px !important;
+      padding: 38px 28px !important;
+      max-width: 720px !important;
+      width: 94% !important;
+      text-align: center !important;
+      position: relative !important;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45) !important;
+      background-image: radial-gradient(#fef3c7 1.5px, transparent 1.5px) !important;
+      background-size: 18px 18px !important;
+    }
+
+    /* Styles de la Nouvelle Bannière d'Accueil & Présentation des Professeurs */
+    .welcome-intro-card {
+      background: linear-gradient(180deg, #ffffff 0%, #f0f7ff 100%);
+      border: 2px solid #bfdbfe;
+      border-radius: var(--radius-xl);
+      padding: 32px 30px;
+      margin-bottom: 28px;
+      box-shadow: var(--shadow-card);
       position: relative;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
-      background-image: radial-gradient(#fffbeb 1px, transparent 1px);
-      background-size: 16px 16px;
+      overflow: hidden;
+    }
+    .welcome-intro-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, #2563eb, #f59e0b, #10b981);
+    }
+    .welcome-intro-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .welcome-intro-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #eff6ff;
+      color: #1d4ed8;
+      font-weight: 800;
+      font-size: 0.95rem;
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid #bfdbfe;
+    }
+    .welcome-intro-prenom-btn {
+      background: #ffffff;
+      color: #0f172a;
+      border: 1.5px solid #cbd5e1;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.95rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+    .welcome-intro-prenom-btn:hover {
+      border-color: #2563eb;
+      background: #f8faff;
+      transform: translateY(-1px);
+    }
+    .welcome-intro-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: #0f172a;
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+    .welcome-intro-title span.highlight {
+      color: #2563eb;
+      border-bottom: 3px solid #f59e0b;
+      padding-bottom: 2px;
+    }
+    .welcome-intro-lead {
+      font-size: 1.15rem;
+      color: #334155;
+      line-height: 1.65;
+      margin-bottom: 24px;
+      max-width: 900px;
+    }
+    .louise-preselected-card {
+      background: #ffffff;
+      border: 2px solid #fcd34d;
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      display: flex;
+      gap: 22px;
+      align-items: center;
+      box-shadow: 0 8px 24px rgba(245, 158, 11, 0.12);
+      flex-wrap: wrap;
+    }
+    .louise-card-avatar {
+      font-size: 4rem;
+      background: #fffbeb;
+      border: 3px solid #f59e0b;
+      width: 84px;
+      height: 84px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 6px 16px rgba(245, 158, 11, 0.2);
+    }
+    .louise-card-content {
+      flex: 1;
+      min-width: 260px;
+    }
+    .louise-card-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #fef3c7;
+      color: #b45309;
+      font-weight: 900;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      padding: 4px 12px;
+      border-radius: 12px;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+    .louise-card-name {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.45rem;
+      font-weight: 900;
+      color: #0f172a;
+      margin-bottom: 6px;
+    }
+    .louise-card-desc {
+      font-size: 1.05rem;
+      color: #475569;
+      line-height: 1.55;
+      margin: 0;
+    }
+    .louise-card-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex-shrink: 0;
+      min-width: 220px;
+    }
+    .btn-listen-louise-quick {
+      background: #2563eb;
+      color: #ffffff;
+      border: none;
+      padding: 14px 20px;
+      border-radius: var(--radius-md);
+      font-weight: 800;
+      font-size: 1.05rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+      transition: all 0.2s ease;
+    }
+    .btn-listen-louise-quick:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+    }
+    .btn-all-teachers-link {
+      background: #f8fafc;
+      color: #334155;
+      border: 1.5px solid #cbd5e1;
+      padding: 12px 18px;
+      border-radius: var(--radius-md);
+      font-weight: 800;
+      font-size: 0.98rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .btn-all-teachers-link:hover {
+      background: #e2e8f0;
+      color: #0f172a;
     }
 
     @media print {
@@ -1317,6 +1503,54 @@
     <!-- VUE 1 : ESPACE ÉLÈVE / AÎNÉ                -->
     <!-- ========================================== -->
     <div class="view-container active" id="view-student">
+
+        <!-- ============================================================== -->
+        <!-- BANNIÈRE D'ACCUEIL CHALEUREUSE & PRÉSENTATION DE MME LOUISE      -->
+        <!-- ============================================================== -->
+        <section class="welcome-intro-card" id="welcome-intro-banner">
+          <div class="welcome-intro-header">
+            <div class="welcome-intro-badge">
+              <span>🌸</span>
+              <span>Espace d'apprentissage bienveillant • Québec</span>
+            </div>
+            <button class="welcome-intro-prenom-btn" onclick="personnaliserPrenom()" title="Modifier le prénom affiché">
+              <span>👋 Pour vous : </span>
+              <strong id="intro-prenom-display">Danielle</strong>
+              <span>✏️</span>
+            </button>
+          </div>
+
+          <h2 class="welcome-intro-title">
+            Bienvenue <span class="highlight" id="intro-prenom-title">Danielle</span> ! Respirez, vous êtes en sécurité.
+          </h2>
+
+          <p class="welcome-intro-lead">
+            Ici, il n'y a aucun jargon compliqué, aucune note et <strong>aucun risque de rien briser</strong>. Pour vous accompagner pas à pas selon votre rythme et vos préférences, vous avez accès à une équipe de <strong>12 professeurs virtuels</strong> bienveillants et patients.
+          </p>
+
+          <!-- Carte de Présentation : Mme Louise est déjà présélectionnée -->
+          <div class="louise-preselected-card">
+            <div class="louise-card-avatar">👵</div>
+            <div class="louise-card-content">
+              <div class="louise-card-badge">
+                <span>⭐</span>
+                <span>DÉJÀ CHOISIE POUR VOUS • DÉMARRAGE EN DOUCEUR</span>
+              </div>
+              <div class="louise-card-name">Mme Louise • Votre Guide Pédagogique</div>
+              <p class="louise-card-desc">
+                Nous avons déjà sélectionné <strong>Mme Louise</strong> pour vous guider. Reconnue pour sa douceur légendaire, sa patience infinie et sa façon toute simple d'expliquer chaque geste, elle est là pour que vous vous sentiez en pleine confiance dès la première seconde.
+              </p>
+            </div>
+            <div class="louise-card-actions">
+              <button class="btn-listen-louise-quick" onclick="parlerTexteActuel()">
+                <span>🔊 Écouter Louise</span>
+              </button>
+              <a href="#teachers-catalog" class="btn-all-teachers-link" onclick="faireDefilerVersProfesseurs(event)">
+                <span>👥 Découvrir les 12 professeurs</span>
+              </a>
+            </div>
+          </div>
+        </section>
 
       <!-- Barre de progression globale (Bento Chic) -->
       <section class="global-progress-card">
@@ -2349,6 +2583,8 @@
     });
 
     function mettreAJourPrenomAffichage() {
+      const nomAffiche = (appState.prenom && appState.prenom.trim()) ? appState.prenom.trim() : 'Danielle';
+      
       const el = document.getElementById('student-name-display');
       const prefixEl = document.getElementById('student-badge-prefix');
       if (el) {
@@ -2356,13 +2592,33 @@
           el.textContent = appState.prenom;
           if (prefixEl) prefixEl.textContent = "👋 Pour vous :";
         } else {
-          el.textContent = "Personnaliser";
-          if (prefixEl) prefixEl.textContent = "👋 ";
+          el.textContent = "Danielle";
+          if (prefixEl) prefixEl.textContent = "👋 Pour vous :";
         }
       }
+
+      // Mise à jour de la bannière d'accueil & présentation des professeurs
+      const introDisplay = document.getElementById('intro-prenom-display');
+      if (introDisplay) introDisplay.textContent = nomAffiche;
+
+      const introTitle = document.getElementById('intro-prenom-title');
+      if (introTitle) introTitle.textContent = nomAffiche;
+
+      const diplomeName = document.getElementById('diplome-student-name');
+      if (diplomeName) diplomeName.textContent = nomAffiche;
+
       const elCg = document.getElementById('cg-student-name');
-      if (elCg) elCg.textContent = appState.prenom ? `Maman (${appState.prenom})` : `Élève`;
+      if (elCg) elCg.textContent = appState.prenom ? `Maman (${appState.prenom})` : `Danielle`;
       mettreAJourLienMagique();
+    }
+
+    function faireDefilerVersProfesseurs(e) {
+      if (e) e.preventDefault();
+      const el = document.getElementById('teachers-catalog');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        enregistrerEvenementEspion("PROFESSEURS", "Consultation de l'équipe des 12 professeurs");
+      }
     }
 
     function personnaliserPrenom() {
