@@ -1283,7 +1283,14 @@
             <div class="status-dot" title="En direct avec vous"></div>
           </div>
           <div class="teacher-active-info">
-            <span class="teacher-badge" id="hero-badge">🟢 Votre Guide Pédagogique Actuel</span>
+            <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; margin-bottom:4px;">
+              <span class="teacher-badge" id="hero-badge">🟢 Votre Guide Pédagogique Actuel</span>
+              <button onclick="personnaliserPrenom()" style="background:rgba(255,255,255,0.22); color:#ffffff; border:1px solid rgba(255,255,255,0.45); padding:6px 14px; border-radius:20px; font-size:0.9rem; font-weight:800; cursor:pointer; display:inline-flex; align-items:center; gap:6px; backdrop-filter:blur(6px);" title="Cliquez pour personnaliser votre prénom">
+                <span id="student-badge-prefix">👋 Pour vous :</span>
+                <strong id="student-name-display">Danielle</strong>
+                <span>✏️</span>
+              </button>
+            </div>
             <h1 id="hero-name">Mme Louise</h1>
             <p id="hero-title">Patiente, chaleureuse et sans aucun jargon d'ordinateur</p>
           </div>
@@ -1743,7 +1750,7 @@
       <section style="background:linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color:#ffffff; border-radius:var(--radius-xl); padding:40px; box-shadow:var(--shadow-card); margin-bottom:34px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:24px;">
         <div>
           <h2 style="font-family:'Outfit', sans-serif; font-size:2rem; margin-bottom:8px;">Tableau de Bord — Protection & Suivi Bienveillant</h2>
-          <p style="color:#94a3b8; font-size:1.2rem;">Compte Proche Aidant : Dominique Grégoire • Suivi de : <strong>Maman (Denise)</strong></p>
+          <p style="color:#94a3b8; font-size:1.2rem;">Compte Proche Aidant : Dominique Grégoire • Suivi de : <strong id="cg-student-name">Maman (Danielle)</strong></p>
         </div>
 
         <div style="background:#14532d; color:#86efac; border:1px solid #22c55e; padding:12px 24px; border-radius:30px; font-weight:800; font-size:1rem; display:flex; align-items:center; gap:10px;">
@@ -1884,6 +1891,32 @@
 
     </div>
 
+    <!-- Modal Bienvenue & Personnalisation du Prénom -->
+    <div class="modal-overlay" id="welcome-name-modal" style="display:none;">
+      <div class="modal-card" style="border: 3px solid #3b82f6; background: linear-gradient(180deg, #ffffff 0%, #f0f7ff 100%); max-width: 520px;">
+        <div class="modal-icon" style="font-size:3.5rem;">🌸</div>
+        <h3 class="modal-title" style="color:#1e3a8a; font-size:1.7rem; font-family:'Outfit', sans-serif;">
+          Bienvenue sur Cap Numérique !
+        </h3>
+        <p class="modal-text" style="font-size:1.15rem; color:#475569; margin:14px 0 20px 0; line-height:1.6;">
+          Pour que vos 12 professeurs puissent s'adresser à vous chaleureusement, <strong>comment vous appelez-vous ?</strong>
+        </p>
+
+        <div style="margin-bottom:20px;">
+          <input type="text" id="welcome-name-input" placeholder="Entrez votre prénom (ex: Danielle, Jean, Monique...)" style="width:100%; padding:16px 20px; border-radius:16px; border:2px solid #3b82f6; font-size:1.25rem; font-weight:700; color:#0f172a; text-align:center; box-shadow:0 4px 12px rgba(59,130,246,0.15);" onkeydown="if(event.key==='Enter') enregistrerNouveauPrenom()">
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <button class="btn-modal-close" onclick="enregistrerNouveauPrenom()" style="background:linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);">
+            <span>Enregistrer mon prénom et commencer ➔</span>
+          </button>
+          <button onclick="passerWelcomeModal()" style="background:transparent; border:none; color:#64748b; font-size:0.95rem; font-weight:700; cursor:pointer; padding:8px;">
+            Passer cette étape (continuer sans prénom)
+          </button>
+        </div>
+      </div>
+    </div>
+
     <!-- Modal Mot Doux Reçu de Dominique -->
     <div class="modal-overlay" id="encouragement-modal" style="display:none;">
       <div class="modal-card" style="border: 3px solid #f59e0b; background: linear-gradient(180deg, #fffbeb 0%, #ffffff 100%);">
@@ -1919,7 +1952,7 @@
     <p><strong>Cap Numérique</strong> — Une solution conçue avec bienveillance au Québec par Les Solutions SkyFibre Inc.</p>
     <p style="margin-top:6px;">16 Modules Pédagogiques • 12 Professeurs Virtuels • Conforme accessibilité WCAG AAA.</p>
     <p style="margin-top:10px;">
-      <a href="?mode=caregiver&famille=DOM-DENISE-8849" style="color:#64748b; font-size:0.85rem; text-decoration:none; border-bottom:1px dashed #94a3b8;">👨‍👧 Accès Espace Proche Aidant (Dominique)</a>
+      <a href="?mode=caregiver&famille=DOM-DANIELLE-8849&prenom=Danielle" style="color:#64748b; font-size:0.85rem; text-decoration:none; border-bottom:1px dashed #94a3b8;">👨‍👧 Accès Espace Proche Aidant (Dominique)</a>
     </p>
   </footer>
 
@@ -1928,7 +1961,9 @@
     const STORAGE_KEY = 'cap_numerique_app_state_v4';
 
     let appState = {
-      codeFamille: 'DOM-DENISE-8849',
+      prenom: '',
+      prenomEstDefini: false,
+      codeFamille: 'DOM-DANIELLE-8849',
       profActuel: 'louise',
       fontSize: 'normal',
       currentLevel: 0,
@@ -1945,10 +1980,16 @@
           appState = Object.assign(appState, JSON.parse(saved));
         }
 
-        // Lecture du paramètre URL ?famille=
+        // Lecture des paramètres URL (?prenom= et ?famille=)
         const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('prenom')) {
+          appState.prenom = urlParams.get('prenom');
+          appState.prenomEstDefini = true;
+          sauvegarderEtat();
+        }
         if (urlParams.has('famille')) {
           appState.codeFamille = urlParams.get('famille');
+          sauvegarderEtat();
         }
       } catch (e) {}
     }
@@ -1959,12 +2000,72 @@
       } catch (e) {}
     }
 
+    function mettreAJourPrenomAffichage() {
+      const el = document.getElementById('student-name-display');
+      const prefixEl = document.getElementById('student-badge-prefix');
+      if (el) {
+        if (appState.prenom && appState.prenom.trim()) {
+          el.textContent = appState.prenom;
+          if (prefixEl) prefixEl.textContent = "👋 Pour vous :";
+        } else {
+          el.textContent = "Personnaliser";
+          if (prefixEl) prefixEl.textContent = "👋 ";
+        }
+      }
+      const elCg = document.getElementById('cg-student-name');
+      if (elCg) elCg.textContent = appState.prenom ? `Maman (${appState.prenom})` : `Élève`;
+      mettreAJourLienMagique();
+    }
+
+    function personnaliserPrenom() {
+      const modal = document.getElementById('welcome-name-modal');
+      const input = document.getElementById('welcome-name-input');
+      if (modal && input) {
+        input.value = appState.prenom || '';
+        modal.style.display = 'flex';
+        setTimeout(() => input.focus(), 150);
+      }
+    }
+
+    function enregistrerNouveauPrenom() {
+      const input = document.getElementById('welcome-name-input');
+      const nom = input ? input.value.trim() : '';
+      if (nom) {
+        appState.prenom = nom;
+        appState.prenomEstDefini = true;
+        sauvegarderEtat();
+      } else {
+        appState.prenom = '';
+        appState.prenomEstDefini = true;
+        sauvegarderEtat();
+      }
+      fermerWelcomeModal();
+      mettreAJourPrenomAffichage();
+      selectionnerProf(appState.profActuel);
+      jouerSonSucces();
+      if (typeof confetti === 'function') confetti({ particleCount: 60, spread: 70 });
+      synchroniserVersCloud("Profil personnalisé", `${appState.prenom || 'Nouvel élève'} a personnalisé son prénom`);
+    }
+
+    function passerWelcomeModal() {
+      appState.prenomEstDefini = true;
+      sauvegarderEtat();
+      fermerWelcomeModal();
+      mettreAJourPrenomAffichage();
+    }
+
+    function fermerWelcomeModal() {
+      const modal = document.getElementById('welcome-name-modal');
+      if (modal) modal.style.display = 'none';
+    }
+
     // Synchronisation Cloud en Temps Réel vers le Proche Aidant (Dominique)
     function synchroniserVersCloud(titreAction, details) {
       if (!appState.codeFamille) return;
       const heureStr = new Date().toLocaleTimeString('fr-CA', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
       const payload = {
         codeFamille: appState.codeFamille,
+        prenom: appState.prenom || 'Élève',
         titre: titreAction,
         details: details || '',
         heure: heureStr,
@@ -1994,12 +2095,12 @@
 
     function mettreAJourLienMagique() {
       const baseUrl = window.location.origin + window.location.pathname;
-      const magicUrl = `${baseUrl}?famille=${appState.codeFamille}`;
+      const magicUrl = `${baseUrl}?famille=${encodeURIComponent(appState.codeFamille)}&prenom=${encodeURIComponent(appState.prenom || 'Danielle')}`;
       const input = document.getElementById('magic-link-input');
       if (input) input.value = magicUrl;
       const waBtn = document.getElementById('btn-share-whatsapp');
       if (waBtn) {
-        waBtn.href = `https://api.whatsapp.com/send?text=${encodeURIComponent("Allô maman ! Voici ton application Cap Numérique pour pratiquer sans rien briser : " + magicUrl)}`;
+        waBtn.href = `https://api.whatsapp.com/send?text=${encodeURIComponent("Allô " + (appState.prenom || "maman") + " ! Voici ton application Cap Numérique pour pratiquer sans rien briser : " + magicUrl)}`;
       }
     }
 
@@ -2275,22 +2376,43 @@
       afficherProfesseurs();
     }
 
+    function genererAccueilProf(prof, prenom) {
+      const pNom = prenom ? ` ${prenom}` : '';
+      const textes = {
+        louise: `« Bon matin${pNom} ! Respirez tranquillement. Ici, vous ne pouvez absolument rien briser. On commence par apprivoiser l'écran avec les doigts, sans se presser. Touchez une bulle ci-dessous pour voir ! »`,
+        helene: `« Bonjour${pNom} ! Je suis Hélène. Respirez un bon coup : sur cet écran, vous êtes chez vous et rien ne peut s'abîmer. Allons-y tout doucement. »`,
+        raymond: `« Bonjour à vous${pNom}. Je suis Raymond. Avec moi, on prend les choses dans l'ordre : une étape à la fois, et vous allez voir que la technologie, c'est très logique. »`,
+        jacques: `« Salut${pNom} ! Moi c'est Jacques. Une tablette, c'est comme un coffre d'outils : faut juste savoir quel bouton peser. On regarde ça ensemble sans fla-fla ! »`,
+        chantal: `« Bonjour${pNom} ! Je suis Chantal. Fini les heures perdues sur les sites gouvernementaux. Je vous montre exactement où cliquer. »`,
+        sophie: `« Bonjour${pNom}, je suis Sophie. Votre sécurité est ma priorité. Je vous guide pour payer vos factures Hydro et faire vos virements en toute tranquillité. »`,
+        julien: `« Bonjour${pNom} ! Je suis Julien. Que ce soit pour payer une facture en ligne ou sécuriser vos accès, je vous donne la méthode pas à pas. »`,
+        marc: `« Bonjour${pNom}, Marc à l'appareil. La technologie n'a pas besoin d'être stressante si on a les bonnes bases de sécurité. »`,
+        zara: `« Salut${pNom} ! Avec moi, pas de blabla. On fait des mini-défis de 3 minutes pour maîtriser tes fichiers et sécuriser tes comptes. Prêt ? »`,
+        camille: `« Hello${pNom} ! Je suis Camille. Si tu veux monter un CV qui a de la gueule ou convertir un PDF sans galérer, je suis là ! »`,
+        felix: `« Yo${pNom} ! C'est Félix. Utiliser un ordi comme un pro, c'est pas sorcier quand on connaît les bons raccourcis ! »`,
+        antoine: `« Salut${pNom} ! Je suis Antoine. Ensemble, on regarde comment sauvegarder tes photos et blinder tes comptes. Let's go ! »`
+      };
+      return textes[prof.id] || prof.accueil;
+    }
+
     function selectionnerProf(id) {
       appState.profActuel = id;
       sauvegarderEtat();
       const data = CATALOGUE_PROFESSEURS.find(p => p.id === id);
       if (!data) return;
 
+      const accueilTexte = genererAccueilProf(data, appState.prenom);
+
       document.getElementById('hero-avatar').textContent = data.avatar;
       document.getElementById('hero-name').textContent = data.nom;
       document.getElementById('hero-title').textContent = data.titre;
-      document.getElementById('hero-speech').textContent = data.accueil;
+      document.getElementById('hero-speech').textContent = accueilTexte;
       document.getElementById('voice-btn-label').textContent = data.btnVoix;
       document.getElementById('cg-teacher-display').textContent = `${data.avatar} ${data.nom}`;
 
       afficherProfesseurs();
-      parlerTexte(data.accueil);
-      synchroniserVersCloud(`Professeur choisi : ${data.nom}`, `Maman a choisi ${data.nom} (${data.role})`);
+      parlerTexte(accueilTexte);
+      synchroniserVersCloud(`Professeur choisi : ${data.nom}`, `${appState.prenom || 'L\'élève'} a choisi ${data.nom} (${data.role})`);
     }
 
     function changerNiveau(lvl, btn) {
@@ -2331,8 +2453,9 @@
 
       if (appState.bullesEclatees >= 4) {
         if (typeof confetti === 'function') confetti({ particleCount: 60, spread: 70 });
-        parlerTexte("Bravo ! Vous avez maîtrisé le tap rapide. Vos doigts sont précis et légers !");
-        synchroniserVersCloud("Niveau 0 : Bulles éclatées", "4/4 bulles éclatées avec succès (motricité tactile validée)");
+        const nomMsg = appState.prenom ? ` ${appState.prenom}` : '';
+        parlerTexte(`Bravo${nomMsg} ! Vous avez maîtrisé le tap rapide. Vos doigts sont précis et légers !`);
+        synchroniserVersCloud("Niveau 0 : Bulles éclatées", `4/4 bulles éclatées avec succès par ${appState.prenom || 'l\'élève'}`);
       }
     }
 
@@ -2360,11 +2483,13 @@
           box.classList.add('success');
           appState.longPressReussi = true;
           sauvegarderEtat();
-          label.textContent = "✅ PARFAIT ! Vous avez réussi l'appui long sans paniquer !";
+          const nomMaj = appState.prenom ? ` ${appState.prenom.toUpperCase()}` : '';
+          label.textContent = `✅ PARFAIT${nomMaj} ! Vous avez réussi l'appui long sans paniquer !`;
           jouerSonSucces();
           if (typeof confetti === 'function') confetti({ particleCount: 70, spread: 80 });
-          parlerTexte("Excellent ! Vous avez réussi l'appui long sans bouger.");
-          synchroniserVersCloud("Niveau 0 : Appui long réussi", "Maintien tactile réussi 2 secondes sans glisser");
+          const nomMsg = appState.prenom ? ` ${appState.prenom}` : '';
+          parlerTexte(`Excellent${nomMsg} ! Vous avez réussi l'appui long sans bouger.`);
+          synchroniserVersCloud("Niveau 0 : Appui long réussi", `Maintien tactile réussi 2 secondes par ${appState.prenom || 'l\'élève'}`);
         }
       }, 75); // ~1.5 seconde totale
     }
@@ -2487,8 +2612,9 @@
       document.getElementById('popup-success').style.display = 'block';
       jouerSonSucces();
       if (typeof confetti === 'function') confetti({ particleCount: 70, spread: 80 });
-      parlerTexte("Génial ! Vous avez fermé la fausse alerte sur le X. Votre téléphone n'avait aucun virus !");
-      synchroniserVersCloud("Niveau 4 : Faux popup déjoué", "Fermeture sécurisée sur le [X] sans paniquer");
+      const nomMsg = appState.prenom ? ` ${appState.prenom}` : '';
+      parlerTexte(`Génial${nomMsg} ! Vous avez fermé la fausse alerte sur le X. Votre téléphone n'avait aucun virus !`);
+      synchroniserVersCloud("Niveau 4 : Faux popup déjoué", `Fermeture sécurisée sur le [X] par ${appState.prenom || 'l\'élève'}`);
     }
 
     function jouerSonSucces() {
@@ -2533,7 +2659,8 @@
         expl.innerHTML = c.explicationSucces;
         jouerSonSucces();
         if (typeof confetti === 'function') confetti({ particleCount: 60, spread: 70 });
-        parlerTexte("Bravo ! Vous avez eu le réflexe parfait !");
+        const nomMsg = appState.prenom ? ` ${appState.prenom}` : '';
+        parlerTexte(`Bravo${nomMsg} ! Vous avez eu le réflexe parfait !`);
       } else {
         expl.style.background = '#fee2e2';
         expl.style.border = '2px solid #ef4444';
@@ -2606,8 +2733,8 @@
         reply.style.maxWidth = '85%';
         reply.style.fontSize = '1.15rem';
         reply.style.border = '1px solid #e2e8f0';
-        reply.style.boxShadow = 'var(--shadow-sm)';
-        reply.innerHTML = "Merci maman !! Il est tellement beau ! Gros bisous ❤️";
+        const nomDest = appState.prenom ? ` ${appState.prenom}` : ' maman';
+        reply.innerHTML = `Merci${nomDest} !! Il est tellement beau ! Gros bisous ❤️`;
         history.appendChild(reply);
 
         document.getElementById('sim-success-alert').style.display = 'block';
@@ -2615,8 +2742,9 @@
         document.getElementById('btn-sim-send').style.display = 'none';
         jouerSonSucces();
         if (typeof confetti === 'function') confetti({ particleCount: 70, spread: 80 });
-        parlerTexte("Bravo ! Votre photo a été envoyée avec succès.");
-        synchroniserVersCloud("Niveau 2 : Photo partagée à un proche", "Simulation d'envoi d'une photo réussie dans Messages");
+        const nomMsg = appState.prenom ? ` ${appState.prenom}` : '';
+        parlerTexte(`Bravo${nomMsg} ! Votre photo a été envoyée avec succès.`);
+        synchroniserVersCloud("Niveau 2 : Photo partagée à un proche", `Simulation d'envoi d'une photo réussie par ${appState.prenom || 'l\'élève'}`);
       }, 700);
     }
 
@@ -2692,8 +2820,9 @@
 
     function ouvrirSOS() {
       document.getElementById('sos-modal').style.display = 'flex';
-      parlerTexte("Prenez une grande respiration. Aucune photo n'est perdue et votre appareil n'est absolument pas brisé. Vous êtes en sécurité.");
-      synchroniserVersCloud("🚨 ALERTE SOS : Maman demande de l'aide", "Le bouton « Je suis perdu(e) » a été touché.");
+      const nomMsg = appState.prenom ? ` ${appState.prenom}` : '';
+      parlerTexte(`Prenez une grande respiration${nomMsg}. Aucune photo n'est perdue et votre appareil n'est absolument pas brisé. Vous êtes en sécurité.`);
+      synchroniserVersCloud("🚨 ALERTE SOS : Demande d'aide", `Le bouton « Je suis perdu(e) » a été touché par ${appState.prenom || 'l\'élève'}.`);
     }
 
     function fermerSOS() {
@@ -2703,6 +2832,7 @@
 
     // Initialisation au chargement avec restauration de l'état persistant
     chargerEtatPersistant();
+    mettreAJourPrenomAffichage();
     if (appState.fontSize) {
       setFontSize(appState.fontSize, document.getElementById('zoom-' + appState.fontSize));
     }
@@ -2721,6 +2851,13 @@
       if (banner) banner.style.display = 'none';
       basculerRole('student');
       initialiserEcouteEleve();
+
+      // Pour la version publique de tous : si aucun prénom n'a encore été enregistré et aucun paramètre URL
+      if (!appState.prenomEstDefini && !urlParams.has('prenom') && !urlParams.has('famille')) {
+        setTimeout(() => {
+          personnaliserPrenom();
+        }, 1200);
+      }
     }
 
     // Enregistrement Service Worker PWA
