@@ -1,0 +1,2734 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cap Numérique — Du premier geste tactile à l'autonomie totale</title>
+  <meta name="description" content="L'application d'apprentissage technologique québécoise pour aînés. Du geste physique élémentaire jusqu'à la protection anti-fraude, sans aucun risque de rien briser.">
+  <meta name="keywords" content="cours tablette aînés québec, apprentissage numérique aînés québec, anti-fraude texto poste canada, simulateur tactile tablette, protection aînés québec, cap numérique">
+  <link rel="canonical" href="https://capnumerique.ca/">
+  
+  <!-- Balises Open Graph / Réseaux Sociaux (Facebook, WhatsApp, SMS) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Cap Numérique">
+  <meta property="og:url" content="https://capnumerique.ca/">
+  <meta property="og:title" content="Cap Numérique : Du geste tactile élémentaire à l'autonomie totale (Québec)">
+  <meta property="og:description" content="Apprentissage numérique bienveillant pour aînés et débutants. 12 professeurs au choix, simulateurs anti-erreur, zéro risque de rien briser.">
+  <meta property="og:image" content="https://capnumerique.ca/og-image.jpg">
+  <meta property="og:locale" content="fr_CA">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cap Numérique — Apprendre la technologie sans stress">
+  <meta name="twitter:description" content="L'application québécoise conçue pour les aînés et débutants. 100% sécuritaire et rassurant.">
+
+  <!-- Données structurées JSON-LD Schema.org pour Google Rich Snippets -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://capnumerique.ca/#webapp",
+        "name": "Cap Numérique",
+        "url": "https://capnumerique.ca/",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "All (iOS, Android, Windows, Mac)",
+        "inLanguage": "fr-CA",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "CAD"
+        },
+        "description": "Plateforme québécoise d'apprentissage technologique et de motricité tactile pour les aînés et débutants avec simulateur anti-erreur.",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Les Solutions SkyFibre Inc.",
+          "url": "https://capnumerique.ca"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Est-ce qu'un aîné peut briser sa tablette en faisant une mauvaise manipulation ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Non. Dans le simulateur Cap Numérique, toutes les actions sont sécurisées dans un bac à sable où les erreurs n'ont aucune conséquence réelle."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Comment reconnaître les fraudes par texto de Postes Canada ou Hydro-Québec ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Aucun organisme officiel ne réclame de paiement urgent par texto ni par virement Interac direct. Cap Numérique propose un module interactif d'entraînement pour apprendre à les déjouer."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <link rel="manifest" href="./site.webmanifest">
+  <meta name="theme-color" content="#1e3a8a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <style>
+    :root {
+      --bg-page: #f8faff;
+      --bg-surface: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --primary-soft: #eff6ff;
+      --accent: #f59e0b;
+      --accent-soft: #fffbeb;
+      --danger: #ef4444;
+      --danger-soft: #fef2f2;
+      --success: #10b981;
+      --success-soft: #ecfdf5;
+      --border-soft: #e2e8f0;
+      --border-focus: #3b82f6;
+      --radius-xl: 26px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --shadow-sm: 0 4px 10px rgba(15, 23, 42, 0.04);
+      --shadow-card: 0 16px 36px -6px rgba(15, 23, 42, 0.08), 0 4px 14px -2px rgba(15, 23, 42, 0.03);
+      --shadow-glow: 0 15px 35px rgba(37, 99, 235, 0.22);
+      --base-font-size: 18px;
+    }
+
+    html {
+      font-size: 18px;
+      transition: font-size 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html.font-normal, body.font-normal {
+      font-size: 18px;
+      --base-font-size: 18px;
+    }
+    html.font-large, body.font-large {
+      font-size: 22px;
+      --base-font-size: 22px;
+    }
+    html.font-xlarge, body.font-xlarge {
+      font-size: 26px;
+      --base-font-size: 26px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      font-size: 1rem;
+      background: 
+        radial-gradient(at 0% 0%, rgba(219, 234, 254, 0.75) 0px, transparent 55%),
+        radial-gradient(at 100% 0%, rgba(254, 243, 199, 0.55) 0px, transparent 55%),
+        radial-gradient(at 50% 100%, rgba(220, 252, 231, 0.6) 0px, transparent 55%),
+        #f8faff;
+      background-attachment: fixed;
+      color: var(--text-main);
+      line-height: 1.6;
+      min-height: 100vh;
+      padding-bottom: 90px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Bandeau Rôle Proche Aidant / Aîné */
+    .role-switcher-banner {
+      background: #090d16;
+      color: #94a3b8;
+      padding: 12px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.92rem;
+      border-bottom: 1px solid #1e293b;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .role-badge-group { display: flex; align-items: center; gap: 10px; }
+
+    .role-btn {
+      background: #1e293b;
+      color: #cbd5e1;
+      border: 1px solid #334155;
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .role-btn:hover { background: #334155; color: #ffffff; }
+
+    .role-btn.active {
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      color: #ffffff;
+      border-color: #3b82f6;
+      box-shadow: 0 0 16px rgba(37, 99, 235, 0.5);
+    }
+
+    /* Barre supérieure accessible en verre dépoli (Glassmorphism) */
+    .top-bar {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      color: var(--text-main);
+      padding: 16px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.05);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 900;
+      font-size: 1.55rem;
+      color: #0f172a;
+      letter-spacing: -0.5px;
+      text-decoration: none;
+    }
+
+    .brand-icon {
+      font-size: 1.8rem;
+      background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+      color: #ffffff;
+      width: 50px;
+      height: 50px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 18px rgba(37, 99, 235, 0.35);
+      border: 2px solid rgba(255, 255, 255, 0.6);
+    }
+
+    .top-controls { display: flex; align-items: center; gap: 16px; }
+
+    .nav-blog-btn {
+      background: #ffffff;
+      color: #1e293b;
+      border: 2px solid #cbd5e1;
+      padding: 10px 20px;
+      border-radius: 14px;
+      font-weight: 800;
+      font-size: 0.95rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .nav-blog-btn:hover {
+      background: #f8fafc;
+      border-color: #3b82f6;
+      color: #1d4ed8;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(37, 99, 235, 0.15);
+    }
+
+    .font-zoom-group {
+      display: flex;
+      align-items: center;
+      background: #f1f5f9;
+      padding: 5px;
+      border-radius: 14px;
+      gap: 4px;
+      border: 1px solid #cbd5e1;
+    }
+
+    .btn-zoom {
+      background: transparent;
+      border: none;
+      color: #475569;
+      padding: 7px 15px;
+      border-radius: 10px;
+      font-weight: 900;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.2s;
+    }
+
+    .btn-zoom:hover { color: #0f172a; }
+
+    .btn-zoom.active {
+      background: #ffffff;
+      color: #1d4ed8;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+    }
+
+    .btn-sos {
+      background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+      color: #ffffff;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      padding: 12px 22px;
+      border-radius: 16px;
+      font-weight: 900;
+      font-size: 1.05rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 8px 20px rgba(220, 38, 38, 0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: gentle-pulse 4s infinite;
+    }
+
+    .btn-sos:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 10px 24px rgba(220, 38, 38, 0.5);
+    }
+
+    @keyframes gentle-pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+    }
+
+    .container {
+      max-width: 1140px;
+      margin: 32px auto;
+      padding: 0 20px;
+    }
+
+    .view-container { display: none; }
+    .view-container.active {
+      display: block;
+      animation: fadeIn 0.35s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Barre de progression globale (Style Bento Chic) */
+    .global-progress-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 22px 28px;
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      box-shadow: var(--shadow-card);
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 18px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .global-progress-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 120px;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(254, 243, 199, 0.3));
+      pointer-events: none;
+    }
+
+    .global-progress-info {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .progress-trophy {
+      font-size: 2.4rem;
+      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.25);
+    }
+
+    .progress-bar-wrapper {
+      flex: 1;
+      min-width: 260px;
+    }
+
+    .progress-bar-track {
+      background: #e2e8f0;
+      border-radius: 20px;
+      height: 14px;
+      overflow: hidden;
+      margin-top: 8px;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
+    }
+
+    .progress-bar-fill {
+      background: linear-gradient(90deg, #10b981 0%, #3b82f6 50%, #6366f1 100%);
+      height: 100%;
+      border-radius: 20px;
+      width: 25%;
+      transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+    }
+
+    /* Carte du Professeur Actif (Hero Sublime Studio) */
+    .teacher-active-card {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #2563eb 100%);
+      color: #ffffff;
+      border-radius: var(--radius-xl);
+      padding: 38px;
+      box-shadow: var(--shadow-glow), var(--shadow-card);
+      margin-bottom: 34px;
+      position: relative;
+      overflow: hidden;
+      border: 2px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .teacher-active-card::before {
+      content: '';
+      position: absolute;
+      top: -80px;
+      right: -80px;
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, rgba(255,255,255,0.22) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .teacher-active-header {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      flex-wrap: wrap;
+    }
+
+    .avatar-wrapper {
+      position: relative;
+    }
+
+    .teacher-active-avatar {
+      font-size: 4.5rem;
+      background: #ffffff;
+      width: 114px;
+      height: 114px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.3);
+      border: 4px solid #93c5fd;
+      flex-shrink: 0;
+      transition: transform 0.3s;
+    }
+
+    .status-dot {
+      position: absolute;
+      bottom: 4px;
+      right: 6px;
+      background: #10b981;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 3px solid #1e3a8a;
+      box-shadow: 0 0 14px #10b981;
+    }
+
+    .teacher-active-info { flex: 1; min-width: 260px; }
+
+    .teacher-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.22);
+      backdrop-filter: blur(8px);
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 0.88rem;
+      padding: 6px 16px;
+      border-radius: 30px;
+      margin-bottom: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+    }
+
+    .teacher-active-info h1 {
+      font-size: 2.2rem;
+      font-weight: 900;
+      margin-bottom: 6px;
+      font-family: 'Outfit', sans-serif;
+      letter-spacing: -0.5px;
+    }
+
+    .teacher-active-info p {
+      font-size: 1.2rem;
+      opacity: 0.95;
+      font-weight: 500;
+    }
+
+    .dialog-bubble {
+      background: #ffffff;
+      color: var(--text-main);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      margin-top: 26px;
+      position: relative;
+      box-shadow: 0 16px 36px rgba(0,0,0,0.15);
+      border: 1px solid rgba(255,255,255,0.8);
+    }
+
+    .dialog-bubble::before {
+      content: '';
+      position: absolute;
+      top: -14px;
+      left: 54px;
+      border-width: 0 14px 14px 14px;
+      border-style: solid;
+      border-color: transparent transparent #ffffff transparent;
+    }
+
+    .dialog-text {
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: #0f172a;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .dialog-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    .btn-action-voice {
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      color: #ffffff;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 16px;
+      font-size: 1.15rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 58px;
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .btn-action-voice:hover {
+      background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.45);
+    }
+
+    .btn-action-voice:active { transform: translateY(1px); }
+
+    .sound-wave {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      height: 18px;
+    }
+    .sound-wave span {
+      width: 3px;
+      height: 100%;
+      background: #ffffff;
+      border-radius: 3px;
+      animation: waveAnim 1s ease-in-out infinite alternate;
+    }
+    .sound-wave span:nth-child(2) { animation-delay: 0.2s; height: 60%; }
+    .sound-wave span:nth-child(3) { animation-delay: 0.4s; height: 85%; }
+    .sound-wave span:nth-child(4) { animation-delay: 0.1s; height: 40%; }
+
+    @keyframes waveAnim {
+      0% { transform: scaleY(0.3); }
+      100% { transform: scaleY(1); }
+    }
+
+    .btn-action-mic {
+      background: #ffffff;
+      color: #1e293b;
+      border: 2px solid #cbd5e1;
+      padding: 14px 26px;
+      border-radius: 16px;
+      font-size: 1.15rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 58px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s;
+    }
+
+    .btn-action-mic:hover {
+      background: #f1f5f9;
+      border-color: #94a3b8;
+    }
+
+    /* Navigation Curriculum en 5 Niveaux (Bento Cards Lumineuses) */
+    .curriculum-nav {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 28px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      scrollbar-width: thin;
+    }
+
+    .level-tab-btn {
+      background: #ffffff;
+      border: 2px solid #e2e8f0;
+      padding: 16px 22px;
+      border-radius: var(--radius-lg);
+      font-weight: 900;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+      min-width: 220px;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      color: #334155;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .level-tab-btn:hover {
+      border-color: #93c5fd;
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-card);
+    }
+
+    .level-tab-btn small {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #64748b;
+    }
+
+    .level-tab-btn.active {
+      background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+      color: #ffffff;
+      border-color: #1e3a8a;
+      box-shadow: 0 10px 25px rgba(30, 58, 138, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .level-tab-btn.active small { color: #bfdbfe; }
+
+    .level-content { display: none; }
+    .level-content.active {
+      display: block;
+      animation: fadeIn 0.4s ease-out;
+    }
+
+    .module-card {
+      background: var(--bg-surface);
+      border-radius: var(--radius-xl);
+      padding: 36px;
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      box-shadow: var(--shadow-card);
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    .module-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 22px;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .module-title h3 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: #0f172a;
+      font-family: 'Outfit', sans-serif;
+      margin-top: 6px;
+    }
+
+    .module-badge {
+      background: #eff6ff;
+      color: #1d4ed8;
+      font-weight: 800;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.88rem;
+      border: 1px solid #bfdbfe;
+      display: inline-block;
+    }
+
+    /* MINI-JEU NIVEAU 0 : Bulles 3D Réalistes */
+    .bubble-arena {
+      background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+      border: 3px dashed #86efac;
+      border-radius: var(--radius-xl);
+      padding: 36px;
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      user-select: none;
+      box-shadow: inset 0 2px 10px rgba(16, 185, 129, 0.05);
+    }
+
+    .bubbles-row {
+      display: flex;
+      gap: 28px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 26px 0;
+    }
+
+    .bubble-target {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.95) 0%, rgba(186, 230, 253, 0.8) 25%, rgba(59, 130, 246, 0.85) 65%, rgba(29, 78, 216, 0.95) 100%);
+      box-shadow: 
+        inset 0 10px 20px rgba(255, 255, 255, 0.7),
+        inset 0 -10px 20px rgba(15, 23, 42, 0.3),
+        0 12px 28px rgba(37, 99, 235, 0.35);
+      border: 2px solid rgba(255, 255, 255, 0.6);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.6rem;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      animation: bubbleLevitate 3.5s ease-in-out infinite alternate;
+    }
+
+    .bubble-target:nth-child(2) { animation-delay: 0.6s; }
+    .bubble-target:nth-child(3) { animation-delay: 1.2s; }
+    .bubble-target:nth-child(4) { animation-delay: 1.8s; }
+
+    @keyframes bubbleLevitate {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-10px); }
+    }
+
+    .bubble-target:active { transform: scale(0.85); }
+
+    .bubble-target.popped {
+      background: radial-gradient(circle, #86efac 0%, #22c55e 100%);
+      color: #14532d;
+      box-shadow: 0 4px 12px rgba(34, 197, 94, 0.35);
+      animation: none;
+      transform: scale(0.92);
+      border-color: #22c55e;
+    }
+
+    /* Boîte Appui Long avec Jauge Émeraude Vivante */
+    .long-press-box {
+      width: 100%;
+      max-width: 480px;
+      background: #ffffff;
+      border: 3px solid #cbd5e1;
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      margin-top: 18px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      transition: all 0.2s;
+    }
+
+    .long-press-progress-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #dcfce7 0%, #86efac 50%, #4ade80 100%);
+      z-index: 1;
+      transition: width 0.05s linear;
+    }
+
+    .long-press-content {
+      position: relative;
+      z-index: 2;
+      font-weight: 900;
+      color: #1e293b;
+      font-size: 1.25rem;
+    }
+
+    .long-press-box.success {
+      background: #dcfce7;
+      border-color: #22c55e;
+      color: #15803d;
+      box-shadow: 0 0 20px rgba(34, 197, 94, 0.35);
+    }
+
+    /* MINI-JEU NIVEAU 1 : Le Clavier Ergonomique Rétro-Moderne */
+    .keyboard-trainer {
+      background: #f8fafc;
+      border: 2px solid #e2e8f0;
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      text-align: center;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.03);
+    }
+
+    .keyboard-display {
+      background: #ffffff;
+      border: 3px solid #3b82f6;
+      border-radius: var(--radius-md);
+      padding: 20px;
+      font-size: 2rem;
+      font-weight: 900;
+      min-height: 75px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      color: #0f172a;
+      box-shadow: inset 0 3px 8px rgba(0,0,0,0.06), 0 4px 12px rgba(59, 130, 246, 0.15);
+      letter-spacing: 1.5px;
+    }
+
+    .keyboard-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .kb-row {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .kb-key {
+      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+      border: 2px solid #cbd5e1;
+      border-bottom: 6px solid #94a3b8;
+      border-radius: 16px;
+      min-width: 56px;
+      height: 64px;
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #1e293b;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.1s;
+      user-select: none;
+      box-shadow: 0 4px 10px rgba(15, 23, 42, 0.08);
+    }
+
+    .kb-key:active {
+      transform: translateY(4px);
+      border-bottom-width: 2px;
+      background: #f1f5f9;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.1);
+    }
+
+    .kb-key.action-key {
+      background: #eff6ff;
+      border-color: #bfdbfe;
+      border-bottom-color: #60a5fa;
+      color: #1d4ed8;
+      padding: 0 20px;
+      font-size: 1.1rem;
+    }
+
+    .kb-key.space-key {
+      flex: 1;
+      max-width: 300px;
+      font-size: 1.15rem;
+    }
+
+    /* Grille des 6 Icônes Universelles */
+    .icon-quiz-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 18px;
+      margin-bottom: 22px;
+    }
+
+    .icon-quiz-card {
+      background: #ffffff;
+      border: 2px solid #e2e8f0;
+      border-radius: var(--radius-md);
+      padding: 20px 14px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .icon-quiz-card:hover {
+      transform: translateY(-5px);
+      border-color: #3b82f6;
+      box-shadow: var(--shadow-card);
+    }
+
+    .icon-quiz-card .icon-big {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    /* MINI-JEU NIVEAU 2 : Appel Vidéo FaceTime Haute Définition */
+    .video-call-box {
+      max-width: 460px;
+      margin: 0 auto;
+      background: #090d16;
+      border-radius: 36px;
+      padding: 24px;
+      color: #ffffff;
+      text-align: center;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.35);
+      position: relative;
+      border: 4px solid #1e293b;
+    }
+
+    .video-screen-mock {
+      background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+      border-radius: 26px;
+      height: 350px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .video-pip {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 95px;
+      height: 125px;
+      background: #334155;
+      border: 2px solid #60a5fa;
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.4);
+    }
+
+    .video-call-controls {
+      display: flex;
+      justify-content: center;
+      gap: 22px;
+      margin-top: 24px;
+    }
+
+    .btn-call-ctrl {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      border: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.3);
+    }
+
+    .btn-call-ctrl:hover { transform: scale(1.08); }
+    .btn-call-ctrl.mute { background: #334155; color: #ffffff; }
+    .btn-call-ctrl.end { background: #ef4444; color: #ffffff; }
+
+    /* Fausse Alerte Anxiogène (Niveau 4) */
+    .fake-alert-box {
+      max-width: 480px;
+      margin: 16px auto;
+      background: #ffffff;
+      border: 4px solid #ef4444;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 20px 40px rgba(239, 68, 68, 0.28);
+      padding: 30px;
+      position: relative;
+      text-align: center;
+    }
+
+    .fake-alert-close-btn {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      background: #fee2e2;
+      color: #b91c1c;
+      border: 2px solid #f87171;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      font-size: 1.7rem;
+      font-weight: 900;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      box-shadow: 0 4px 10px rgba(220, 38, 38, 0.2);
+    }
+
+    .fake-alert-close-btn:hover { background: #ef4444; color: #ffffff; }
+
+    /* CATALOGUE DES 12 PROFESSEURS AVEC FILTRES */
+    .teachers-filter-group {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: #ffffff;
+      border: 2px solid #cbd5e1;
+      color: #334155;
+      padding: 10px 22px;
+      border-radius: 30px;
+      font-weight: 800;
+      font-size: 0.98rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .filter-btn:hover { border-color: #3b82f6; color: #1d4ed8; }
+    .filter-btn.active {
+      background: #2563eb;
+      color: #ffffff;
+      border-color: #2563eb;
+      box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+    }
+
+    .teachers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-bottom: 44px;
+    }
+
+    .teacher-card {
+      background: var(--bg-surface);
+      border: 3px solid #e2e8f0;
+      border-radius: var(--radius-xl);
+      padding: 26px;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      box-shadow: var(--shadow-card);
+    }
+
+    .teacher-card:hover {
+      transform: translateY(-6px);
+      border-color: #93c5fd;
+      box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
+    }
+
+    .teacher-card.active {
+      border-color: #2563eb;
+      background: #eff6ff;
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.25), var(--shadow-card);
+    }
+
+    .teacher-gender-tag {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: #f1f5f9;
+      color: #475569;
+    }
+
+    .teacher-card-avatar {
+      font-size: 3.8rem;
+      margin-bottom: 12px;
+      background: #f8fafc;
+      width: 86px;
+      height: 86px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 3px solid #e2e8f0;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .teacher-card-name {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #0f172a;
+      margin-bottom: 4px;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .teacher-card-role {
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: #2563eb;
+      margin-bottom: 8px;
+    }
+
+    .teacher-card-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+      line-height: 1.5;
+    }
+
+    .teacher-card-btn {
+      margin-top: auto;
+      background: #ffffff;
+      border: 2px solid #cbd5e1;
+      padding: 12px 18px;
+      border-radius: 14px;
+      font-weight: 800;
+      font-size: 1rem;
+      color: #1e293b;
+      width: 100%;
+      min-height: 50px;
+      transition: all 0.2s;
+    }
+
+    .teacher-card.active .teacher-card-btn {
+      background: #2563eb;
+      color: #ffffff;
+      border-color: #2563eb;
+    }
+
+    /* Modal SOS */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .modal-card {
+      background: #ffffff;
+      border-radius: 32px;
+      max-width: 580px;
+      width: 100%;
+      padding: 42px;
+      text-align: center;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.35);
+      border: 4px solid #38bdf8;
+      animation: popIn 0.3s ease-out;
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-icon { font-size: 4.5rem; margin-bottom: 16px; }
+    .modal-title { font-size: 2rem; font-weight: 900; color: #0f172a; margin-bottom: 14px; font-family: 'Outfit', sans-serif; }
+    .modal-text { font-size: 1.3rem; color: #334155; margin-bottom: 30px; line-height: 1.65; }
+    .btn-modal-close {
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      color: #ffffff;
+      border: none;
+      padding: 18px 36px;
+      border-radius: 18px;
+      font-size: 1.25rem;
+      font-weight: 900;
+      cursor: pointer;
+      width: 100%;
+      min-height: 60px;
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      color: #64748b;
+      font-size: 0.98rem;
+    }
+
+    @media (max-width: 680px) {
+      .top-bar { flex-direction: column; gap: 14px; align-items: stretch; padding: 16px; }
+      .top-controls { justify-content: space-between; flex-wrap: wrap; }
+      .curriculum-nav { flex-direction: column; }
+      .teacher-active-card { padding: 24px; }
+    }
+  </style>
+</head>
+<body class="font-normal">
+
+  <!-- Bandeau Démo Clean Architecture (Bascule Aîné <-> Proche Aidant) -->
+  <div class="role-switcher-banner" id="role-switcher-banner" style="display:none;">
+    <div>
+      <span>Architecture Pédagogique Intégrale : </span>
+      <strong style="color:#ffffff;">Du Niveau 0 (Motricité tactile) au Niveau 4 (Anti-Fraude)</strong>
+    </div>
+
+    <div class="role-badge-group">
+      <button class="role-btn active" id="btn-role-student" onclick="basculerRole('student')">
+        <span>👵</span>
+        <span>Vue Aîné / Élève</span>
+      </button>
+      <button class="role-btn" id="btn-role-caregiver" onclick="basculerRole('caregiver')">
+        <span>👨‍👧</span>
+        <span>Vue Proche Aidant (Dominique)</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Barre supérieure accessible -->
+  <header class="top-bar">
+    <a href="./index.html" class="brand">
+      <div class="brand-icon">🧭</div>
+      <span>Cap Numérique</span>
+    </a>
+
+    <div class="top-controls">
+      <a href="./blog.html" class="nav-blog-btn" title="Lire nos guides et astuces de sécurité">
+        <span>📰</span>
+        <span>Blog & Conseils</span>
+      </a>
+
+      <div class="font-zoom-group" aria-label="Ajuster la taille du texte">
+        <button class="btn-zoom active" id="zoom-normal" onclick="setFontSize('normal', this)" title="Taille normale">A</button>
+        <button class="btn-zoom" id="zoom-large" onclick="setFontSize('large', this)" title="Grand texte">A+</button>
+        <button class="btn-zoom" id="zoom-xlarge" onclick="setFontSize('xlarge', this)" title="Très grand texte">A++</button>
+      </div>
+
+      <button class="btn-sos" onclick="ouvrirSOS()" title="Appuyez ici si vous vous sentez bloqué(e)">
+        <span>🆘</span>
+        <span>Je suis perdu(e)</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- ========================================== -->
+    <!-- VUE 1 : ESPACE ÉLÈVE / AÎNÉ                -->
+    <!-- ========================================== -->
+    <div class="view-container active" id="view-student">
+
+      <!-- Barre de progression globale (Bento Chic) -->
+      <section class="global-progress-card">
+        <div class="global-progress-info">
+          <div class="progress-trophy">🌟</div>
+          <div>
+            <div style="font-weight:900; font-size:1.2rem; color:#0f172a; font-family:'Outfit', sans-serif;">Votre progression d'autonomie</div>
+            <div style="font-size:0.95rem; color:#64748b;" id="progress-text-label">Niveau 0 en cours • 1 atelier validé</div>
+          </div>
+        </div>
+
+        <div class="progress-bar-wrapper">
+          <div style="display:flex; justify-content:space-between; font-size:0.9rem; font-weight:800; color:#1d4ed8;">
+            <span>Étape actuelle</span>
+            <span id="progress-percentage">25 %</span>
+          </div>
+          <div class="progress-bar-track">
+            <div class="progress-bar-fill" id="global-progress-bar"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- En-tête du Professeur Actif (Hero Studio) -->
+      <section class="teacher-active-card" id="teacher-hero">
+        <div class="teacher-active-header">
+          <div class="avatar-wrapper">
+            <div class="teacher-active-avatar" id="hero-avatar">👵</div>
+            <div class="status-dot" title="En direct avec vous"></div>
+          </div>
+          <div class="teacher-active-info">
+            <span class="teacher-badge" id="hero-badge">🟢 Votre Guide Pédagogique Actuel</span>
+            <h1 id="hero-name">Mme Louise</h1>
+            <p id="hero-title">Patiente, chaleureuse et sans aucun jargon d'ordinateur</p>
+          </div>
+        </div>
+
+        <div class="dialog-bubble">
+          <div class="dialog-text" id="hero-speech">
+            « Bon matin ! Respirez tranquillement. Ici, vous ne pouvez absolument rien briser. On commence par apprivoiser l'écran avec les doigts, sans se presser. Touchez une bulle ci-dessous pour voir ! »
+          </div>
+
+          <div class="dialog-actions">
+            <button class="btn-action-voice" onclick="parlerTexteActuel()">
+              <div class="sound-wave"><span></span><span></span><span></span><span></span></div>
+              <span id="voice-btn-label">Écouter Louise parler</span>
+            </button>
+            <button class="btn-action-mic" onclick="demanderAuMicro()">
+              <span>🎙️</span>
+              <span>Poser une question à voix haute</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- NAVIGATION DU CURRICULUM EN 5 NIVEAUX (0 à 4) -->
+      <h2 style="font-size:1.75rem; font-weight:900; margin-bottom:16px; font-family:'Outfit', sans-serif;">
+        📚 Votre parcours étape par étape :
+      </h2>
+
+      <div class="curriculum-nav">
+        <button class="level-tab-btn active" id="tab-lvl-0" onclick="changerNiveau(0, this)">
+          <span>🟢 Niveau 0 : Motricité</span>
+          <small>Toucher simple, appui long & scroll</small>
+        </button>
+        <button class="level-tab-btn" id="tab-lvl-1" onclick="changerNiveau(1, this)">
+          <span>🔵 Niveau 1 : Commandes</span>
+          <small>Clavier virtuel & icônes universelles</small>
+        </button>
+        <button class="level-tab-btn" id="tab-lvl-2" onclick="changerNiveau(2, this)">
+          <span>🟣 Niveau 2 : Proches</span>
+          <small>Messages textes, photos & appels vidéo</small>
+        </button>
+        <button class="level-tab-btn" id="tab-lvl-3" onclick="changerNiveau(3, this)">
+          <span>🟠 Niveau 3 : Quotidien</span>
+          <small>Recherche Google, météo & code QR</small>
+        </button>
+        <button class="level-tab-btn" id="tab-lvl-4" onclick="changerNiveau(4, this)">
+          <span>🔴 Niveau 4 : Sécurité</span>
+          <small>Bouclier anti-arnaque & faux pop-ups</small>
+        </button>
+      </div>
+
+      <!-- ============================================== -->
+      <!-- CONTENU DU NIVEAU 0 : LA MOTRICITÉ TACTILE     -->
+      <!-- ============================================== -->
+      <div class="level-content active" id="level-0">
+        <!-- Module 1 : Toucher simple vs Appui long -->
+        <div class="module-card">
+          <div class="module-header">
+            <div class="module-title">
+              <span class="module-badge">Module 1 • Motricité de base</span>
+              <h3>Le toucher simple (tap) vs l'appui long</h3>
+            </div>
+            <button class="btn-action-voice" style="padding:10px 20px; font-size:1rem; min-height:auto;" onclick="parlerTexte('Exercice numéro un : touchez rapidement les bulles bleues une par une pour les éclater sans laisser votre doigt appuyé.')">
+              <span>🔊</span><span>Écouter le prof</span>
+            </button>
+          </div>
+
+          <p style="color:#475569; margin-bottom:20px; font-size:1.15rem;">
+            Beaucoup de débutants laissent leur doigt trop longtemps sur l'écran, ce qui fait apparaître des menus contextuels non désirés. 
+            <strong>Pratiquez le tap bref :</strong> touchez simplement chaque bulle d'un petit coup doux et retirez le doigt tout de suite !
+          </p>
+
+          <div class="bubble-arena">
+            <div style="font-weight:900; color:#166534; margin-bottom:12px; font-size:1.25rem;">
+              🎯 Touchez rapidement les 4 bulles pour les faire éclater :
+            </div>
+
+            <div class="bubbles-row">
+              <div class="bubble-target" id="bubble-1" onclick="eclaterBulle(1)">🫧</div>
+              <div class="bubble-target" id="bubble-2" onclick="eclaterBulle(2)">🫧</div>
+              <div class="bubble-target" id="bubble-3" onclick="eclaterBulle(3)">🫧</div>
+              <div class="bubble-target" id="bubble-4" onclick="eclaterBulle(4)">🫧</div>
+            </div>
+
+            <div id="bubble-status" style="font-size:1.2rem; font-weight:800; color:#1e3a8a; min-height:36px;">
+              0 / 4 bulle(s) éclatée(s)
+            </div>
+
+            <hr style="width:100%; border:none; border-top:2px dashed #bbf7d0; margin:24px 0;">
+
+            <div style="font-weight:900; color:#166534; margin-bottom:12px; font-size:1.25rem;">
+              ⏳ Maintenant, le geste inverse : Maintenez votre doigt appuyé pendant 2 secondes sur le rectangle ci-dessous sans le relâcher :
+            </div>
+
+            <div class="long-press-box" id="long-press-box" onmousedown="demarrerAppuiLong()" onmouseup="annulerAppuiLong()" ontouchstart="demarrerAppuiLong()" ontouchend="annulerAppuiLong()">
+              <div class="long-press-progress-bar" id="lp-bar"></div>
+              <div class="long-press-content" id="long-press-label">👇 Posez votre doigt ici et maintenez-le...</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Module 2 : Le défilement (Scroll) -->
+        <div class="module-card">
+          <div class="module-header">
+            <div class="module-title">
+              <span class="module-badge">Module 2 • Navigation fluide</span>
+              <h3>Le défilement (Scroll) : Glisser sans cliquer</h3>
+            </div>
+          </div>
+          <p style="color:#475569; margin-bottom:18px; font-size:1.15rem;">
+            Pour lire un article sans ouvrir de liens par erreur, faites glisser votre doigt du bas vers le haut au centre de l'écran.
+          </p>
+
+          <div style="max-height:240px; overflow-y:auto; border:2px solid #cbd5e1; border-radius:18px; padding:24px; background:#ffffff; box-shadow:inset 0 2px 6px rgba(0,0,0,0.05);" onscroll="validerScroll(this)">
+            <h4 style="color:#1e3a8a; margin-bottom:12px; font-family:'Outfit', sans-serif; font-size:1.3rem;">Recette : Pâté chinois traditionnel québécois</h4>
+            <p style="margin-bottom:12px;">1. Préchauffer le four à 375 °F (190 °C).</p>
+            <p style="margin-bottom:12px;">2. Dans une grande poêle, faire dorer le bœuf haché avec les oignons hachés.</p>
+            <p style="margin-bottom:12px;">3. Déposer la viande au fond d'un plat carré allant au four.</p>
+            <p style="margin-bottom:12px;">4. Ajouter une conserve de maïs en crème par-dessus la viande dorée.</p>
+            <p style="margin-bottom:12px;">5. Recouvrir le tout d'une généreuse couche de purée de pommes de terre au beurre.</p>
+            <p style="margin-bottom:12px;">6. Saupoudrer de paprika et cuire 30 minutes jusqu'à ce que ce soit bien doré !</p>
+            <div id="scroll-success-msg" style="display:none; background:#dcfce7; padding:14px; border-radius:14px; text-align:center; color:#14532d; font-weight:800; border:2px solid #22c55e;">
+              🎉 Bravo ! Vous avez défilé jusqu'au bout sans rien briser !
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <!-- CONTENU DU NIVEAU 1 : COMMANDES & CLAVIER      -->
+      <!-- ============================================== -->
+      <div class="level-content" id="level-1">
+        <!-- Module 4 : Le Clavier d'entraînement géant -->
+        <div class="module-card">
+          <div class="module-header">
+            <div class="module-title">
+              <span class="module-badge">Module 4 • Écrire sans précipitation</span>
+              <h3>Le Clavier virtuel d'entraînement</h3>
+            </div>
+          </div>
+          <p style="color:#475569; margin-bottom:18px; font-size:1.15rem;">
+            Pratiquez la frappe de votre prénom ou de votre liste d'épicerie. La touche <strong>⌫ Effacer</strong> en bleu vous permet d'effacer une lettre si vous vous trompez.
+          </p>
+
+          <div class="keyboard-trainer">
+            <div class="keyboard-display" id="kb-screen">
+              <span id="kb-text" style="color:#2563eb;">Tapez du texte...</span>
+            </div>
+
+            <div class="keyboard-grid">
+              <div class="kb-row">
+                <button class="kb-key" onclick="taperLettre('P')">P</button>
+                <button class="kb-key" onclick="taperLettre('A')">A</button>
+                <button class="kb-key" onclick="taperLettre('I')">I</button>
+                <button class="kb-key" onclick="taperLettre('N')">N</button>
+                <button class="kb-key" onclick="taperLettre('L')">L</button>
+                <button class="kb-key" onclick="taperLettre('A')">A</button>
+                <button class="kb-key" onclick="taperLettre('I')">I</button>
+                <button class="kb-key" onclick="taperLettre('T')">T</button>
+              </div>
+              <div class="kb-row">
+                <button class="kb-key" onclick="taperLettre('M')">M</button>
+                <button class="kb-key" onclick="taperLettre('E')">E</button>
+                <button class="kb-key" onclick="taperLettre('R')">R</button>
+                <button class="kb-key" onclick="taperLettre('C')">C</button>
+                <button class="kb-key" onclick="taperLettre('I')">I</button>
+                <button class="kb-key action-key" onclick="effacerLettre()">⌫ Effacer</button>
+              </div>
+              <div class="kb-row">
+                <button class="kb-key space-key" onclick="taperLettre(' ')">␣ Espace</button>
+                <button class="kb-key action-key" style="background:#fee2e2; color:#b91c1c; border-color:#fca5a5; border-bottom-color:#ef4444;" onclick="viderTexte()">Tout effacer</button>
+              </div>
+            </div>
+
+            <div id="kb-status" style="margin-top:18px; font-weight:800; color:#16a34a; min-height:30px;"></div>
+          </div>
+        </div>
+
+        <!-- Module 5 : Décoder les 6 icônes -->
+        <div class="module-card">
+          <div class="module-header">
+            <div class="module-title">
+              <span class="module-badge">Module 5 • Signaux visuels universels</span>
+              <h3>Décoder les 6 icônes universelles</h3>
+            </div>
+          </div>
+          <p style="color:#475569; margin-bottom:18px; font-size:1.15rem;">
+            Ces dessins se retrouvent partout dans votre téléphone. Touchez chaque icône pour découvrir son super-pouvoir :
+          </p>
+
+          <div class="icon-quiz-grid">
+            <div class="icon-quiz-card" onclick="expliquerIcone('loupe', '🔍 La Loupe sert à CHERCHER un contact, un nom ou une recette.')">
+              <div class="icon-big">🔍</div>
+              <div style="font-weight:800;">Chercher</div>
+            </div>
+            <div class="icon-quiz-card" onclick="expliquerIcone('maison', '🏠 La Maison sert à REVENIR À L\'ACCUEIL en un seul clic.')">
+              <div class="icon-big">🏠</div>
+              <div style="font-weight:800;">Accueil</div>
+            </div>
+            <div class="icon-quiz-card" onclick="expliquerIcone('poubelle', '🗑️ La Poubelle sert à SUPPRIMER une photo ou un vieux message inutile.')">
+              <div class="icon-big">🗑️</div>
+              <div style="font-weight:800;">Supprimer</div>
+            </div>
+            <div class="icon-quiz-card" onclick="expliquerIcone('engrenage', '⚙️ L\'Engrenage sert aux RÉGLAGES (grossir le texte, changer le son).')">
+              <div class="icon-big">⚙️</div>
+              <div style="font-weight:800;">Réglages</div>
+            </div>
+            <div class="icon-quiz-card" onclick="expliquerIcone('retour', '↩️ La Flèche sert à REVENIR EN ARRIÈRE si vous vous êtes trompé.')">
+              <div class="icon-big">↩️</div>
+              <div style="font-weight:800;">Retour</div>
+            </div>
+            <div class="icon-quiz-card" onclick="expliquerIcone('menu', '☰ Les Trois Lignes (Hamburger) ouvrent le MENU principal.')">
+              <div class="icon-big">☰</div>
+              <div style="font-weight:800;">Menu</div>
+            </div>
+          </div>
+
+          <div id="icon-feedback" style="background:#eff6ff; border:2px solid #93c5fd; padding:20px; border-radius:16px; color:#1e3a8a; font-weight:800; text-align:center;">
+            Touchez une icône ci-dessus pour que votre professeur vous l'explique à voix haute !
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <!-- CONTENU DU NIVEAU 2 : PROCHES & FAMILLE        -->
+      <!-- ============================================== -->
+      <div class="level-content" id="level-2">
+        <!-- Module 7 : Messages & Photos -->
+        <div class="module-card">
+          <div class="module-header">
+            <div class="module-title">
+              <span class="module-badge">Module 7 • Messages & Photos</span>
+              <h3>Envoyer une photo de famille en 3 étapes</h3>
+            </div>
+          </div>
+
+          <div class="interactive-chat-box" style="max-width:500px; margin:0 auto; background:#ffffff; border-radius:28px; box-shadow:var(--shadow-card); border:2px solid #e2e8f0; overflow:hidden;">
+            <div style="background:linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%); color:#ffffff; padding:18px 24px; display:flex; align-items:center; gap:14px; font-weight:800;">
+              <span style="font-size:1.5rem;">💬</span>
+              <span>Conversation avec Julie (Fille)</span>
+            </div>
+
+            <div class="chat-messages" id="sim-chat-history" style="padding:24px; min-height:220px; display:flex; flex-direction:column; gap:14px; background:#f8fafc;">
+              <div style="background:#ffffff; padding:16px 20px; border-radius:20px 20px 20px 4px; max-width:85%; box-shadow:var(--shadow-sm); font-size:1.15rem; border:1px solid #e2e8f0;">
+                Coucou maman ! Peux-tu m'envoyer la photo d'Alexandre au parc d'hier ? ❤️
+              </div>
+            </div>
+
+            <div id="sim-photo-sheet" style="display:none; background:#ffffff; border-top:2px solid #cbd5e1; padding:20px;">
+              <p style="font-size:1.05rem; font-weight:800; color:#1e293b; margin-bottom:14px;">
+                Touchez la photo d'Alexandre pour la sélectionner :
+              </p>
+              <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:12px;">
+                <div style="background:#f8fafc; border:3px solid transparent; border-radius:16px; padding:10px; cursor:pointer; text-align:center; transition:all 0.2s;" onclick="selectionnerPhoto(this, 'alex')">
+                  <div style="font-size:2.8rem;">👦</div>
+                  <small style="font-weight:800;">Alexandre au parc</small>
+                </div>
+                <div style="background:#f8fafc; border:3px solid transparent; border-radius:16px; padding:10px; cursor:pointer; text-align:center; transition:all 0.2s;" onclick="selectionnerPhoto(this, 'fleurs')">
+                  <div style="font-size:2.8rem;">🌸</div>
+                  <small style="font-weight:700;">Fleurs du jardin</small>
+                </div>
+                <div style="background:#f8fafc; border:3px solid transparent; border-radius:16px; padding:10px; cursor:pointer; text-align:center; transition:all 0.2s;" onclick="selectionnerPhoto(this, 'chat')">
+                  <div style="font-size:2.8rem;">🐱</div>
+                  <small style="font-weight:700;">Le chat Minou</small>
+                </div>
+              </div>
+            </div>
+
+            <div style="padding:18px 22px; background:#ffffff; border-top:1px solid #e2e8f0; display:flex; align-items:center; gap:14px;">
+              <button class="btn-photo-attach" id="btn-sim-attach" style="background:#eff6ff; color:#2563eb; border:2px solid #bfdbfe; width:52px; height:52px; border-radius:50%; font-size:1.5rem; cursor:pointer; display:flex; align-items:center; justify-content:center;" onclick="ouvrirSelecteurPhoto()">➕</button>
+              <div style="flex:1; background:#f1f5f9; padding:14px 18px; border-radius:14px; color:#64748b; font-size:1.05rem;" id="sim-input-placeholder">
+                Photo en attente...
+              </div>
+              <button class="btn-action-voice" id="btn-sim-send" style="display:none; background:#10b981; border:none; padding:12px 22px; min-height:auto;" onclick="envoyerPhotoSimulee()">
+                Envoyer 🚀
+              </button>
+            </div>
+          </div>
+
+          <div id="sim-success-alert" style="display:none; margin-top:20px; background:#dcfce7; border:2px solid #22c55e; padding:20px; border-radius:16px; color:#14532d; font-weight:800; text-align:center;">
+            🎉 Bravo ! Votre fille vient de recevoir la photo !
+          </div>
+        </div>
+
+        <!-- Module 8 : Simulateur Appel Vidéo -->
+        <div class="module-card">
+          <div class="module-header">
+            <div class="module-title">
+              <span class="module-badge">Module 8 • Appels vidéo sans stress</span>
+              <h3>L'Appel Vidéo : Vérifier son cadrage et couper son micro</h3>
+            </div>
+          </div>
+
+          <div class="video-call-box">
+            <div class="video-screen-mock" id="video-screen">
+              <div style="font-size:4.2rem; margin-bottom:8px;">👩‍🦰</div>
+              <div style="font-size:1.5rem; font-weight:900;">Julie (Fille)</div>
+              <div style="font-size:1rem; color:#93c5fd;" id="call-timer">Appel en cours • 00:14</div>
+
+              <div class="video-pip">
+                <div style="font-size:2.2rem;">👵</div>
+                <div style="font-weight:800;">Vous</div>
+              </div>
+            </div>
+
+            <div class="video-call-controls">
+              <button class="btn-call-ctrl mute" id="btn-mute" onclick="basculerMicro()" title="Couper ou activer votre micro">
+                🎤
+              </button>
+              <button class="btn-call-ctrl end" onclick="raccrocherAppel()" title="Raccrocher l'appel">
+                📞
+              </button>
+            </div>
+            <div id="call-feedback" style="margin-top:18px; font-size:1.05rem; color:#94a3b8; font-weight:700;">
+              Touchez le micro 🎤 pour le couper ou le téléphone rouge pour raccrocher
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <!-- CONTENU DU NIVEAU 3 : LE QUOTIDIEN PRATIQUE    -->
+      <!-- ============================================== -->
+      <div class="level-content" id="level-3">
+        <div class="module-card">
+          <div class="module-header">
+            <div class="module-title">
+              <span class="module-badge">Module 10 • Recherche Google</span>
+              <h3>Distinguer un vrai résultat d'une annonce payante</h3>
+            </div>
+          </div>
+
+          <p style="color:#475569; margin-bottom:20px; font-size:1.15rem;">
+            Quand vous cherchez quelque chose sur Internet, les premiers résultats ont souvent un petit mot <strong>« Sponsorisé »</strong> ou <strong>« Annonce »</strong>. Ce sont des publicités payantes !
+          </p>
+
+          <div style="display:flex; flex-direction:column; gap:18px;">
+            <div style="background:#fffbeb; border:2px solid #fde047; border-radius:18px; padding:22px; cursor:pointer; transition:all 0.2s;" onclick="expliquerGoogle(false)">
+              <div style="font-size:0.9rem; font-weight:800; color:#b45309; text-transform:uppercase; margin-bottom:6px;">⚠️ Sponsorisé (Publicité)</div>
+              <div style="font-size:1.3rem; font-weight:900; color:#1d4ed8;">Pharmacie Express — Achetez en ligne ici !</div>
+              <div style="font-size:1rem; color:#475569;">Produits et pilules sans ordonnance. Livraison payante.</div>
+            </div>
+
+            <div style="background:#f0fdf4; border:2px solid #86efac; border-radius:18px; padding:22px; cursor:pointer; transition:all 0.2s;" onclick="expliquerGoogle(true)">
+              <div style="font-size:0.9rem; font-weight:800; color:#15803d; text-transform:uppercase; margin-bottom:6px;">✅ Vrai résultat officiel (Sécuritaire)</div>
+              <div style="font-size:1.3rem; font-weight:900; color:#1d4ed8;">Pharmacie Jean Coutu — Horaires et Services locaux</div>
+              <div style="font-size:1rem; color:#475569;">Site officiel de votre pharmacie de quartier avec les vraies heures d'ouverture.</div>
+            </div>
+          </div>
+
+          <div id="google-feedback" style="margin-top:20px; font-weight:800; color:#1e3a8a; text-align:center; font-size:1.2rem;"></div>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <!-- CONTENU DU NIVEAU 4 : SÉCURITÉ & BOUCLIER      -->
+      <!-- ============================================== -->
+      <div class="level-content" id="level-4">
+        <!-- Module 14 : Le Bouclier Anti-Arnaque -->
+        <div class="module-card">
+          <div class="module-header">
+            <div class="module-title">
+              <span class="module-badge">Module 14 • Bouclier Anti-Fraude</span>
+              <h3>Exercice interactif : Vrai message ou tentative d'arnaque ?</h3>
+            </div>
+          </div>
+
+          <div style="background:#f8fafc; border-radius:var(--radius-lg); padding:28px; border:2px solid #cbd5e1;">
+            <div style="display:flex; justify-content:space-between; align-items:center; background:#e2e8f0; border-radius:16px; padding:14px 22px; margin-bottom:24px; font-weight:900;">
+              <span id="quiz-step-title" style="font-size:1.15rem;">Cas 1 sur 5</span>
+              <span id="quiz-score-badge" style="color:#1d4ed8; font-size:1.15rem;">Score : 0 bonne(s) réponse(s)</span>
+            </div>
+
+            <div style="background:#ffffff; border-left:6px solid #f59e0b; border-radius:16px; padding:26px; margin-bottom:26px; box-shadow:var(--shadow-sm);">
+              <div style="font-size:1.05rem; color:#475569; margin-bottom:12px; font-weight:800;">
+                <span id="quiz-sender-text">De : Service Colis Express (438-555-0199)</span>
+              </div>
+              <div style="font-size:1.4rem; font-weight:600; color:#0f172a; line-height:1.6;" id="quiz-message-body">
+                « Alerte Postes Canada : Votre colis #QC-8849 ne peut être livré car des frais de douane de 2,65 $ sont impayés. Cliquez d'urgence sur http://postes-canada-frais24.com sous 12h pour éviter le retour. »
+              </div>
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:24px;" id="quiz-buttons">
+              <button style="padding:24px; border-radius:18px; font-size:1.3rem; font-weight:900; border:3px solid #86efac; background:#dcfce7; color:#14532d; cursor:pointer;" onclick="verifierReponseQuiz(false)">
+                <span>✅ Message légitime</span>
+              </button>
+              <button style="padding:24px; border-radius:18px; font-size:1.3rem; font-weight:900; border:3px solid #fca5a5; background:#fee2e2; color:#7f1d1d; cursor:pointer;" onclick="verifierReponseQuiz(true)">
+                <span>🚨 Tentative d'arnaque !</span>
+              </button>
+            </div>
+
+            <div id="quiz-explanation" style="display:none; padding:24px; border-radius:18px; font-size:1.25rem; font-weight:600; line-height:1.65; margin-top:20px;"></div>
+
+            <button id="btn-next-case" style="display:none; background:linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); color:#ffffff; border:none; padding:18px 30px; border-radius:16px; font-size:1.25rem; font-weight:900; cursor:pointer; margin-top:22px; width:100%; box-shadow:0 6px 16px rgba(37, 99, 235, 0.35);" onclick="passerAuCasSuivant()">
+              <span>Passer au cas suivant ➡️</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Module 16 : Faux Virus Pop-Up -->
+        <div class="module-card">
+          <div class="module-header">
+            <div class="module-title">
+              <span class="module-badge">Module 16 • Démystifier la peur</span>
+              <h3>Savoir fermer une fausse alerte « Votre téléphone a un virus »</h3>
+            </div>
+          </div>
+
+          <p style="color:#475569; margin-bottom:18px; font-size:1.15rem;">
+            Les fraudeurs affichent parfois de faux messages rouges clignotants pour vous faire paniquer et vous faire appeler un faux numéro. 
+            <strong>Règle d'or : votre téléphone n'a rien. On cherche simplement le petit [X] pour fermer la fenêtre !</strong>
+          </p>
+
+          <div style="background:#f8fafc; border:2px solid #cbd5e1; border-radius:20px; padding:28px; text-align:center;">
+            <div class="fake-alert-box" id="fake-popup">
+              <button class="fake-alert-close-btn" onclick="fermerFauxPopup()" title="Fermer la fausse alerte">✕</button>
+              <div style="font-size:3rem; margin-bottom:10px;">⚠️</div>
+              <div style="font-size:1.5rem; font-weight:900; color:#dc2626; margin-bottom:8px;">ALERTE SÉCURITÉ CRITIQUE !</div>
+              <p style="font-size:1.1rem; color:#475569; margin-bottom:18px;">Votre téléphone a 3 virus graves. Appelez le 1-800-XXX-XXXX immédiatement.</p>
+              <span style="font-size:1rem; background:#fee2e2; color:#991b1b; padding:8px 16px; border-radius:12px; font-weight:900;">Ne paniquez pas : cliquez sur le [X] en haut à droite !</span>
+            </div>
+
+            <div id="popup-success" style="display:none; background:#dcfce7; color:#14532d; font-weight:900; padding:20px; border-radius:16px; border:2px solid #22c55e; font-size:1.2rem;">
+              🎉 BRAVO ! Vous avez fermé la fausse alerte sur le X. Votre téléphone est parfaitement sain !
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <!-- CATALOGUE DES PROFESSEURS AVEC FILTRES         -->
+      <!-- ============================================== -->
+      <h2 style="font-size:1.85rem; font-weight:900; margin:48px 0 18px 0; font-family:'Outfit', sans-serif;">
+        👨‍🏫 Choisissez votre professeur de confiance (12 professeurs disponibles) :
+      </h2>
+
+      <!-- Filtres de Catégories -->
+      <div class="teachers-filter-group">
+        <button class="filter-btn active" onclick="filtrerProfesseurs('tous', this)">🌟 Tous les 12 professeurs</button>
+        <button class="filter-btn" onclick="filtrerProfesseurs('seniors', this)">👵 Pour Aînés & Grands Débutants (4)</button>
+        <button class="filter-btn" onclick="filtrerProfesseurs('adultes', this)">👨‍💼 Pour Adultes & Démarches (4)</button>
+        <button class="filter-btn" onclick="filtrerProfesseurs('jeunes', this)">🧑‍🎓 Pour Jeunes Débutants Pro (4)</button>
+      </div>
+
+      <div class="teachers-grid" id="teachers-catalog">
+        <!-- Généré dynamiquement en JS -->
+      </div>
+
+    </div>
+
+
+    <!-- ==================================================== -->
+    <!-- VUE 2 : ESPACE FAMILLE / PROCHE AIDANT (DASHBOARD)   -->
+    <!-- ==================================================== -->
+    <div class="view-container" id="view-caregiver">
+
+      <section style="background:linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color:#ffffff; border-radius:var(--radius-xl); padding:40px; box-shadow:var(--shadow-card); margin-bottom:34px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:24px;">
+        <div>
+          <h2 style="font-family:'Outfit', sans-serif; font-size:2rem; margin-bottom:8px;">Tableau de Bord — Protection & Suivi Bienveillant</h2>
+          <p style="color:#94a3b8; font-size:1.2rem;">Compte Proche Aidant : Dominique Grégoire • Suivi de : <strong>Maman (Denise)</strong></p>
+        </div>
+
+        <div style="background:#14532d; color:#86efac; border:1px solid #22c55e; padding:12px 24px; border-radius:30px; font-weight:800; font-size:1rem; display:flex; align-items:center; gap:10px;">
+          <span style="width:12px; height:12px; border-radius:50%; background:#4ade80; animation:gentle-pulse 2s infinite;"></span>
+          <span>SÉCURITÉ OPTIMALE (AUCUN DANGER)</span>
+        </div>
+      </section>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:24px; margin-bottom:36px;">
+        <div style="background:#ffffff; border-radius:var(--radius-lg); padding:28px; border:1px solid #e2e8f0; box-shadow:var(--shadow-sm);">
+          <div style="font-size:0.92rem; color:#64748b; font-weight:800; text-transform:uppercase; margin-bottom:8px;">Progression Curriculum</div>
+          <div style="font-size:2.4rem; font-weight:900; color:#0f172a; font-family:'Outfit', sans-serif;" id="cg-progress-level">Niveau 0 complété</div>
+          <div style="font-size:0.95rem; color:#16a34a; font-weight:800; margin-top:6px;">🟢 Motricité tactile validée</div>
+        </div>
+
+        <div style="background:#ffffff; border-radius:var(--radius-lg); padding:28px; border:1px solid #e2e8f0; box-shadow:var(--shadow-sm);">
+          <div style="font-size:0.92rem; color:#64748b; font-weight:800; text-transform:uppercase; margin-bottom:8px;">Professeur Choisi par Maman</div>
+          <div style="font-size:2rem; font-weight:900; color:#1e3a8a; font-family:'Outfit', sans-serif;" id="cg-teacher-display">👵 Mme Louise</div>
+          <div style="font-size:0.95rem; color:#64748b; font-weight:600; margin-top:6px;">Voix douce et bienveillante</div>
+        </div>
+
+        <div style="background:#ffffff; border-radius:var(--radius-lg); padding:28px; border:1px solid #e2e8f0; box-shadow:var(--shadow-sm);">
+          <div style="font-size:0.92rem; color:#64748b; font-weight:800; text-transform:uppercase; margin-bottom:8px;">Score Anti-Fraude</div>
+          <div style="font-size:2.4rem; font-weight:900; color:#0f172a; font-family:'Outfit', sans-serif;" id="cg-score-display">5 / 5</div>
+          <div style="font-size:0.95rem; color:#16a34a; font-weight:800; margin-top:6px;">🟢 Détection parfaite des faux textos</div>
+        </div>
+
+        <div style="background:#ffffff; border-radius:var(--radius-lg); padding:28px; border:1px solid #e2e8f0; box-shadow:var(--shadow-sm);">
+          <div style="font-size:0.92rem; color:#64748b; font-weight:800; text-transform:uppercase; margin-bottom:8px;">Forfait Famille Sérénité</div>
+          <div style="font-size:1.8rem; font-weight:900; color:#2563eb; font-family:'Outfit', sans-serif;">Actif (Stripe)</div>
+          <div style="font-size:0.95rem; color:#64748b; font-weight:600; margin-top:6px;">Les Solutions SkyFibre Inc.</div>
+        </div>
+      </div>
+
+      <!-- Alerte d'urgence SOS (affichée en direct si Maman clique sur SOS) -->
+      <div id="caregiver-sos-alert" style="display:none; background:#fee2e2; border:3px solid #ef4444; border-radius:var(--radius-lg); padding:24px; margin-bottom:28px; animation:gentle-pulse 2s infinite;">
+        <div style="display:flex; align-items:center; gap:16px;">
+          <span style="font-size:3rem;">🚨</span>
+          <div>
+            <h3 style="color:#991b1b; font-size:1.5rem; font-weight:900; font-family:'Outfit', sans-serif;">ALERTE : Maman a appuyé sur le bouton SOS !</h3>
+            <p style="color:#7f1d1d; font-size:1.1rem; margin-top:4px;" id="caregiver-sos-time">Signal reçu à l'instant. Elle a besoin d'être rassurée.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Carte du Lien Magique Clé en Main pour Maman -->
+      <section style="background:#ffffff; border-radius:var(--radius-xl); padding:32px; border:2px solid #3b82f6; box-shadow:var(--shadow-card); margin-bottom:34px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; margin-bottom:18px;">
+          <div>
+            <span style="background:#eff6ff; color:#1d4ed8; font-weight:800; font-size:0.85rem; padding:4px 14px; border-radius:20px; border:1px solid #bfdbfe;">Liaison Automatique Clé en Main</span>
+            <h3 style="font-size:1.6rem; font-weight:900; color:#0f172a; font-family:'Outfit', sans-serif; margin-top:6px;">🔗 Le Lien Magique pour la tablette de Maman</h3>
+          </div>
+          <div style="background:#ecfdf5; color:#065f46; border:1px solid #a7f3d0; padding:8px 16px; border-radius:20px; font-weight:800; font-size:0.9rem; display:flex; align-items:center; gap:8px;">
+            <span style="width:10px; height:10px; border-radius:50%; background:#10b981; box-shadow:0 0 8px #10b981;"></span>
+            <span>Relais Cloud Connecté (0 $ / Temps Réel)</span>
+          </div>
+        </div>
+
+        <p style="color:#475569; font-size:1.1rem; margin-bottom:18px;">
+          Envoyez ce lien unique à Maman par texto ou WhatsApp. <strong>Elle n'a aucun mot de passe ni compte à créer</strong> : en cliquant sur ce lien, sa tablette se relie instantanément à votre tableau de bord !
+        </p>
+
+        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:20px;">
+          <input type="text" id="magic-link-input" readonly style="flex:1; min-width:280px; padding:14px 18px; border-radius:14px; border:2px solid #cbd5e1; font-size:1rem; font-weight:700; color:#1e293b; background:#f8fafc;" value="Chargement du lien...">
+          <button onclick="copierLienMagique()" style="background:#2563eb; color:#ffffff; border:none; padding:14px 24px; border-radius:14px; font-weight:800; font-size:1rem; cursor:pointer; display:inline-flex; align-items:center; gap:8px;">
+            <span>📋</span>
+            <span id="btn-copy-label">Copier le lien</span>
+          </button>
+          <a id="btn-share-whatsapp" href="#" target="_blank" style="background:#10b981; color:#ffffff; text-decoration:none; padding:14px 22px; border-radius:14px; font-weight:800; font-size:1rem; display:inline-flex; align-items:center; gap:8px;">
+            <span>💬</span>
+            <span>Envoyer par WhatsApp</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Journal d'Activités en Direct (Temps Réel) -->
+      <section style="background:#ffffff; border-radius:var(--radius-xl); padding:32px; border:1px solid #e2e8f0; box-shadow:var(--shadow-card); margin-bottom:34px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:12px;">
+          <h3 style="font-size:1.5rem; font-weight:900; color:#0f172a; font-family:'Outfit', sans-serif;">
+            📡 Activités de Maman en direct (Flux temps réel)
+          </h3>
+          <span style="font-size:0.9rem; color:#64748b; font-weight:700;" id="last-sync-time">Synchronisation active</span>
+        </div>
+
+        <div id="live-activity-stream" style="display:flex; flex-direction:column; gap:12px; max-height:340px; overflow-y:auto; padding-right:6px;">
+          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:14px; padding:16px 20px; display:flex; align-items:center; justify-content:space-between;">
+            <div style="display:flex; align-items:center; gap:12px;">
+              <span style="font-size:1.6rem;">🟢</span>
+              <div>
+                <strong style="color:#0f172a;">Système de liaison prêt</strong>
+                <div style="font-size:0.9rem; color:#64748b;">En attente de la première interaction de Maman...</div>
+              </div>
+            </div>
+            <small style="color:#94a3b8; font-weight:700;">Prêt</small>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section Envoi d'un Mot Doux en Direct -->
+      <section style="background:#ffffff; border-radius:var(--radius-xl); padding:32px; border:2px solid #f59e0b; box-shadow:var(--shadow-card); margin-bottom:34px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; flex-wrap:wrap; gap:12px;">
+          <div>
+            <span style="background:#fffbeb; color:#b45309; font-weight:800; font-size:0.85rem; padding:4px 14px; border-radius:20px; border:1px solid #fde68a;">Action Immédiate</span>
+            <h3 style="font-size:1.5rem; font-weight:900; color:#0f172a; font-family:'Outfit', sans-serif; margin-top:6px;">
+              💌 Envoyer un mot doux sur la tablette de Maman
+            </h3>
+          </div>
+          <span style="font-size:0.9rem; color:#64748b; font-weight:700;">Apparaît instantanément sur son écran avec cloche et confettis</span>
+        </div>
+
+        <p style="color:#475569; font-size:1.05rem; margin-bottom:18px;">
+          Un simple clic envoie une notification chaleureuse sur sa tablette pour la motiver et lui rappeler qu'elle est en sécurité.
+        </p>
+
+        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:16px;">
+          <button onclick="envoyerEncouragement('Bravo maman ! Tu te débrouilles comme une championne ! ❤️')" style="background:#fef3c7; color:#92400e; border:1px solid #fcd34d; padding:12px 20px; border-radius:14px; font-weight:800; font-size:1rem; cursor:pointer; transition:all 0.2s;">
+            ❤️ Bravo maman ! Tu es championne !
+          </button>
+          <button onclick="envoyerEncouragement('Prends tout ton temps, tu es formidable ! 🌟')" style="background:#eff6ff; color:#1e40af; border:1px solid #bfdbfe; padding:12px 20px; border-radius:14px; font-weight:800; font-size:1rem; cursor:pointer; transition:all 0.2s;">
+            🌟 Prends ton temps, tu es formidable !
+          </button>
+          <button onclick="envoyerEncouragement('Félicitations pour tes exercices ! Je suis très fier de toi ! 🏆')" style="background:#ecfdf5; color:#065f46; border:1px solid #a7f3d0; padding:12px 20px; border-radius:14px; font-weight:800; font-size:1rem; cursor:pointer; transition:all 0.2s;">
+            🏆 Fier de toi !
+          </button>
+          <button onclick="envoyerEncouragement('Prends une bonne gorgée de thé ou d\'eau, pas de presse ! ☕')" style="background:#f1f5f9; color:#334155; border:1px solid #cbd5e1; padding:12px 20px; border-radius:14px; font-weight:800; font-size:1rem; cursor:pointer; transition:all 0.2s;">
+            ☕ Petite pause thé bien méritée
+          </button>
+        </div>
+
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <input type="text" id="custom-encourage-input" placeholder="Ou tapez un mot doux personnalisé pour Maman..." style="flex:1; min-width:280px; padding:14px 18px; border-radius:14px; border:2px solid #cbd5e1; font-size:1rem; font-weight:600; color:#1e293b;">
+          <button onclick="envoyerEncouragementPersonnalise()" style="background:linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color:#ffffff; border:none; padding:14px 26px; border-radius:14px; font-weight:800; font-size:1rem; cursor:pointer; display:inline-flex; align-items:center; gap:8px;">
+            <span>🚀</span>
+            <span>Envoyer à Maman</span>
+          </button>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Modal Mot Doux Reçu de Dominique -->
+    <div class="modal-overlay" id="encouragement-modal" style="display:none;">
+      <div class="modal-card" style="border: 3px solid #f59e0b; background: linear-gradient(180deg, #fffbeb 0%, #ffffff 100%);">
+        <div class="modal-icon" style="font-size:3.5rem;">💌</div>
+        <h3 class="modal-title" style="color:#b45309; font-size:1.6rem;">Un mot doux de Dominique !</h3>
+        <p class="modal-text" id="encouragement-modal-text" style="font-size:1.35rem; font-weight:700; color:#1e293b; margin:18px 0;">
+          « Bravo maman ! Tu es super bonne ! ❤️ »
+        </p>
+        <button class="btn-modal-close" onclick="fermerEncouragement()" style="background:linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+          <span>Merci Dominique ! ❤️</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Modal SOS -->
+    <div class="modal-overlay" id="sos-modal">
+      <div class="modal-card">
+        <div class="modal-icon">🌸</div>
+        <h3 class="modal-title">Prenez une grande respiration...</h3>
+        <p class="modal-text">
+          Ne vous inquiétez pas ! <strong>Aucune photo n'est perdue et votre appareil n'est absolument pas brisé.</strong>
+          Vous êtes en parfaite sécurité. Votre proche aidant (Dominique) veille aussi avec bienveillance.
+        </p>
+        <button class="btn-modal-close" onclick="fermerSOS()">
+          <span>Tout va bien, je continue sereinement</span>
+        </button>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <p><strong>Cap Numérique</strong> — Une solution conçue avec bienveillance au Québec par Les Solutions SkyFibre Inc.</p>
+    <p style="margin-top:6px;">16 Modules Pédagogiques • 12 Professeurs Virtuels • Conforme accessibilité WCAG AAA.</p>
+    <p style="margin-top:10px;">
+      <a href="?mode=caregiver&famille=DOM-DENISE-8849" style="color:#64748b; font-size:0.85rem; text-decoration:none; border-bottom:1px dashed #94a3b8;">👨‍👧 Accès Espace Proche Aidant (Dominique)</a>
+    </p>
+  </footer>
+
+  <script>
+    // 1. GESTION DE LA PERSISTANCE LOCALE & SYNCHRONISATION FAMILLE
+    const STORAGE_KEY = 'cap_numerique_app_state_v4';
+
+    let appState = {
+      codeFamille: 'DOM-DENISE-8849',
+      profActuel: 'louise',
+      fontSize: 'normal',
+      currentLevel: 0,
+      quizScore: 0,
+      bullesEclatees: 0,
+      longPressReussi: false,
+      keyboardText: ""
+    };
+
+    function chargerEtatPersistant() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+          appState = Object.assign(appState, JSON.parse(saved));
+        }
+
+        // Lecture du paramètre URL ?famille=
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('famille')) {
+          appState.codeFamille = urlParams.get('famille');
+        }
+      } catch (e) {}
+    }
+
+    function sauvegarderEtat() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(appState));
+      } catch (e) {}
+    }
+
+    // Synchronisation Cloud en Temps Réel vers le Proche Aidant (Dominique)
+    function synchroniserVersCloud(titreAction, details) {
+      if (!appState.codeFamille) return;
+      const heureStr = new Date().toLocaleTimeString('fr-CA', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+      const payload = {
+        codeFamille: appState.codeFamille,
+        titre: titreAction,
+        details: details || '',
+        heure: heureStr,
+        niveau: appState.currentLevel,
+        prof: appState.profActuel,
+        quizScore: appState.quizScore,
+        bulles: appState.bullesEclatees,
+        longPress: appState.longPressReussi,
+        keyboardText: appState.keyboardText
+      };
+
+      try {
+        fetch(`https://ntfy.sh/capnum-${appState.codeFamille}`, {
+          method: 'POST',
+          headers: {
+            'Title': encodeURIComponent(`Cap Numérique : ${titreAction}`),
+            'Priority': titreAction.includes('SOS') ? '5' : '3',
+            'Tags': titreAction.includes('SOS') ? 'warning' : 'sparkles'
+          },
+          body: JSON.stringify(payload)
+        }).catch(() => {});
+      } catch (e) {}
+    }
+
+    // Fonctions spécifiques au Tableau de bord du Proche Aidant
+    let ecouteTempsReelActive = false;
+
+    function mettreAJourLienMagique() {
+      const baseUrl = window.location.origin + window.location.pathname;
+      const magicUrl = `${baseUrl}?famille=${appState.codeFamille}`;
+      const input = document.getElementById('magic-link-input');
+      if (input) input.value = magicUrl;
+      const waBtn = document.getElementById('btn-share-whatsapp');
+      if (waBtn) {
+        waBtn.href = `https://api.whatsapp.com/send?text=${encodeURIComponent("Allô maman ! Voici ton application Cap Numérique pour pratiquer sans rien briser : " + magicUrl)}`;
+      }
+    }
+
+    function copierLienMagique() {
+      const input = document.getElementById('magic-link-input');
+      if (input) {
+        navigator.clipboard.writeText(input.value).then(() => {
+          const btnLabel = document.getElementById('btn-copy-label');
+          if (btnLabel) {
+            btnLabel.textContent = "Lien copié ! ✅";
+            setTimeout(() => { btnLabel.textContent = "Copier le lien"; }, 2500);
+          }
+        });
+      }
+    }
+
+    function initialiserEcouteTempsReel() {
+      if (ecouteTempsReelActive) return;
+      ecouteTempsReelActive = true;
+      mettreAJourLienMagique();
+
+      const topic = `capnum-${appState.codeFamille}`;
+
+      // 1. Polling de l'historique des dernières 24h
+      fetch(`https://ntfy.sh/${topic}/json?poll=1&since=24h`)
+        .then(r => r.text())
+        .then(text => {
+          const lines = text.trim().split('\n');
+          lines.forEach(l => {
+            try {
+              const msg = JSON.parse(l);
+              if (msg.message) {
+                const data = JSON.parse(msg.message);
+                afficherActiviteEnDirect(data, false);
+              }
+            } catch (e) {}
+          });
+        }).catch(() => {});
+
+      // 2. Écoute du flux en direct temps réel (Server-Sent Events)
+      if (window.EventSource) {
+        const es = new EventSource(`https://ntfy.sh/${topic}/sse`);
+        es.onmessage = (event) => {
+          try {
+            const parsed = JSON.parse(event.data);
+            if (parsed.message) {
+              const data = JSON.parse(parsed.message);
+              afficherActiviteEnDirect(data, true);
+            }
+          } catch (e) {}
+        };
+      }
+    }
+
+    function afficherActiviteEnDirect(data, estNouveau) {
+      if (!data || !data.titre) return;
+
+      // Mise à jour des indicateurs du dashboard
+      if (data.prof) {
+        const p = CATALOGUE_PROFESSEURS.find(x => x.id === data.prof);
+        if (p) document.getElementById('cg-teacher-display').textContent = `${p.avatar} ${p.nom}`;
+      }
+      if (typeof data.quizScore !== 'undefined') {
+        document.getElementById('cg-score-display').textContent = `${data.quizScore} / 5`;
+      }
+      if (typeof data.niveau !== 'undefined') {
+        const nomsNiveaux = [
+          'Niveau 0 (Motricité)',
+          'Niveau 1 (Commandes & Clavier)',
+          'Niveau 2 (Proches & Photos)',
+          'Niveau 3 (Quotidien Google)',
+          'Niveau 4 (Bouclier Anti-Fraude)'
+        ];
+        document.getElementById('cg-progress-level').textContent = nomsNiveaux[data.niveau] || `Niveau ${data.niveau}`;
+      }
+
+      // Si alerte SOS
+      if (data.titre.includes('SOS')) {
+        const alertBox = document.getElementById('caregiver-sos-alert');
+        if (alertBox) {
+          alertBox.style.display = 'block';
+          document.getElementById('caregiver-sos-time').textContent = `Signal d'alerte reçu à ${data.heure || 'l\'instant'}.`;
+        }
+      }
+
+      // Si mot d'encouragement
+      if (data.type === 'encouragement') {
+        const stream = document.getElementById('live-activity-stream');
+        if (stream) {
+          const item = document.createElement('div');
+          item.style.background = '#fffbeb';
+          item.style.border = '2px solid #f59e0b';
+          item.style.borderRadius = '14px';
+          item.style.padding = '14px 18px';
+          item.style.display = 'flex';
+          item.style.alignItems = 'center';
+          item.style.justifyContent = 'space-between';
+          item.style.boxShadow = 'var(--shadow-sm)';
+          item.innerHTML = `
+            <div style="display:flex; align-items:center; gap:12px;">
+              <span style="font-size:1.6rem;">💌</span>
+              <div>
+                <strong style="color:#b45309; font-size:1rem;">Mot doux transmis à Maman</strong>
+                <div style="font-size:0.88rem; color:#78350f;">« ${data.message} »</div>
+              </div>
+            </div>
+            <small style="color:#d97706; font-weight:800; font-size:0.85rem;">${data.heure || ''}</small>
+          `;
+          stream.insertBefore(item, stream.firstChild);
+        }
+        return;
+      }
+
+      // Ajout chronologique au journal en direct
+      const stream = document.getElementById('live-activity-stream');
+      if (stream) {
+        const item = document.createElement('div');
+        item.style.background = estNouveau ? '#eff6ff' : '#ffffff';
+        item.style.border = estNouveau ? '2px solid #3b82f6' : '1px solid #e2e8f0';
+        item.style.borderRadius = '14px';
+        item.style.padding = '14px 18px';
+        item.style.display = 'flex';
+        item.style.alignItems = 'center';
+        item.style.justifyContent = 'space-between';
+        item.style.boxShadow = 'var(--shadow-sm)';
+        item.style.animation = estNouveau ? 'fadeIn 0.3s ease-out' : 'none';
+
+        const icone = data.titre.includes('SOS') ? '🚨' : (data.titre.includes('Bravo') || data.titre.includes('réussi') ? '🎉' : '✨');
+
+        item.innerHTML = `
+          <div style="display:flex; align-items:center; gap:12px;">
+            <span style="font-size:1.6rem;">${icone}</span>
+            <div>
+              <strong style="color:#0f172a; font-size:1rem;">${data.titre}</strong>
+              <div style="font-size:0.88rem; color:#64748b;">${data.details || 'Progression synchronisée sans erreur'}</div>
+            </div>
+          </div>
+          <small style="color:#2563eb; font-weight:800; font-size:0.85rem;">${data.heure || ''}</small>
+        `;
+
+        stream.insertBefore(item, stream.firstChild);
+
+        // Son de notification douce si nouvelle activité
+        if (estNouveau) {
+          jouerSonSucces();
+        }
+      }
+    }
+
+    // Fonctions d'encouragement Proche Aidant -> Maman
+    function envoyerEncouragement(texte) {
+      if (!appState.codeFamille) return;
+      const heureStr = new Date().toLocaleTimeString('fr-CA', { hour: '2-digit', minute: '2-digit' });
+      fetch(`https://ntfy.sh/capnum-${appState.codeFamille}`, {
+        method: 'POST',
+        headers: {
+          'Title': encodeURIComponent("Cap Numérique : Mot Doux"),
+          'Priority': '4',
+          'Tags': 'heart,sparkles'
+        },
+        body: JSON.stringify({
+          codeFamille: appState.codeFamille,
+          type: 'encouragement',
+          message: texte,
+          heure: heureStr
+        })
+      }).then(() => {
+        jouerSonSucces();
+        const input = document.getElementById('custom-encourage-input');
+        if (input) input.placeholder = "Message envoyé avec succès à Maman ! ❤️";
+      }).catch(() => {});
+    }
+
+    function envoyerEncouragementPersonnalise() {
+      const input = document.getElementById('custom-encourage-input');
+      if (input && input.value.trim()) {
+        envoyerEncouragement(input.value.trim());
+        input.value = '';
+      }
+    }
+
+    // Écoute des encouragements côté Élève / Maman
+    let ecouteEleveActive = false;
+    function initialiserEcouteEleve() {
+      if (ecouteEleveActive || !window.EventSource || !appState.codeFamille) return;
+      ecouteEleveActive = true;
+      const topic = `capnum-${appState.codeFamille}`;
+      const es = new EventSource(`https://ntfy.sh/${topic}/sse`);
+      es.onmessage = (event) => {
+        try {
+          const parsed = JSON.parse(event.data);
+          if (parsed.message) {
+            const data = JSON.parse(parsed.message);
+            if (data.type === 'encouragement' && data.message) {
+              afficherEncouragementReçu(data.message);
+            }
+          }
+        } catch (e) {}
+      };
+    }
+
+    function afficherEncouragementReçu(texte) {
+      const modal = document.getElementById('encouragement-modal');
+      const modalText = document.getElementById('encouragement-modal-text');
+      if (modal && modalText) {
+        modalText.textContent = `« ${texte} »`;
+        modal.style.display = 'flex';
+        jouerSonSucces();
+        if (typeof confetti === 'function') confetti({ particleCount: 80, spread: 90 });
+        parlerTexte("Vous avez reçu un mot doux de Dominique : " + texte);
+      }
+    }
+
+    function fermerEncouragement() {
+      const modal = document.getElementById('encouragement-modal');
+      if (modal) modal.style.display = 'none';
+      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+    }
+
+    // CATALOGUE DES 12 PROFESSEURS
+    const CATALOGUE_PROFESSEURS = [
+      // Catégorie Aînés (4 profs : 2 femmes, 2 hommes)
+      { id: "louise", categorie: "seniors", genre: "Femme 👩", nom: "Mme Louise", avatar: "👵", titre: "Patiente, chaleureuse et sans aucun jargon", role: "Aînés & Vrais Débutants", desc: "Douce et infiniment patiente. Elle utilise des exemples simples de la cuisine et de la maison.", accueil: "« Bon matin ! Respirez tranquillement. Ici, vous ne pouvez absolument rien briser. On commence par apprivoiser l'écran avec les doigts, sans se presser. Touchez une bulle ci-dessous pour voir ! »", btnVoix: "Écouter Louise parler", voixPitch: 1.05, voixRate: 0.90 },
+      { id: "helene", categorie: "seniors", genre: "Femme 👩", nom: "Hélène", avatar: "👩‍🦳", titre: "Calme, rassurante et spécialiste de la dédramatisation", role: "Aînés & Découverte en douceur", desc: "Ancienne infirmière, elle sait comment apaiser l'anxiété devant les écrans.", accueil: "« Bonjour ! Je suis Hélène. Respirez un bon coup : sur cet écran, vous êtes chez vous et rien ne peut s'abîmer. Allons-y tout doucement. »", btnVoix: "Écouter Hélène parler", voixPitch: 1.00, voixRate: 0.90 },
+      { id: "raymond", categorie: "seniors", genre: "Homme 👨", nom: "M. Raymond", avatar: "👴", titre: "Méthodique, posé et d'une clarté exemplaire", role: "Aînés & Apprentissage pas à pas", desc: "Ancien enseignant, il décompose chaque geste avec un calme olympien.", accueil: "« Bonjour à vous. Je suis Raymond. Avec moi, on prend les choses dans l'ordre : une étape à la fois, et vous allez voir que la technologie, c'est très logique. »", btnVoix: "Écouter Raymond parler", voixPitch: 0.85, voixRate: 0.88 },
+      { id: "jacques", categorie: "seniors", genre: "Homme 👨", nom: "Jacques", avatar: "🧔‍♂️", titre: "Pratique, débrouillard et direct", role: "Aînés & Bons réflexes concrets", desc: "Chaleureux et imagé, il compare le téléphone à des outils du quotidien.", accueil: "« Salut ! Moi c'est Jacques. Une tablette, c'est comme un coffre d'outils : faut juste savoir quel bouton peser. On regarde ça ensemble sans fla-fla ! »", btnVoix: "Écouter Jacques parler", voixPitch: 0.88, voixRate: 0.92 },
+
+      // Catégorie Adultes (4 profs : 2 femmes, 2 hommes)
+      { id: "chantal", categorie: "adultes", genre: "Femme 👩", nom: "Chantal", avatar: "👩‍💼", titre: "Organisée, efficace et experte administrative", role: "Adultes & ClicSÉQUR / Démarches", desc: "Spécialiste de la paperasse en ligne québécoise et des formulaires.", accueil: "« Bonjour ! Je suis Chantal. Fini les heures perdues sur les sites gouvernementaux. Je vous montre exactement où cliquer. »", btnVoix: "Écouter Chantal parler", voixPitch: 1.08, voixRate: 0.96 },
+      { id: "sophie", categorie: "adultes", genre: "Femme 👩", nom: "Sophie", avatar: "👩‍💻", titre: "Précise, sécuritaire et experte finances en ligne", role: "Adultes & Factures / Banques", desc: "Elle vous apprend à payer vos comptes sans jamais risquer vos accès.", accueil: "« Bonjour, je suis Sophie. Votre sécurité est ma priorité. Je vous guide pour payer vos factures Hydro et faire vos virements en toute tranquillité. »", btnVoix: "Écouter Sophie parler", voixPitch: 1.02, voixRate: 0.95 },
+      { id: "julien", categorie: "adultes", genre: "Homme 👨", nom: "Julien", avatar: "👨‍💼", titre: "Pragmatique, calme et axé efficacité", role: "Adultes & Vie Pratique", desc: "Spécialiste pour payer vos factures en ligne et classer vos reçus.", accueil: "« Bonjour ! Je suis Julien. Que ce soit pour payer une facture en ligne ou sécuriser vos accès, je vous donne la méthode pas à pas. »", btnVoix: "Écouter Julien parler", voixPitch: 0.90, voixRate: 0.95 },
+      { id: "marc", categorie: "adultes", genre: "Homme 👨", nom: "Marc", avatar: "👨‍🏫", titre: "Posé, structuré et expert de la sécurité", role: "Adultes & Mots de passe blindés", desc: "Ingénieur calme, il vous aide à dompter les mots de passe.", accueil: "« Bonjour, Marc à l'appareil. La technologie n'a pas besoin d'être stressante si on a les bonnes bases de sécurité. »", btnVoix: "Écouter Marc parler", voixPitch: 0.86, voixRate: 0.94 },
+
+      // Catégorie Jeunes débutants (4 profs : 2 femmes, 2 hommes)
+      { id: "zara", categorie: "jeunes", genre: "Femme 👩", nom: "Zara", avatar: "👩‍🎓", titre: "Énergique, pratique et formats express", role: "Jeunes & Débutants Pro", desc: "Mini-défis de 3 minutes pour classer ses fichiers et créer un CV.", accueil: "« Salut ! Avec moi, pas de blabla. On fait des mini-défis de 3 minutes pour maîtriser tes fichiers et sécuriser tes comptes. Prêt ? »", btnVoix: "Écouter Zara parler", voixPitch: 1.18, voixRate: 1.05 },
+      { id: "camille", categorie: "jeunes", genre: "Femme 👩", nom: "Camille", avatar: "👩‍🎨", titre: "Créative, visuelle et experte documents", role: "Jeunes & Création de CV / PDF", desc: "Formatrice dynamique spécialisée dans les documents et Canva.", accueil: "« Hello ! Je suis Camille. Si tu veux monter un CV qui a de la gueule ou convertir un PDF sans galérer, je suis là ! »", btnVoix: "Écouter Camille parler", voixPitch: 1.10, voixRate: 1.00 },
+      { id: "felix", categorie: "jeunes", genre: "Homme 👨", nom: "Félix", avatar: "🧑‍💻", titre: "Enthousiaste, astucieux et axé raccourcis", role: "Jeunes & Productivité / Ordinateur", desc: "Il transforme l'ordinateur en jeu d'enfant avec les meilleurs raccourcis.", accueil: "« Yo ! C'est Félix. Utiliser un ordi comme un pro, c'est pas sorcier quand on connaît les bons raccourcis ! »", btnVoix: "Écouter Félix parler", voixPitch: 0.98, voixRate: 1.04 },
+      { id: "antoine", categorie: "jeunes", genre: "Homme 👨", nom: "Antoine", avatar: "🧑‍🏫", titre: "Vulgarisateur passionné et expert cybersécurité", role: "Jeunes & Cybersécurité et Cloud", desc: "Il vous apprend comment sauvegarder vos photos pour ne jamais les perdre.", accueil: "« Salut ! Je suis Antoine. Ensemble, on regarde comment sauvegarder tes photos et blinder tes comptes. Let's go ! »", btnVoix: "Écouter Antoine parler", voixPitch: 0.92, voixRate: 1.02 }
+    ];
+
+    let filtreActuel = 'tous';
+
+    function afficherProfesseurs() {
+      const container = document.getElementById('teachers-catalog');
+      container.innerHTML = '';
+      
+      const profsFiltres = CATALOGUE_PROFESSEURS.filter(p => {
+        if (filtreActuel === 'tous') return true;
+        return p.categorie === filtreActuel;
+      });
+
+      profsFiltres.forEach(p => {
+        const estActif = (p.id === appState.profActuel);
+        const card = document.createElement('div');
+        card.className = `teacher-card ${estActif ? 'active' : ''}`;
+        card.onclick = () => selectionnerProf(p.id);
+        card.innerHTML = `
+          <div class="teacher-gender-tag">${p.genre}</div>
+          <div class="teacher-card-avatar">${p.avatar}</div>
+          <h3 class="teacher-card-name">${p.nom}</h3>
+          <div class="teacher-card-role">${p.role}</div>
+          <p class="teacher-card-desc">${p.desc}</p>
+          <button class="teacher-card-btn">${estActif ? 'Professeur choisi ✅' : 'Choisir ce professeur'}</button>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function filtrerProfesseurs(cat, btn) {
+      filtreActuel = cat;
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      afficherProfesseurs();
+    }
+
+    function selectionnerProf(id) {
+      appState.profActuel = id;
+      sauvegarderEtat();
+      const data = CATALOGUE_PROFESSEURS.find(p => p.id === id);
+      if (!data) return;
+
+      document.getElementById('hero-avatar').textContent = data.avatar;
+      document.getElementById('hero-name').textContent = data.nom;
+      document.getElementById('hero-title').textContent = data.titre;
+      document.getElementById('hero-speech').textContent = data.accueil;
+      document.getElementById('voice-btn-label').textContent = data.btnVoix;
+      document.getElementById('cg-teacher-display').textContent = `${data.avatar} ${data.nom}`;
+
+      afficherProfesseurs();
+      parlerTexte(data.accueil);
+      synchroniserVersCloud(`Professeur choisi : ${data.nom}`, `Maman a choisi ${data.nom} (${data.role})`);
+    }
+
+    function changerNiveau(lvl, btn) {
+      appState.currentLevel = lvl;
+      sauvegarderEtat();
+      document.querySelectorAll('.level-content').forEach(c => c.classList.remove('active'));
+      document.querySelectorAll('.level-tab-btn').forEach(b => b.classList.remove('active'));
+
+      document.getElementById('level-' + lvl).classList.add('active');
+      if (btn) btn.classList.add('active');
+      else {
+        const targetBtn = document.getElementById('tab-lvl-' + lvl);
+        if (targetBtn) targetBtn.classList.add('active');
+      }
+
+      // Mise à jour de la barre globale
+      const progressPercent = Math.min(100, Math.round(((lvl + 1) / 5) * 100));
+      document.getElementById('global-progress-bar').style.width = progressPercent + '%';
+      document.getElementById('progress-percentage').textContent = progressPercent + ' %';
+      document.getElementById('progress-text-label').textContent = `Niveau ${lvl} actif • Étape ${lvl + 1} sur 5`;
+
+      const nomsNiveaux = ['Motricité tactile', 'Commandes & Clavier', 'Proches & Photos', 'Quotidien & Google', 'Bouclier Anti-Fraude'];
+      synchroniserVersCloud(`Niveau ${lvl} sélectionné`, `Atelier : ${nomsNiveaux[lvl] || lvl}`);
+    }
+
+    // Mini-jeu Bulles (Niveau 0)
+    function eclaterBulle(id) {
+      const b = document.getElementById('bubble-' + id);
+      if (b.classList.contains('popped')) return;
+
+      b.classList.add('popped');
+      b.textContent = '💥';
+      appState.bullesEclatees++;
+      sauvegarderEtat();
+
+      jouerSonSucces();
+      document.getElementById('bubble-status').textContent = `${appState.bullesEclatees} / 4 bulle(s) éclatée(s) ! Excellent tap rapide !`;
+
+      if (appState.bullesEclatees >= 4) {
+        if (typeof confetti === 'function') confetti({ particleCount: 60, spread: 70 });
+        parlerTexte("Bravo ! Vous avez maîtrisé le tap rapide. Vos doigts sont précis et légers !");
+        synchroniserVersCloud("Niveau 0 : Bulles éclatées", "4/4 bulles éclatées avec succès (motricité tactile validée)");
+      }
+    }
+
+    // Appui Long avec Jauge Animée (Niveau 0)
+    let intervalAppuiLong = null;
+    let progressionAppui = 0;
+
+    function demarrerAppuiLong() {
+      const box = document.getElementById('long-press-box');
+      const bar = document.getElementById('lp-bar');
+      const label = document.getElementById('long-press-label');
+      
+      if (box.classList.contains('success')) return;
+
+      progressionAppui = 0;
+      label.textContent = "⏳ Maintenez encore... ne lâchez pas...";
+
+      intervalAppuiLong = setInterval(() => {
+        progressionAppui += 5;
+        bar.style.width = progressionAppui + '%';
+
+        if (progressionAppui >= 100) {
+          clearInterval(intervalAppuiLong);
+          intervalAppuiLong = null;
+          box.classList.add('success');
+          appState.longPressReussi = true;
+          sauvegarderEtat();
+          label.textContent = "✅ PARFAIT ! Vous avez réussi l'appui long sans paniquer !";
+          jouerSonSucces();
+          if (typeof confetti === 'function') confetti({ particleCount: 70, spread: 80 });
+          parlerTexte("Excellent ! Vous avez réussi l'appui long sans bouger.");
+          synchroniserVersCloud("Niveau 0 : Appui long réussi", "Maintien tactile réussi 2 secondes sans glisser");
+        }
+      }, 75); // ~1.5 seconde totale
+    }
+
+    function annulerAppuiLong() {
+      if (intervalAppuiLong) {
+        clearInterval(intervalAppuiLong);
+        intervalAppuiLong = null;
+      }
+      const box = document.getElementById('long-press-box');
+      const bar = document.getElementById('lp-bar');
+      const label = document.getElementById('long-press-label');
+
+      if (!box.classList.contains('success')) {
+        progressionAppui = 0;
+        bar.style.width = '0%';
+        label.textContent = "👇 Relâché trop vite ! Réessayez en maintenant 2 secondes.";
+      }
+    }
+
+    function validerScroll(el) {
+      if (el.scrollTop + el.clientHeight >= el.scrollHeight - 10) {
+        const msg = document.getElementById('scroll-success-msg');
+        if (msg && msg.style.display !== 'block') {
+          msg.style.display = 'block';
+          jouerSonSucces();
+          synchroniserVersCloud("Niveau 0 : Défilement validé", "Défilement de haut en bas réussi avec aisance");
+        }
+      }
+    }
+
+    // Clavier virtuel d'entraînement (Niveau 1)
+    function taperLettre(char) {
+      if (appState.keyboardText === "Tapez du texte...") appState.keyboardText = "";
+      appState.keyboardText += char;
+      mettreAJourClavier();
+      jouerSonSucces();
+    }
+
+    function effacerLettre() {
+      if (appState.keyboardText.length > 0 && appState.keyboardText !== "Tapez du texte...") {
+        appState.keyboardText = appState.keyboardText.slice(0, -1);
+      }
+      mettreAJourClavier();
+    }
+
+    function viderTexte() {
+      appState.keyboardText = "";
+      mettreAJourClavier();
+    }
+
+    function mettreAJourClavier() {
+      sauvegarderEtat();
+      const txt = appState.keyboardText || "Tapez du texte...";
+      document.getElementById('kb-screen').innerHTML = `<span id="kb-text" style="color:#2563eb;">${txt}</span>`;
+      if (appState.keyboardText.length >= 3) {
+        document.getElementById('kb-status').textContent = "✅ Bravo ! Vous écrivez avec aisance et confiance !";
+        if (appState.keyboardText.length === 3) {
+          synchroniserVersCloud("Niveau 1 : Clavier virtuel", `Texte saisi : « ${appState.keyboardText} »`);
+        }
+      } else {
+        document.getElementById('kb-status').textContent = "";
+      }
+    }
+
+    // Appel Vidéo (Niveau 2)
+    let microCoupe = false;
+    function basculerMicro() {
+      microCoupe = !microCoupe;
+      const btn = document.getElementById('btn-mute');
+      const feedback = document.getElementById('call-feedback');
+      if (microCoupe) {
+        btn.textContent = "🔇";
+        btn.style.background = "#dc2626";
+        feedback.textContent = "🔴 Votre micro est coupé (votre fille ne vous entend plus).";
+        parlerTexte("Votre micro est maintenant coupé.");
+      } else {
+        btn.textContent = "🎤";
+        btn.style.background = "#334155";
+        feedback.textContent = "🟢 Votre micro est ouvert (votre fille vous entend clairement).";
+        parlerTexte("Votre micro est réactivé.");
+      }
+      jouerSonSucces();
+    }
+
+    function raccrocherAppel() {
+      const screen = document.getElementById('video-screen');
+      screen.innerHTML = `
+        <div style="font-size:3.5rem; margin-bottom:10px;">✅</div>
+        <div style="font-size:1.5rem; font-weight:900; color:#4ade80; font-family:'Outfit', sans-serif;">Appel terminé avec succès !</div>
+        <p style="color:#94a3b8; font-size:1.05rem; margin-top:8px;">Vous savez maintenant raccrocher proprement sans laisser la ligne ouverte.</p>
+      `;
+      jouerSonSucces();
+      parlerTexte("Appel terminé avec succès. Rien ne reste allumé.");
+      synchroniserVersCloud("Niveau 2 : Appel vidéo raccroché", "Raccrochage propre de la ligne effectué");
+    }
+
+    function expliquerIcone(id, explication) {
+      document.getElementById('icon-feedback').textContent = explication;
+      jouerSonSucces();
+      parlerTexte(explication);
+      synchroniserVersCloud("Niveau 1 : Icône explorée", `Étude de l'icône : ${id}`);
+    }
+
+    function expliquerGoogle(estVrai) {
+      const fb = document.getElementById('google-feedback');
+      if (estVrai) {
+        fb.innerHTML = "🎉 <strong>EXCELLENT !</strong> C'est le vrai résultat officiel. Pas de mention « Sponsorisé » : vous évitez les arnaques !";
+        jouerSonSucces();
+        parlerTexte("Excellent ! C'est le vrai résultat officiel.");
+        synchroniserVersCloud("Niveau 3 : Recherche Google réussie", "Identification du site officiel sans tomber dans l'annonce payante");
+      } else {
+        fb.innerHTML = "⚠️ <strong>ATTENTION : C'est une annonce payante !</strong> Regardez le mot « Sponsorisé ». Ce n'est pas le vrai site officiel.";
+        parlerTexte("Attention, c'est une publicité payante sponsorisée.");
+      }
+    }
+
+    function fermerFauxPopup() {
+      document.getElementById('fake-popup').style.display = 'none';
+      document.getElementById('popup-success').style.display = 'block';
+      jouerSonSucces();
+      if (typeof confetti === 'function') confetti({ particleCount: 70, spread: 80 });
+      parlerTexte("Génial ! Vous avez fermé la fausse alerte sur le X. Votre téléphone n'avait aucun virus !");
+      synchroniserVersCloud("Niveau 4 : Faux popup déjoué", "Fermeture sécurisée sur le [X] sans paniquer");
+    }
+
+    function jouerSonSucces() {
+      try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(587.33, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.15);
+        gain.gain.setValueAtTime(0.18, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.28);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.28);
+      } catch (e) {}
+    }
+
+    // Quiz Anti-Arnaque
+    const CAS_ARNAQUES = [
+      { expediteur: "Service Colis Express (438-555-0199)", message: "« Alerte Postes Canada : Votre colis #QC-8849 ne peut être livré car des frais de douane de 2,65 $ sont impayés. Cliquez d'urgence sur http://postes-canada-frais24.com sous 12h pour éviter le retour. »", estArnaque: true, explicationSucces: "🎉 <strong>BRAVO ! Réflexe parfait !</strong><br>Postes Canada ne demande JAMAIS de régler des frais par texto. Le vrai site se termine par <strong>.ca</strong>.", explicationErreur: "⚠️ <strong>ATTENTION : C'était un piège !</strong><br>C'est un faux site monté par des fraudeurs pour voler vos numéros de carte de crédit." },
+      { expediteur: "Numéro inconnu (514-555-8821)", message: "« Allô maman ! Mon cellulaire est tombé dans l'eau et s'est brisé. J'utilise temporairement ce numéro d'urgence. Peux-tu m'écrire tout de suite sur WhatsApp ? J'ai un gros pépin avec mon auto. »", estArnaque: true, explicationSucces: "🎉 <strong>EXCELLENT RÉFLEXE !</strong><br>C'est l'arnaque du faux enfant en détresse. Appelez toujours votre enfant sur son vrai numéro habituel !", explicationErreur: "⚠️ <strong>ATTENTION : C'est une manipulation !</strong><br>Ne répondez jamais à ce numéro inconnu." },
+      { expediteur: "Hydro-Québec Facturation (facture@hydro-avis-urgent.com)", message: "« Avis d'interruption : Votre compte présente un retard de paiement de 142,50 $. Un ordre de déconnexion est prévu demain matin. Réglez immédiatement par virement Interac pour annuler. »", estArnaque: true, explicationSucces: "🎉 <strong>CHAPEAU ! Vous avez déjoué le piège !</strong><br>Hydro-Québec n'exige JAMAIS de virement Interac direct par courriel.", explicationErreur: "⚠️ <strong>PIÈGE TRÈS RÉPANDU !</strong><br>Hydro-Québec n'envoie jamais de menace de coupure le lendemain." },
+      { expediteur: "Clinique Médicale / Clic Santé (811-CLSC)", message: "« Rappel de rendez-vous : Votre prise de sang au CLSC est confirmée pour le jeudi 29 octobre à 08h30. Pour annuler, répondez NON. Aucun paiement requis. »", estArnaque: false, explicationSucces: "🎉 <strong>TRÈS BIEN VU ! C'est un vrai message !</strong><br>Ce message ne demande aucun argent et ne contient aucun lien suspect.", explicationErreur: "💡 <strong>Remarque importante : Ce message était bien légitime !</strong><br>C'est un simple rappel de votre clinique." },
+      { expediteur: "Revenu Québec (virement-interac-remboursement@rq-fonds.net)", message: "« Remboursement d'impôt : Un montant non réclamé de 384,10 $ a été émis. Déposez vos fonds immédiatement en cliquant sur le lien. »", estArnaque: true, explicationSucces: "🎉 <strong>PARFAIT ! Vous êtes un bouclier anti-fraude !</strong><br>Le gouvernement ne remet jamais de remboursement par texto.", explicationErreur: "⚠️ <strong>ATTENTION : Faux remboursement !</strong><br>Le gouvernement dépose directement dans votre compte ou envoie un chèque postal." }
+    ];
+
+    let indexCasActuel = 0;
+
+    function verifierReponseQuiz(choixUtilisateurArnaque) {
+      const c = CAS_ARNAQUES[indexCasActuel];
+      const expl = document.getElementById('quiz-explanation');
+      document.getElementById('quiz-buttons').style.display = 'none';
+
+      if (choixUtilisateurArnaque === c.estArnaque) {
+        appState.quizScore++;
+        sauvegarderEtat();
+        expl.style.background = '#dcfce7';
+        expl.style.border = '2px solid #22c55e';
+        expl.style.color = '#14532d';
+        expl.innerHTML = c.explicationSucces;
+        jouerSonSucces();
+        if (typeof confetti === 'function') confetti({ particleCount: 60, spread: 70 });
+        parlerTexte("Bravo ! Vous avez eu le réflexe parfait !");
+      } else {
+        expl.style.background = '#fee2e2';
+        expl.style.border = '2px solid #ef4444';
+        expl.style.color = '#7f1d1d';
+        expl.innerHTML = c.explicationErreur;
+        parlerTexte("Attention, prenez le temps de bien analyser l'expéditeur.");
+      }
+
+      expl.style.display = 'block';
+      document.getElementById('quiz-score-badge').textContent = `Score : ${appState.quizScore} bonne(s) réponse(s)`;
+      document.getElementById('cg-score-display').textContent = `${appState.quizScore} / 5`;
+      document.getElementById('btn-next-case').style.display = 'block';
+      synchroniserVersCloud("Niveau 4 : Test Anti-Fraude", `Réponse au cas : ${c.expediteur} (Score : ${appState.quizScore}/5)`);
+    }
+
+    function passerAuCasSuivant() {
+      if (indexCasActuel < CAS_ARNAQUES.length - 1) {
+        indexCasActuel++;
+        const c = CAS_ARNAQUES[indexCasActuel];
+        document.getElementById('quiz-step-title').textContent = `Cas ${indexCasActuel + 1} sur ${CAS_ARNAQUES.length}`;
+        document.getElementById('quiz-sender-text').textContent = c.expediteur;
+        document.getElementById('quiz-message-body').textContent = c.message;
+        document.getElementById('quiz-explanation').style.display = 'none';
+        document.getElementById('btn-next-case').style.display = 'none';
+        document.getElementById('quiz-buttons').style.display = 'grid';
+      } else {
+        const expl = document.getElementById('quiz-explanation');
+        document.getElementById('quiz-buttons').style.display = 'none';
+        document.getElementById('btn-next-case').style.display = 'none';
+        expl.style.background = '#dcfce7';
+        expl.style.border = '2px solid #22c55e';
+        expl.style.color = '#14532d';
+        expl.innerHTML = `🏆 <strong>BILAN : ${appState.quizScore} / 5 bonnes réponses !</strong> Félicitations pour votre vigilance !`;
+        expl.style.display = 'block';
+        synchroniserVersCloud("Niveau 4 : Bilan Anti-Fraude", `Atelier complété avec le score final de ${appState.quizScore} / 5`);
+      }
+    }
+
+    // Photo Simulator
+    function ouvrirSelecteurPhoto() {
+      document.getElementById('sim-photo-sheet').style.display = 'block';
+      document.getElementById('btn-sim-attach').style.background = '#dbeafe';
+      parlerTexte("Choisissez la photo d'Alexandre au parc dans la liste.");
+    }
+
+    function selectionnerPhoto(el, type) {
+      document.querySelectorAll('#sim-photo-sheet > div > div').forEach(d => d.style.borderColor = 'transparent');
+      el.style.borderColor = '#2563eb';
+      document.getElementById('btn-sim-send').style.display = 'block';
+      document.getElementById('sim-input-placeholder').textContent = "Photo sélectionnée : Alexandre au parc";
+      parlerTexte("Appuyez sur le bouton vert Envoyer.");
+    }
+
+    function envoyerPhotoSimulee() {
+      const history = document.getElementById('sim-chat-history');
+      const photoItem = document.createElement('div');
+      photoItem.style.alignSelf = 'flex-end';
+      photoItem.style.background = 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)';
+      photoItem.style.padding = '10px';
+      photoItem.style.borderRadius = '18px';
+      photoItem.style.boxShadow = '0 6px 16px rgba(37,99,235,0.3)';
+      photoItem.innerHTML = `<div style="font-size:3.5rem; padding:10px 0; text-align:center;">👦</div><div style="color:#ffffff; font-size:0.95rem; font-weight:800; text-align:center;">Alexandre_au_parc.jpg</div>`;
+      history.appendChild(photoItem);
+
+      setTimeout(() => {
+        const reply = document.createElement('div');
+        reply.style.background = '#ffffff';
+        reply.style.padding = '16px 20px';
+        reply.style.borderRadius = '20px 20px 20px 4px';
+        reply.style.maxWidth = '85%';
+        reply.style.fontSize = '1.15rem';
+        reply.style.border = '1px solid #e2e8f0';
+        reply.style.boxShadow = 'var(--shadow-sm)';
+        reply.innerHTML = "Merci maman !! Il est tellement beau ! Gros bisous ❤️";
+        history.appendChild(reply);
+
+        document.getElementById('sim-success-alert').style.display = 'block';
+        document.getElementById('sim-photo-sheet').style.display = 'none';
+        document.getElementById('btn-sim-send').style.display = 'none';
+        jouerSonSucces();
+        if (typeof confetti === 'function') confetti({ particleCount: 70, spread: 80 });
+        parlerTexte("Bravo ! Votre photo a été envoyée avec succès.");
+        synchroniserVersCloud("Niveau 2 : Photo partagée à un proche", "Simulation d'envoi d'une photo réussie dans Messages");
+      }, 700);
+    }
+
+    // Synthèse vocale & Accessibilité
+    function parlerTexte(texte) {
+      if (!('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(texte);
+      u.lang = 'fr-CA';
+      const prof = CATALOGUE_PROFESSEURS.find(p => p.id === appState.profActuel) || CATALOGUE_PROFESSEURS[0];
+      u.pitch = prof.voixPitch;
+      u.rate = prof.voixRate;
+
+      const voix = window.speechSynthesis.getVoices().find(v => v.lang === 'fr-CA' || v.lang.startsWith('fr'));
+      if (voix) u.voice = voix;
+      window.speechSynthesis.speak(u);
+    }
+
+    function parlerTexteActuel() {
+      parlerTexte(document.getElementById('hero-speech').textContent);
+    }
+
+    function demanderAuMicro() {
+      const q = prompt("Posez votre question à votre professeur :");
+      if (q) {
+        const rep = "J'ai bien compris votre question : « " + q + " ». Nous allons pratiquer cela ensemble tranquillement !";
+        document.getElementById('hero-speech').textContent = rep;
+        parlerTexte(rep);
+      }
+    }
+
+    function setFontSize(size, btn) {
+      appState.fontSize = size;
+      sauvegarderEtat();
+
+      const sizeMap = {
+        normal: '18px',
+        large: '22px',
+        xlarge: '26px'
+      };
+
+      const targetPx = sizeMap[size] || '18px';
+      document.documentElement.style.fontSize = targetPx;
+
+      const classes = ['font-normal', 'font-large', 'font-xlarge'];
+      document.documentElement.classList.remove(...classes);
+      document.documentElement.classList.add('font-' + size);
+      document.body.classList.remove(...classes);
+      document.body.classList.add('font-' + size);
+
+      document.querySelectorAll('.btn-zoom').forEach(b => b.classList.remove('active'));
+      const activeBtn = btn || document.getElementById('zoom-' + size);
+      if (activeBtn) activeBtn.classList.add('active');
+
+      jouerSonSucces();
+    }
+
+    function basculerRole(role) {
+      document.querySelectorAll('.view-container').forEach(v => v.classList.remove('active'));
+      document.querySelectorAll('.role-btn').forEach(b => b.classList.remove('active'));
+
+      if (role === 'student') {
+        document.getElementById('view-student').classList.add('active');
+        const b = document.getElementById('btn-role-student');
+        if (b) b.classList.add('active');
+      } else {
+        document.getElementById('view-caregiver').classList.add('active');
+        const b = document.getElementById('btn-role-caregiver');
+        if (b) b.classList.add('active');
+        initialiserEcouteTempsReel();
+      }
+    }
+
+    function ouvrirSOS() {
+      document.getElementById('sos-modal').style.display = 'flex';
+      parlerTexte("Prenez une grande respiration. Aucune photo n'est perdue et votre appareil n'est absolument pas brisé. Vous êtes en sécurité.");
+      synchroniserVersCloud("🚨 ALERTE SOS : Maman demande de l'aide", "Le bouton « Je suis perdu(e) » a été touché.");
+    }
+
+    function fermerSOS() {
+      document.getElementById('sos-modal').style.display = 'none';
+      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+    }
+
+    // Initialisation au chargement avec restauration de l'état persistant
+    chargerEtatPersistant();
+    if (appState.fontSize) {
+      setFontSize(appState.fontSize, document.getElementById('zoom-' + appState.fontSize));
+    }
+    selectionnerProf(appState.profActuel);
+    afficherProfesseurs();
+
+    // Détection automatique du rôle (Clé en main : zéro configuration pour Maman)
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('mode') === 'caregiver' || urlParams.get('mode') === 'proche') {
+      const banner = document.getElementById('role-switcher-banner');
+      if (banner) banner.style.display = 'flex';
+      basculerRole('caregiver');
+    } else {
+      // Mode élève par défaut (Écran 100% serein et rassurant pour Maman, aucun bandeau technique)
+      const banner = document.getElementById('role-switcher-banner');
+      if (banner) banner.style.display = 'none';
+      basculerRole('student');
+      initialiserEcouteEleve();
+    }
+
+    // Enregistrement Service Worker PWA
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').catch(() => {});
+      });
+    }
+  </script>
+</body>
+</html>

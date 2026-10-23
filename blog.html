@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le Blog de Cap Numérique — Conseils, Guides & Protection Anti-Fraude pour les Aînés</title>
+  <meta name="description" content="Découvrez les astuces pratiques, guides pas à pas et alertes de sécurité québécoises pour aider les aînés et débutants à naviguer sereinement sur tablettes et cellulaires.">
+  <meta name="keywords" content="cours tablette aînés québec, apprendre cellulaire personnes âgées, arnaque texto postes canada, fraude hydro québec aînés, clicsequr débutant, protection aînés internet québec">
+  
+  <!-- Balises Open Graph / Réseaux Sociaux (Facebook, WhatsApp, SMS) -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Cap Numérique">
+  <meta property="og:url" content="https://capnumerique.ca/blog.html">
+  <meta property="og:title" content="Le Blog de Cap Numérique — Conseils & Guides pour Aînés et Familles">
+  <meta property="og:description" content="Astuces bienveillantes pour apprivoiser la technologie et déjouer les pièges en ligne au Québec.">
+  <meta property="og:image" content="https://capnumerique.ca/og-blog.jpg">
+  <meta property="og:locale" content="fr_CA">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Le Blog de Cap Numérique — Apprendre la technologie sans stress">
+  <meta name="twitter:description" content="Guides pratiques et protection anti-fraude pour aînés au Québec.">
+
+  <!-- Schéma structuré JSON-LD pour Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Le Blog de Cap Numérique",
+    "description": "Guides d'apprentissage technologique et de sécurité numérique pour aînés au Québec.",
+    "url": "https://capnumerique.ca/blog.html",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Les Solutions SkyFibre Inc.",
+      "url": "https://capnumerique.ca"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-page: #f8faff;
+      --bg-surface: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --accent: #f59e0b;
+      --danger: #ef4444;
+      --success: #10b981;
+      --border-soft: #e2e8f0;
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --radius-md: 14px;
+      --shadow-sm: 0 2px 6px rgba(15, 23, 42, 0.04);
+      --shadow-card: 0 12px 30px -6px rgba(15, 23, 42, 0.07), 0 4px 10px -2px rgba(15, 23, 42, 0.03);
+    }
+
+    html {
+      font-size: 18px;
+      transition: font-size 0.2s ease;
+    }
+
+    html.font-normal { font-size: 18px; }
+    html.font-large { font-size: 22px; }
+    html.font-xlarge { font-size: 26px; }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      font-size: 1rem;
+      background: linear-gradient(180deg, #f8faff 0%, #edf2f7 100%);
+      color: var(--text-main);
+      line-height: 1.65;
+      min-height: 100vh;
+      padding-bottom: 90px;
+    }
+
+    .font-zoom-group {
+      display: flex;
+      align-items: center;
+      background: #f1f5f9;
+      padding: 4px;
+      border-radius: 12px;
+      gap: 4px;
+      border: 1px solid #cbd5e1;
+    }
+
+    .btn-zoom {
+      background: transparent;
+      border: none;
+      color: #475569;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-weight: 800;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+    }
+
+    .btn-zoom:hover { color: #0f172a; }
+
+    .btn-zoom.active {
+      background: #ffffff;
+      color: #1d4ed8;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    /* Barre supérieure de navigation */
+    .top-bar {
+      background: #ffffff;
+      padding: 16px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 900;
+      font-size: 1.45rem;
+      color: #0f172a;
+      text-decoration: none;
+    }
+
+    .brand-icon {
+      font-size: 1.7rem;
+      background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+      color: #ffffff;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+    }
+
+    .btn-back-app {
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      color: #ffffff;
+      padding: 10px 22px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+      transition: all 0.2s;
+    }
+
+    .btn-back-app:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4);
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 36px auto;
+      padding: 0 20px;
+    }
+
+    /* Hero du Blog */
+    .blog-hero {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+      color: #ffffff;
+      border-radius: var(--radius-xl);
+      padding: 48px 36px;
+      text-align: center;
+      box-shadow: var(--shadow-card);
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .blog-hero h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.6rem;
+      font-weight: 900;
+      margin-bottom: 14px;
+      letter-spacing: -0.5px;
+    }
+
+    .blog-hero p {
+      font-size: 1.25rem;
+      color: #cbd5e1;
+      max-width: 780px;
+      margin: 0 auto 24px auto;
+    }
+
+    /* Barre de recherche d'articles */
+    .search-bar-box {
+      max-width: 560px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 16px 24px 16px 52px;
+      border-radius: 30px;
+      border: none;
+      font-size: 1.1rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+      outline: none;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.3rem;
+      color: #94a3b8;
+    }
+
+    /* Filtres par Catégories */
+    .categories-bar {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+    }
+
+    .cat-btn {
+      background: #ffffff;
+      border: 2px solid #cbd5e1;
+      color: #334155;
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-weight: 800;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .cat-btn:hover { border-color: #3b82f6; }
+    .cat-btn.active {
+      background: #2563eb;
+      color: #ffffff;
+      border-color: #2563eb;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    }
+
+    /* Grille d'articles */
+    .articles-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .article-card {
+      background: #ffffff;
+      border-radius: var(--radius-xl);
+      padding: 36px;
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-card);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .article-card:hover {
+      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.1);
+    }
+
+    .article-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .article-badge {
+      background: #eff6ff;
+      color: #1d4ed8;
+      font-weight: 800;
+      font-size: 0.85rem;
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid #bfdbfe;
+    }
+
+    .article-date {
+      color: #64748b;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .article-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.85rem;
+      font-weight: 900;
+      color: #0f172a;
+      margin-bottom: 16px;
+      line-height: 1.35;
+    }
+
+    .article-body {
+      color: #334155;
+      font-size: 1.15rem;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .article-body p { margin-bottom: 14px; }
+
+    .article-quote {
+      background: #f8fafc;
+      border-left: 6px solid #2563eb;
+      padding: 16px 20px;
+      border-radius: 0 14px 14px 0;
+      margin: 18px 0;
+      font-weight: 600;
+      color: #1e293b;
+    }
+
+    .article-cta {
+      background: linear-gradient(135deg, #f0fdf4 0%, #e6fcf0 100%);
+      border: 2px solid #86efac;
+      border-radius: var(--radius-lg);
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .article-share-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+      padding-top: 18px;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .btn-share {
+      background: #f1f5f9;
+      color: #334155;
+      border: 1px solid #cbd5e1;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .btn-share:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      color: #64748b;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- En-tête de navigation -->
+  <header class="top-bar">
+    <a href="./index.html" class="brand">
+      <div class="brand-icon">🧭</div>
+      <span>Cap Numérique</span>
+    </a>
+
+    <div style="display:flex; align-items:center; gap:16px;">
+      <div class="font-zoom-group" aria-label="Ajuster la taille du texte">
+        <button class="btn-zoom active" id="zoom-normal" onclick="setFontSize('normal', this)" title="Taille normale">A</button>
+        <button class="btn-zoom" id="zoom-large" onclick="setFontSize('large', this)" title="Grand texte">A+</button>
+        <button class="btn-zoom" id="zoom-xlarge" onclick="setFontSize('xlarge', this)" title="Très grand texte">A++</button>
+      </div>
+
+      <a href="./index.html" class="btn-back-app">
+        <span>🚀</span>
+        <span>Accéder au Simulateur d'apprentissage</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Hero du Blog -->
+    <section class="blog-hero">
+      <h1>Le Journal du Numérique Bienveillant</h1>
+      <p>Astuces concrètes, décodage des fraudes actuelles au Québec et méthodes douces pour aider nos aînés à naviguer avec confiance et fierté.</p>
+
+      <div class="search-bar-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" class="search-input" id="search-input" placeholder="Rechercher un sujet (ex: arnaque texto, iPad, peur de briser...)" onkeyup="filtrerArticles()">
+      </div>
+    </section>
+
+    <!-- Filtres catégories -->
+    <div class="categories-bar">
+      <button class="cat-btn active" onclick="filtrerCategorie('tous', this)">🌟 Tous les guides</button>
+      <button class="cat-btn" onclick="filtrerCategorie('securite', this)">🛡️ Sécurité & Anti-Fraude</button>
+      <button class="cat-btn" onclick="filtrerCategorie('aines', this)">👵 Accompagnement Aînés</button>
+      <button class="cat-btn" onclick="filtrerCategorie('demarches', this)">📑 Démarches Québécoises</button>
+    </div>
+
+    <!-- Liste des Articles Piliers SEO -->
+    <div class="articles-grid" id="articles-list">
+
+      <!-- ARTICLE 1 : ANTI-FRAUDE -->
+      <article class="article-card" id="article-1" data-cat="securite">
+        <div class="article-header">
+          <span class="article-badge">🛡️ Sécurité & Vigilance</span>
+          <span class="article-date">23 octobre 2026 • 5 min de lecture</span>
+        </div>
+
+        <h2 class="article-title">Arnaques par texto au Québec : Les 5 pièges qui ciblent nos parents et comment les reconnaître</h2>
+
+        <div class="article-body">
+          <p>
+            Chaque jour au Québec, des milliers d'aînés reçoivent des messages anxiogènes sur leur cellulaire : faux colis de Postes Canada avec frais de douane impayés de 2,65 $, faux avis d'interruption d'électricité d'Hydro-Québec, ou encore le fameux texto <em>« Allô maman, mon téléphone est brisé, écris-moi sur ce nouveau numéro »</em>.
+          </p>
+          <div class="article-quote">
+            💡 <strong>Règle d'or absolue :</strong> Aucun organisme officiel (Postes Canada, Hydro-Québec, Revenu Québec) ne réclame un paiement d'urgence par texto ni par virement Interac direct.
+          </div>
+          <p>
+            Ces textos frauduleux jouent sur deux émotions humaines très puissantes : <strong>l'urgence</strong> et <strong>la peur de commettre une erreur</strong>. Pour protéger nos proches, la solution n'est pas de leur interdire leur téléphone, mais de leur donner des réflexes concrets dans un environnement d'exercice où l'erreur n'a aucune conséquence.
+          </p>
+        </div>
+
+        <div class="article-cta">
+          <div>
+            <strong style="color:#14532d; font-size:1.15rem; display:block; margin-bottom:4px;">🎯 Faites pratiquer votre parent dès maintenant :</strong>
+            <span style="color:#166534; font-size:0.95rem;">Notre simulateur gratuit de Niveau 4 contient 5 faux messages québécois à déjouer sans stress.</span>
+          </div>
+          <a href="./index.html#level-4" class="btn-back-app" style="background:#15803d;">
+            <span>Tester le Bouclier Anti-Arnaque</span>
+            <span>➡️</span>
+          </a>
+        </div>
+
+        <div class="article-share-group">
+          <span style="font-size:0.9rem; font-weight:700; color:#64748b;">Partager cet article à un proche :</span>
+          <a href="https://api.whatsapp.com/send?text=Regarde cet article essentiel sur les arnaques au Québec : https://capnumerique.ca/blog.html#article-1" target="_blank" class="btn-share">💬 WhatsApp</a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://capnumerique.ca/blog.html#article-1" target="_blank" class="btn-share">📘 Facebook</a>
+          <a href="mailto:?subject=Important : Reconnaître les faux textos au Québec&body=Bonjour, voici un excellent guide pour éviter les pièges par texto : https://capnumerique.ca/blog.html#article-1" class="btn-share">✉️ Courriel</a>
+        </div>
+      </article>
+
+      <!-- ARTICLE 2 : LA PEUR DE BRISER & TOUCHER BREF -->
+      <article class="article-card" id="article-2" data-cat="aines">
+        <div class="article-header">
+          <span class="article-badge">👵 Pédagogie & Famille</span>
+          <span class="article-date">21 octobre 2026 • 4 min de lecture</span>
+        </div>
+
+        <h2 class="article-title">Pourquoi nos aînés ont-ils peur de « briser » la tablette ? Le secret du geste tactile élémentaire</h2>
+
+        <div class="article-body">
+          <p>
+            Quand un aîné s'assoit pour la première fois devant un iPad ou un cellulaire, son premier réflexe est souvent d'appuyer avec insistance sur l'écran. Or, sur un écran tactile, un doigt maintenu plus d'une seconde déclenche un appui long : les icônes se mettent à trembler, des menus noirs incompréhensibles surgissent... et la personne panique immédiatement en pensant qu'elle a brisé la machine ou effacé ses photos de famille.
+          </p>
+          <div class="article-quote">
+            « La technologie moderne a été pensée pour des doigts agiles de 20 ans. Pour une personne de 75 ans, le premier apprentissage n'est pas logiciel : il est physique et moteur. »
+          </div>
+          <p>
+            C'est pourquoi Cap Numérique intègre un <strong>Niveau 0 inédit de motricité tactile</strong>. À travers un mini-jeu amusant de bulles de savon virtuelles, l'apprenant entraîne son cerveau au « tap rapide » : toucher d'un petit coup bref et retirer le doigt tout de suite. En 3 minutes, la peur s'efface et la confiance s'installe pour de bon.
+          </p>
+        </div>
+
+        <div class="article-cta">
+          <div>
+            <strong style="color:#14532d; font-size:1.15rem; display:block; margin-bottom:4px;">🫧 Essayez le mini-jeu des bulles :</strong>
+            <span style="color:#166534; font-size:0.95rem;">Un exercice tactile zéro stress spécialement conçu pour les débutants absolus.</span>
+          </div>
+          <a href="./index.html#level-0" class="btn-back-app" style="background:#15803d;">
+            <span>Lancer l'exercice des bulles</span>
+            <span>➡️</span>
+          </a>
+        </div>
+
+        <div class="article-share-group">
+          <span style="font-size:0.9rem; font-weight:700; color:#64748b;">Partager cet article à un proche :</span>
+          <a href="https://api.whatsapp.com/send?text=Comprendre la peur des écrans chez nos aînés : https://capnumerique.ca/blog.html#article-2" target="_blank" class="btn-share">💬 WhatsApp</a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://capnumerique.ca/blog.html#article-2" target="_blank" class="btn-share">📘 Facebook</a>
+          <a href="mailto:?subject=Aider maman ou papa avec sa tablette&body=Voici un article éclairant : https://capnumerique.ca/blog.html#article-2" class="btn-share">✉️ Courriel</a>
+        </div>
+      </article>
+
+      <!-- ARTICLE 3 : CLICSÉQUR & DÉMARCHES -->
+      <article class="article-card" id="article-3" data-cat="demarches">
+        <div class="article-header">
+          <span class="article-badge">📑 Démarches Québécoises</span>
+          <span class="article-date">19 octobre 2026 • 6 min de lecture</span>
+        </div>
+
+        <h2 class="article-title">ClicSÉQUR, Revenu Québec et Rendez-vous Santé : Le guide rassurant pour les 65 ans et plus</h2>
+
+        <div class="article-body">
+          <p>
+            Avec la dématérialisation accélérée des services publics au Québec, de plus en plus de démarches essentielles exigent un compte en ligne : confirmation des rendez-vous au CLSC, suivi des crédits d'impôt pour le maintien à domicile des aînés, ou gestion de son dossier SAAQclic.
+          </p>
+          <p>
+            Pour éviter les frustrations et les blocages de mot de passe, il est crucial de comprendre la distinction entre un vrai site gouvernemental officiel (qui se termine obligatoirement par <strong>.gouv.qc.ca</strong> ou <strong>.canada.ca</strong>) et les faux intermédiaires payants qui pullulent sur les moteurs de recherche.
+          </p>
+          <div class="article-quote">
+            Conseil de notre professeure Chantal : « Notez toujours vos identifiants dans un carnet physique à la maison dans un tiroir sécurisé, plutôt que de tenter de tout mémoriser. »
+          </div>
+        </div>
+
+        <div class="article-cta">
+          <div>
+            <strong style="color:#14532d; font-size:1.15rem; display:block; margin-bottom:4px;">🧭 Suivez les cours de Chantal :</strong>
+            <span style="color:#166534; font-size:0.95rem;">Notre professeure spécialisée dans les démarches administratives québécoises.</span>
+          </div>
+          <a href="./index.html" class="btn-back-app" style="background:#15803d;">
+            <span>Choisir Chantal comme professeure</span>
+            <span>➡️</span>
+          </a>
+        </div>
+
+        <div class="article-share-group">
+          <span style="font-size:0.9rem; font-weight:700; color:#64748b;">Partager cet article :</span>
+          <a href="https://api.whatsapp.com/send?text=Guide démarches québécoises pour aînés : https://capnumerique.ca/blog.html#article-3" target="_blank" class="btn-share">💬 WhatsApp</a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://capnumerique.ca/blog.html#article-3" target="_blank" class="btn-share">📘 Facebook</a>
+          <a href="mailto:?subject=Guide ClicSÉQUR et santé au Québec&body=Consulte ce guide : https://capnumerique.ca/blog.html#article-3" class="btn-share">✉️ Courriel</a>
+        </div>
+      </article>
+
+      <!-- ARTICLE 4 : TÉMOIGNAGE FAMILLE -->
+      <article class="article-card" id="article-4" data-cat="aines">
+        <div class="article-header">
+          <span class="article-badge">❤️ Histoire Vécue</span>
+          <span class="article-date">17 octobre 2026 • 4 min de lecture</span>
+        </div>
+
+        <h2 class="article-title">« Comment j'ai appris à ma mère de 78 ans à m'envoyer des photos sans qu'on se chicane »</h2>
+
+        <div class="article-body">
+          <p>
+            On a tous vécu cette scène : tenter d'expliquer à sa mère par téléphone comment ouvrir l'appareil photo ou retrouver une photo reçue. Après 10 minutes d'incompréhension mutuelle (<em>« Maman, clique sur le petit carré avec la montagne ! — Quel carré ? J'ai un soleil moi ! »</em>), la frustration s'installe des deux côtés.
+          </p>
+          <p>
+            L'erreur que nous faisons tous comme enfants aidants, c'est de vouloir aller trop vite et d'expliquer avec notre vocabulaire d'habitués. Quand une personne âgée pratique dans un simulateur comme celui de Cap Numérique, elle répète le geste 3 fois à son propre rythme avec Mme Louise ou M. Raymond, sans la pression de devoir réussir devant son fils ou sa fille.
+          </p>
+        </div>
+
+        <div class="article-cta">
+          <div>
+            <strong style="color:#14532d; font-size:1.15rem; display:block; margin-bottom:4px;">💌 Essayez le simulateur d'envoi de photo :</strong>
+            <span style="color:#166534; font-size:0.95rem;">Un exercice pas à pas pour envoyer la photo de son petit-fils en 3 étapes.</span>
+          </div>
+          <a href="./index.html#level-2" class="btn-back-app" style="background:#15803d;">
+            <span>Découvrir le simulateur photo</span>
+            <span>➡️</span>
+          </a>
+        </div>
+
+        <div class="article-share-group">
+          <span style="font-size:0.9rem; font-weight:700; color:#64748b;">Partager ce témoignage :</span>
+          <a href="https://api.whatsapp.com/send?text=Une belle histoire de famille et de patience : https://capnumerique.ca/blog.html#article-4" target="_blank" class="btn-share">💬 WhatsApp</a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://capnumerique.ca/blog.html#article-4" target="_blank" class="btn-share">📘 Facebook</a>
+          <a href="mailto:?subject=Témoignage touchant sur nos parents et la technologie&body=À lire absolument : https://capnumerique.ca/blog.html#article-4" class="btn-share">✉️ Courriel</a>
+        </div>
+      </article>
+
+    </div>
+
+  </main>
+
+  <footer>
+    <p><strong>Cap Numérique</strong> — Une initiative bienveillante québécoise propulsée par Les Solutions SkyFibre Inc.</p>
+    <p style="margin-top:6px;">Tous droits réservés • <a href="./index.html" style="color:#2563eb; text-decoration:none; font-weight:700;">Accéder à l'application interactive</a></p>
+  </footer>
+
+  <script>
+    function filtrerCategorie(cat, btn) {
+      document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      const articles = document.querySelectorAll('.article-card');
+      articles.forEach(art => {
+        if (cat === 'tous' || art.getAttribute('data-cat') === cat) {
+          art.style.display = 'block';
+        } else {
+          art.style.display = 'none';
+        }
+      });
+    }
+
+    function filtrerArticles() {
+      const q = document.getElementById('search-input').value.toLowerCase().trim();
+      const articles = document.querySelectorAll('.article-card');
+
+      articles.forEach(art => {
+        const text = art.innerText.toLowerCase();
+        if (text.includes(q)) {
+          art.style.display = 'block';
+        } else {
+          art.style.display = 'none';
+        }
+      });
+    }
+
+    function setFontSize(size, btn) {
+      const sizeMap = {
+        normal: '18px',
+        large: '22px',
+        xlarge: '26px'
+      };
+
+      document.documentElement.style.fontSize = sizeMap[size] || '18px';
+
+      const classes = ['font-normal', 'font-large', 'font-xlarge'];
+      document.documentElement.classList.remove(...classes);
+      document.documentElement.classList.add('font-' + size);
+
+      document.querySelectorAll('.btn-zoom').forEach(b => b.classList.remove('active'));
+      const activeBtn = btn || document.getElementById('zoom-' + size);
+      if (activeBtn) activeBtn.classList.add('active');
+
+      try {
+        localStorage.setItem('cap_numerique_zoom_pref', size);
+      } catch (e) {}
+    }
+
+    // Restauration du zoom préféré
+    try {
+      const savedZoom = localStorage.getItem('cap_numerique_zoom_pref');
+      if (savedZoom) {
+        setFontSize(savedZoom, document.getElementById('zoom-' + savedZoom));
+      }
+    } catch (e) {}
+  </script>
+</body>
+</html>
