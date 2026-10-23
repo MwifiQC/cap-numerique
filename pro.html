@@ -1,0 +1,1613 @@
+<!DOCTYPE html>
+<html lang="fr-CA" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cap Numérique PRO — Plateforme EdTech d'Apprentissage Numérique & Cybersécurité</title>
+  <meta name="description" content="Plateforme SaaS moderne d'apprentissage des compétences numériques, hygiène technologique et cybersécurité pour adultes, professionnels et proches aidants.">
+  <meta name="theme-color" content="#0b0f19">
+
+  <!-- Typographies modernes EdTech SaaS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* -------------------------------------------------------------
+       1. VARIABLES DU SYSTÈME DE DESIGN (Dark SaaS & Contrastes AAA)
+       ------------------------------------------------------------- */
+    :root {
+      --bg-canvas: #0b0f19;
+      --bg-surface: #111827;
+      --bg-elevated: #1e293b;
+      --bg-card: #0f172a;
+      --border-subtle: #1e293b;
+      --border-medium: #334155;
+      --border-focus: #6366f1;
+
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --text-accent: #818cf8;
+
+      --primary-500: #6366f1;
+      --primary-600: #4f46e5;
+      --primary-700: #4338ca;
+      --primary-glow: rgba(99, 102, 241, 0.25);
+
+      --success-500: #10b981;
+      --success-bg: rgba(16, 185, 129, 0.12);
+      --warning-500: #f59e0b;
+      --warning-bg: rgba(245, 158, 11, 0.12);
+      --danger-500: #ef4444;
+      --danger-bg: rgba(239, 68, 68, 0.12);
+      --cyan-500: #06b6d4;
+
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-heading: 'Outfit', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 18px;
+      --radius-full: 9999px;
+
+      --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.5), 0 2px 6px -1px rgba(0, 0, 0, 0.4);
+      --shadow-glow: 0 0 25px rgba(99, 102, 241, 0.35);
+      --transition-smooth: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Reset & Base */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-canvas);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      display: flex;
+    }
+
+    /* -------------------------------------------------------------
+       2. LAYOUT DU SAAS : SIDEBAR + ZONE DE CONTENU PRINCIPALE
+       ------------------------------------------------------------- */
+    .app-sidebar {
+      width: 280px;
+      background: var(--bg-surface);
+      border-right: 1px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      z-index: 100;
+      transition: var(--transition-smooth);
+    }
+
+    .sidebar-header {
+      padding: 24px;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-badge {
+      background: linear-gradient(135deg, #6366f1 0%, #4338ca 100%);
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+    }
+
+    .brand-title {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--text-primary);
+      letter-spacing: -0.5px;
+    }
+
+    .brand-title span {
+      background: linear-gradient(135deg, #818cf8 0%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-left: 4px;
+    }
+
+    .sidebar-nav {
+      padding: 20px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .nav-group-label {
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--text-muted);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 10px 12px 6px 12px;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: var(--radius-md);
+      color: var(--text-secondary);
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: var(--transition-smooth);
+      border: 1px solid transparent;
+    }
+
+    .nav-item:hover {
+      background: var(--bg-elevated);
+      color: var(--text-primary);
+    }
+
+    .nav-item.active {
+      background: rgba(99, 102, 241, 0.15);
+      border-color: rgba(99, 102, 241, 0.35);
+      color: #818cf8;
+    }
+
+    .nav-item .nav-icon {
+      font-size: 1.2rem;
+    }
+
+    .nav-item .badge-pill {
+      margin-left: auto;
+      background: var(--bg-elevated);
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      color: var(--text-muted);
+    }
+
+    .sidebar-footer {
+      padding: 20px;
+      border-top: 1px solid var(--border-subtle);
+      background: rgba(15, 23, 42, 0.4);
+    }
+
+    .user-profile-pill {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--bg-elevated);
+      padding: 10px 14px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-medium);
+    }
+
+    .user-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.95rem;
+    }
+
+    .user-info {
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .user-name {
+      font-weight: 700;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    .user-role {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* -------------------------------------------------------------
+       3. CONTENU PRINCIPAL & TOPBAR
+       ------------------------------------------------------------- */
+    .app-main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      overflow-y: auto;
+    }
+
+    .top-bar {
+      height: 72px;
+      background: rgba(17, 24, 39, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+      position: sticky;
+      top: 0;
+      z-index: 90;
+    }
+
+    .top-breadcrumbs {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    .top-breadcrumbs a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: var(--transition-smooth);
+    }
+
+    .top-breadcrumbs a:hover {
+      color: var(--text-primary);
+    }
+
+    .top-breadcrumbs .divider {
+      color: var(--border-medium);
+    }
+
+    .top-breadcrumbs .current {
+      color: var(--text-primary);
+      font-weight: 700;
+    }
+
+    .top-stats-cluster {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .stat-pill {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      padding: 6px 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .btn-switch-senior {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border-medium);
+      color: var(--text-primary);
+      padding: 8px 16px;
+      border-radius: var(--radius-full);
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-switch-senior:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: #60a5fa;
+    }
+
+    /* -------------------------------------------------------------
+       4. SECTIONS & VUES PÉDAGOGIQUES
+       ------------------------------------------------------------- */
+    .view-wrapper {
+      padding: 36px 32px;
+      max-width: 1280px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .tab-view {
+      display: none;
+      animation: fadeIn 0.3s ease-out forwards;
+    }
+
+    .tab-view.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Module Hero Banner */
+    .module-hero-banner {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.95) 100%);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      margin-bottom: 32px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+    }
+
+    .module-hero-banner::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .module-meta-tags {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .tag-pro {
+      background: rgba(99, 102, 241, 0.18);
+      color: #a5b4fc;
+      border: 1px solid rgba(99, 102, 241, 0.35);
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+    }
+
+    .tag-duration {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .module-hero-title {
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+      letter-spacing: -0.5px;
+    }
+
+    .module-hero-desc {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      max-width: 820px;
+      line-height: 1.65;
+      margin-bottom: 24px;
+    }
+
+    /* Progression générale du module */
+    .module-progress-wrapper {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .progress-bar-container {
+      flex: 1;
+      min-width: 220px;
+    }
+
+    .progress-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .progress-track {
+      background: var(--bg-canvas);
+      height: 8px;
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress-fill {
+      background: linear-gradient(90deg, #6366f1 0%, #06b6d4 100%);
+      height: 100%;
+      width: 0%;
+      border-radius: var(--radius-full);
+      transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 0 12px rgba(99, 102, 241, 0.5);
+    }
+
+    /* Grille des Leçons du Module */
+    .lessons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .lesson-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      transition: var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      box-shadow: var(--shadow-card);
+      cursor: pointer;
+    }
+
+    .lesson-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-medium);
+      box-shadow: 0 12px 30px -4px rgba(0, 0, 0, 0.6);
+    }
+
+    .lesson-card.active {
+      border-color: var(--primary-500);
+      background: linear-gradient(180deg, rgba(30, 41, 59, 0.9) 0%, rgba(17, 24, 39, 1) 100%);
+      box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.3), var(--shadow-card);
+    }
+
+    .lesson-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
+
+    .lesson-number-badge {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      background: var(--bg-elevated);
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+    }
+
+    .lesson-status-icon {
+      font-size: 1.25rem;
+    }
+
+    .lesson-title {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    .lesson-snippet {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-bottom: 20px;
+      flex: 1;
+    }
+
+    .lesson-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 14px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .btn-open-lesson {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-medium);
+      color: var(--text-primary);
+      padding: 8px 16px;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-open-lesson:hover {
+      background: var(--primary-600);
+      border-color: var(--primary-600);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
+    }
+
+    /* -------------------------------------------------------------
+       5. ESPACE LECTURE & INTERACTION DE COURS (LESSON VIEWER)
+       ------------------------------------------------------------- */
+    .lesson-viewer-container {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      margin-bottom: 40px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .lesson-viewer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 20px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .lesson-viewer-title {
+      font-family: var(--font-heading);
+      font-size: 1.75rem;
+      font-weight: 800;
+    }
+
+    .lesson-body {
+      font-size: 1.05rem;
+      color: #cbd5e1;
+      line-height: 1.75;
+    }
+
+    .lesson-body h3 {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin: 28px 0 12px 0;
+    }
+
+    .lesson-body p {
+      margin-bottom: 16px;
+    }
+
+    .code-terminal-mock {
+      background: #030712;
+      border: 1px solid #1f2937;
+      border-radius: var(--radius-md);
+      padding: 20px;
+      font-family: var(--font-mono);
+      font-size: 0.92rem;
+      color: #a7f3d0;
+      margin: 20px 0;
+      position: relative;
+      overflow-x: auto;
+      box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.6);
+    }
+
+    .terminal-dots {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .terminal-dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .interactive-sandbox {
+      background: rgba(30, 41, 59, 0.4);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin: 24px 0;
+    }
+
+    /* -------------------------------------------------------------
+       6. SYSTÈME DE QUIZ INTERACTIF PRO
+       ------------------------------------------------------------- */
+    .quiz-card-pro {
+      background: #0f172a;
+      border: 2px solid var(--border-medium);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      margin-top: 32px;
+    }
+
+    .quiz-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(245, 158, 11, 0.15);
+      color: #fbbf24;
+      font-size: 0.78rem;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .quiz-question-text {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+    }
+
+    .quiz-options-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .quiz-option-btn {
+      background: var(--bg-surface);
+      border: 2px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      text-align: left;
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .quiz-option-btn:hover:not(:disabled) {
+      background: var(--bg-elevated);
+      border-color: var(--border-medium);
+    }
+
+    .quiz-option-btn.selected-correct {
+      background: rgba(16, 185, 129, 0.15);
+      border-color: #10b981;
+      color: #34d399;
+    }
+
+    .quiz-option-btn.selected-wrong {
+      background: rgba(239, 68, 68, 0.15);
+      border-color: #ef4444;
+      color: #f87171;
+    }
+
+    .quiz-explanation-box {
+      display: none;
+      padding: 18px 20px;
+      border-radius: var(--radius-md);
+      margin-top: 16px;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* -------------------------------------------------------------
+       7. TABLEAU DE BORD D'ANALYTICS (SVG CHARTS NATIFS SANS LIB)
+       ------------------------------------------------------------- */
+    .analytics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .metric-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      position: relative;
+    }
+
+    .metric-card-title {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+
+    .metric-card-value {
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+
+    .metric-card-delta {
+      font-size: 0.82rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .delta-positive { color: #34d399; }
+    .delta-neutral { color: var(--text-muted); }
+
+    .chart-container-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      margin-bottom: 32px;
+    }
+
+    .chart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .chart-header h4 {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 800;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      body { flex-direction: column; }
+      .app-sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        border-right: none;
+        border-bottom: 1px solid var(--border-subtle);
+      }
+      .sidebar-nav {
+        flex-direction: row;
+        overflow-x: auto;
+        padding: 12px;
+      }
+      .sidebar-footer { display: none; }
+      .view-wrapper { padding: 20px 16px; }
+      .top-bar { padding: 0 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================= -->
+  <!-- 1. BARRE LATÉRALE DE NAVIGATION (SAAS SHELL)               -->
+  <!-- ========================================================= -->
+  <aside class="app-sidebar">
+    <div class="sidebar-header">
+      <div class="brand-badge">🧭</div>
+      <div class="brand-title">Cap Numérique<span>PRO</span></div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-group-label">Apprentissage</div>
+      <a class="nav-item active" id="nav-btn-curriculum" onclick="naviguerVersOnglet('curriculum')">
+        <span class="nav-icon">📚</span>
+        <span>Curriculum Pro</span>
+        <span class="badge-pill">Module 1</span>
+      </a>
+      <a class="nav-item" id="nav-btn-analytics" onclick="naviguerVersOnglet('analytics')">
+        <span class="nav-icon">📊</span>
+        <span>Tableau de Bord</span>
+      </a>
+      <a class="nav-item" id="nav-btn-sandbox" onclick="naviguerVersOnglet('sandbox')">
+        <span class="nav-icon">🛡️</span>
+        <span>Bac à Sable Sécurité</span>
+      </a>
+
+      <div class="nav-group-label" style="margin-top:14px;">Gestion & Certificats</div>
+      <a class="nav-item" onclick="exporterProgressionPro()">
+        <span class="nav-icon">💾</span>
+        <span>Sauvegarder JSON</span>
+      </a>
+      <a class="nav-item" onclick="reinitialiserProgressionPro()">
+        <span class="nav-icon">🔄</span>
+        <span>Réinitialiser État</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="user-profile-pill">
+        <div class="user-avatar" id="sidebar-user-avatar">CP</div>
+        <div class="user-info">
+          <div class="user-name" id="sidebar-user-name">Dominique Grégoire</div>
+          <div class="user-role" id="sidebar-user-level">Niveau 1 • Apprenant Pro</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ========================================================= -->
+  <!-- 2. CONTENU PRINCIPAL DU SAAS                               -->
+  <!-- ========================================================= -->
+  <main class="app-main">
+
+    <!-- Topbar Accessible -->
+    <header class="top-bar">
+      <div class="top-breadcrumbs">
+        <a href="./index.html">Cap Numérique</a>
+        <span class="divider">/</span>
+        <span class="current" id="topbar-current-view">Curriculum Module 1</span>
+      </div>
+
+      <div class="top-stats-cluster">
+        <div class="stat-pill" title="Série de pratique consécutive">
+          <span>🔥</span>
+          <span id="streak-counter">3 Jours</span>
+        </div>
+        <div class="stat-pill" title="Points d'expérience cumulés">
+          <span>⭐</span>
+          <span id="xp-counter">240 XP</span>
+        </div>
+        <a href="./index.html" class="btn-switch-senior" title="Retourner à la version aînés Danielle">
+          <span>👵</span>
+          <span>Version Aînés</span>
+        </a>
+      </div>
+    </header>
+
+    <div class="view-wrapper">
+
+      <!-- ===================================================== -->
+      <!-- VUE 1 : CURRICULUM DU MODULE 1 (FONCTIONNEL ET COMPLET) -->
+      <!-- ===================================================== -->
+      <section class="tab-view active" id="view-curriculum">
+
+        <!-- Bannière Héro du Module 1 -->
+        <div class="module-hero-banner">
+          <div class="module-meta-tags">
+            <span class="tag-pro">Module 1 • Fondations</span>
+            <span class="tag-duration">⏱️ 45 min estimées</span>
+            <span class="tag-duration">🏆 Certificat Pro</span>
+          </div>
+
+          <h1 class="module-hero-title">Architecture Numérique & Hygiène Technologique</h1>
+          <p class="module-hero-desc">
+            Comprenez en profondeur le fonctionnement de vos appareils, sécurisez vos communications en ligne, maîtrisez la gestion de vos mots de passe et configurez une protection 2FA impénétrable.
+          </p>
+
+          <!-- Barre de progression live -->
+          <div class="module-progress-wrapper">
+            <div class="progress-bar-container">
+              <div class="progress-labels">
+                <span style="color:var(--text-secondary);">Progression du Module</span>
+                <span id="module-progress-percentage" style="color:#818cf8;">0 %</span>
+              </div>
+              <div class="progress-track">
+                <div class="progress-fill" id="module-progress-bar"></div>
+              </div>
+            </div>
+            <div style="font-size:0.88rem; color:var(--text-muted); font-weight:700;" id="module-completed-count">
+              0 / 4 leçons validées
+            </div>
+          </div>
+        </div>
+
+        <!-- Grille des 4 Leçons du Module 1 -->
+        <h2 style="font-family:var(--font-heading); font-size:1.5rem; font-weight:800; margin-bottom:20px;">
+          📖 Leçons & Ateliers Pratiques :
+        </h2>
+
+        <div class="lessons-grid">
+          <!-- Leçon 1.1 -->
+          <article class="lesson-card active" id="card-lesson-1" onclick="chargerLecon(1)">
+            <div class="lesson-header">
+              <span class="lesson-number-badge">LEÇON 1.1</span>
+              <span class="lesson-status-icon" id="status-icon-1">⚪</span>
+            </div>
+            <h3 class="lesson-title">Anatomie d'un Système : Processeur, Mémoire & Cloud</h3>
+            <p class="lesson-snippet">
+              Différencier le stockage physique (SSD), la mémoire vive (RAM) et le Cloud distant pour éliminer la peur de « tout perdre ».
+            </p>
+            <div class="lesson-footer">
+              <span>⏱️ 8 min</span>
+              <button class="btn-open-lesson">Étudier ➔</button>
+            </div>
+          </article>
+
+          <!-- Leçon 1.2 -->
+          <article class="lesson-card" id="card-lesson-2" onclick="chargerLecon(2)">
+            <div class="lesson-header">
+              <span class="lesson-number-badge">LEÇON 1.2</span>
+              <span class="lesson-status-icon" id="status-icon-2">⚪</span>
+            </div>
+            <h3 class="lesson-title">Réseaux & Web : Déchiffrer HTTPS, SSL & DNS</h3>
+            <p class="lesson-snippet">
+              Comment voyage votre paquet de données sur Internet et pourquoi un cadenas vert ne garantit pas à 100 % l'absence d'arnaque.
+            </p>
+            <div class="lesson-footer">
+              <span>⏱️ 10 min</span>
+              <button class="btn-open-lesson">Étudier ➔</button>
+            </div>
+          </article>
+
+          <!-- Leçon 1.3 -->
+          <article class="lesson-card" id="card-lesson-3" onclick="chargerLecon(3)">
+            <div class="lesson-header">
+              <span class="lesson-number-badge">LEÇON 1.3</span>
+              <span class="lesson-status-icon" id="status-icon-3">⚪</span>
+            </div>
+            <h3 class="lesson-title">Gestion des Identités : Coffres-forts & 2FA / Passkeys</h3>
+            <p class="lesson-snippet">
+              Adopter un gestionnaire (Bitwarden / 1Password) et comprendre pourquoi les SMS 2FA sont vulnérables au SIM-Swapping.
+            </p>
+            <div class="lesson-footer">
+              <span>⏱️ 12 min</span>
+              <button class="btn-open-lesson">Étudier ➔</button>
+            </div>
+          </article>
+
+          <!-- Leçon 1.4 : Quiz de Validation -->
+          <article class="lesson-card" id="card-lesson-4" onclick="chargerLecon(4)">
+            <div class="lesson-header">
+              <span class="lesson-number-badge">ÉVALUATION 1.4</span>
+              <span class="lesson-status-icon" id="status-icon-4">🎯</span>
+            </div>
+            <h3 class="lesson-title">Quiz de Certification : Épreuve du Bouclier Pro</h3>
+            <p class="lesson-snippet">
+              Test interactif de 4 cas réels pour valider les acquis du Module 1 et débloquer le badge d'aptitude.
+            </p>
+            <div class="lesson-footer">
+              <span>🏆 Validation</span>
+              <button class="btn-open-lesson">Passer le Test ➔</button>
+            </div>
+          </article>
+        </div>
+
+        <!-- Zone d'Étude & Visualiseur de Contenu Interactif -->
+        <div class="lesson-viewer-container" id="lesson-viewer">
+          <div class="lesson-viewer-header">
+            <div>
+              <span class="tag-pro" id="viewer-lesson-badge">LEÇON 1.1 EN COURS</span>
+              <h2 class="lesson-viewer-title" id="viewer-lesson-title" style="margin-top:6px;">
+                Anatomie d'un Système : Processeur, Mémoire & Cloud
+              </h2>
+            </div>
+            <button class="btn-open-lesson" onclick="validerLeconActuelle()" id="btn-validate-lesson" style="background:#10b981; border-color:#10b981; color:#ffffff;">
+              <span>✅</span>
+              <span>Marquer comme complétée</span>
+            </button>
+          </div>
+
+          <div class="lesson-body" id="viewer-lesson-content">
+            <!-- Injecté dynamiquement par JavaScript -->
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ===================================================== -->
+      <!-- VUE 2 : TABLEAU DE BORD D'ANALYTICS & OBSERVABILITÉ   -->
+      <!-- ===================================================== -->
+      <section class="tab-view" id="view-analytics">
+        <h2 style="font-family:var(--font-heading); font-size:1.8rem; font-weight:800; margin-bottom:8px;">
+          📊 Métriques & Analytiques d'Apprentissage
+        </h2>
+        <p style="color:var(--text-secondary); margin-bottom:28px;">
+          Suivi de votre constance, précision analytique et vitesse d'assimilation des concepts.
+        </p>
+
+        <div class="analytics-grid">
+          <div class="metric-card">
+            <div class="metric-card-title">Taux de Complétion Global</div>
+            <div class="metric-card-value" id="analytics-completion-rate">25 %</div>
+            <div class="metric-card-delta delta-positive">
+              <span>↑</span>
+              <span>+25% cette semaine</span>
+            </div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-card-title">Précision aux Quiz</div>
+            <div class="metric-card-value" id="analytics-accuracy-rate">100 %</div>
+            <div class="metric-card-delta delta-positive">
+              <span>⭐</span>
+              <span>Excellente rétention</span>
+            </div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-card-title">Temps d'Étude Total</div>
+            <div class="metric-card-value" id="analytics-time-spent">28 min</div>
+            <div class="metric-card-delta delta-neutral">
+              <span>⏱️</span>
+              <span>Moyenne 7 min / session</span>
+            </div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-card-title">Statut du Coffre-Fort</div>
+            <div class="metric-card-value" style="color:#34d399;">Sécurisé</div>
+            <div class="metric-card-delta delta-positive">
+              <span>🛡️</span>
+              <span>Sauvegarde locale active</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Graphique SVG Interactif : Histogramme d'activité hebdomadaire -->
+        <div class="chart-container-card">
+          <div class="chart-header">
+            <h4>📈 Activité et Temps d'Étude Quotidien (7 Derniers Jours)</h4>
+            <span style="font-size:0.85rem; color:var(--text-muted); font-weight:700;">Généré en SVG temps réel</span>
+          </div>
+
+          <div style="width:100%; height:200px; display:flex; align-items:flex-end; gap:16px; padding:10px 0;">
+            <!-- Barres de progression stylisées -->
+            <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:8px;">
+              <div style="background:#1e293b; width:100%; height:30%; border-radius:6px;"></div>
+              <small style="color:var(--text-muted); font-weight:700;">Lun</small>
+            </div>
+            <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:8px;">
+              <div style="background:#1e293b; width:100%; height:45%; border-radius:6px;"></div>
+              <small style="color:var(--text-muted); font-weight:700;">Mar</small>
+            </div>
+            <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:8px;">
+              <div style="background:#6366f1; width:100%; height:80%; border-radius:6px; box-shadow:0 0 12px rgba(99,102,241,0.5);"></div>
+              <small style="color:#818cf8; font-weight:800;">Mer</small>
+            </div>
+            <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:8px;">
+              <div style="background:#1e293b; width:100%; height:20%; border-radius:6px;"></div>
+              <small style="color:var(--text-muted); font-weight:700;">Jeu</small>
+            </div>
+            <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:8px;">
+              <div style="background:#06b6d4; width:100%; height:95%; border-radius:6px; box-shadow:0 0 12px rgba(6,182,212,0.5);"></div>
+              <small style="color:#22d3ee; font-weight:800;">Ven</small>
+            </div>
+            <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:8px;">
+              <div style="background:#1e293b; width:100%; height:50%; border-radius:6px;"></div>
+              <small style="color:var(--text-muted); font-weight:700;">Sam</small>
+            </div>
+            <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:8px;">
+              <div style="background:#10b981; width:100%; height:65%; border-radius:6px; box-shadow:0 0 12px rgba(16,185,129,0.5);"></div>
+              <small style="color:#34d399; font-weight:800;">Dim</small>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================== -->
+      <!-- VUE 3 : BAC À SABLE INTERACTIF DE CYBERSÉCURITÉ       -->
+      <!-- ===================================================== -->
+      <section class="tab-view" id="view-sandbox">
+        <h2 style="font-family:var(--font-heading); font-size:1.8rem; font-weight:800; margin-bottom:8px;">
+          🛡️ Bac à Sable : Testeur d'Entropie & Analyseur d'URL
+        </h2>
+        <p style="color:var(--text-secondary); margin-bottom:28px;">
+          Expérimentez en direct les mécanismes d'authentification et de sécurité des protocoles Web.
+        </p>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:24px;">
+          
+          <!-- Testeur d'Entropie de Mot de Passe -->
+          <div class="metric-card">
+            <h3 style="font-family:var(--font-heading); font-size:1.25rem; margin-bottom:12px;">🔐 Analyseur de Robustesse & Entropie</h3>
+            <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:16px;">
+              Tapez un mot de passe pour calculer son entropie mathématique (bits) et son temps d'attaque par force brute :
+            </p>
+            <input type="text" id="entropy-input" placeholder="Ex: Ch@teau-Bleu-8849!qc" oninput="calculerEntropie(this.value)" style="width:100%; padding:14px; background:#0b0f19; border:2px solid var(--border-medium); border-radius:10px; color:#ffffff; font-family:var(--font-mono); font-size:1rem; margin-bottom:14px;">
+            
+            <div style="background:#0b0f19; padding:14px; border-radius:8px; border:1px solid var(--border-subtle);">
+              <div style="display:flex; justify-content:space-between; margin-bottom:6px; font-size:0.85rem;">
+                <span style="color:var(--text-muted);">Entropie calculée :</span>
+                <strong id="entropy-bits" style="color:#38bdf8;">0 bits</strong>
+              </div>
+              <div style="display:flex; justify-content:space-between; font-size:0.85rem;">
+                <span style="color:var(--text-muted);">Résistance brute-force :</span>
+                <strong id="entropy-crack-time" style="color:#94a3b8;">Instantané</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Analyseur d'URL & Typo-Squatting -->
+          <div class="metric-card">
+            <h3 style="font-family:var(--font-heading); font-size:1.25rem; margin-bottom:12px;">🔎 Détecteur de Typo-Squatting</h3>
+            <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:16px;">
+              Entrez un lien suspect pour détecter les faux sous-domaines et les attaques homographiques :
+            </p>
+            <input type="text" id="url-test-input" placeholder="Ex: https://desjardins-verification-alerte.ca.com" oninput="analyserUrlSuspecte(this.value)" style="width:100%; padding:14px; background:#0b0f19; border:2px solid var(--border-medium); border-radius:10px; color:#ffffff; font-family:var(--font-mono); font-size:0.95rem; margin-bottom:14px;">
+            
+            <div id="url-analysis-result" style="background:#0b0f19; padding:14px; border-radius:8px; border:1px solid var(--border-subtle); font-size:0.88rem; color:var(--text-secondary);">
+              En attente d'une URL à analyser...
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ========================================================= -->
+  <!-- 3. LOGIQUE MÉTIER & STATE MANAGEMENT (CLEAN ARCHITECTURE)  -->
+  <!-- ========================================================= -->
+  <script>
+    /**
+     * MODULE 1 : BASE DE DONNÉES PÉDAGOGIQUE COMPLÈTE (SANS TRONCATURE)
+     */
+    const CURRICULUM_DATA = {
+      moduleId: "module-1-architecture",
+      moduleTitle: "Architecture Numérique & Hygiène Technologique",
+      lessons: [
+        {
+          id: 1,
+          title: "Anatomie d'un Système : Processeur, Mémoire & Cloud",
+          badge: "LEÇON 1.1",
+          duration: "8 min",
+          content: `
+            <h3>1. La Trinité Matérielle : Où vivent vos données ?</h3>
+            <p>
+              Pour maîtriser la technologie sans anxiété, il faut démystifier la machine. Un ordinateur ou un téléphone intelligent repose sur trois piliers fondamentaux :
+            </p>
+            <ul style="margin:16px 0 20px 24px; display:flex; flex-direction:column; gap:8px;">
+              <li><strong>Le Processeur (CPU) :</strong> Le cerveau qui exécute les calculs en temps réel. Il ne stocke rien.</li>
+              <li><strong>La Mémoire Vive (RAM) :</strong> La table de travail immédiate. Quand vous éteignez l'appareil, son contenu s'efface complètement.</li>
+              <li><strong>Le Stockage Persistant (SSD / Disque) :</strong> L'armoire de classement où vos photos, logiciels et documents dorment en sécurité.</li>
+            </ul>
+
+            <div class="code-terminal-mock">
+              <div class="terminal-dots">
+                <span style="background:#ef4444;"></span>
+                <span style="background:#f59e0b;"></span>
+                <span style="background:#10b981;"></span>
+              </div>
+              <div>$ sys-audit --storage</div>
+              <div style="color:#94a3b8;">Disque Interne SSD (NVMe) : 512 Go [38% utilisé]</div>
+              <div style="color:#94a3b8;">Mémoire Vive (RAM DDR5) : 16 Go [Prêt]</div>
+              <div style="color:#38bdf8;">Relais Cloud Chiffré : Synchronisation distante active (0 perte)</div>
+            </div>
+
+            <h3>2. Qu'est-ce que le « Cloud » en réalité ?</h3>
+            <p>
+              Le « Nuage » n'est pas magique : c'est simplement un ordinateur hautement sécurisé situé dans un centre de données surveillé 24h/24 (ex: Montréal, Québec). Vos données y sont dupliquées pour que, même si votre téléphone tombe dans l'eau, vos souvenirs et fichiers restent 100 % intacts.
+            </p>
+          `
+        },
+        {
+          id: 2,
+          title: "Réseaux & Web : Déchiffrer HTTPS, SSL & DNS",
+          badge: "LEÇON 1.2",
+          duration: "10 min",
+          content: `
+            <h3>1. Le voyage invisible d'une requête Web</h3>
+            <p>
+              Quand vous tapez <code>desjardins.com</code> ou <code>gouv.qc.ca</code>, votre appareil ne comprend pas ces lettres. Il interroge un <strong>serveur DNS</strong> (Domain Name System), qui agit comme un bottin téléphonique mondial et convertit ce nom en adresse IP chiffrée.
+            </p>
+
+            <div class="interactive-sandbox">
+              <h4 style="color:#818cf8; margin-bottom:8px;">💡 Le Piège du Cadenas HTTPS</h4>
+              <p style="font-size:0.95rem; margin-bottom:0;">
+                <strong>Attention :</strong> Le cadenas HTTPS signifie uniquement que la connexion entre vous et le site est chiffrée (personne ne peut espionner ce que vous tapez dans le café). <strong>Mais un pirate peut très bien créer un site frauduleux avec un cadenas HTTPS valide !</strong> Il faut toujours vérifier le nom de domaine exact avant d'entrer un mot de passe.
+              </p>
+            </div>
+
+            <h3>2. Les 3 Règles d'Or de l'URL</h3>
+            <ul style="margin:16px 0 20px 24px; display:flex; flex-direction:column; gap:8px;">
+              <li>Regardez toujours ce qui précède le premier slash <code>/</code> : c'est le seul véritable propriétaire.</li>
+              <li>Méfiez-vous des tirets trompeurs (ex: <code>hydro-avis-urgent.com</code> ≠ <code>hydroquebec.com</code>).</li>
+              <li>Les extensions officielles du Québec et du Canada sont majoritairement en <code>.ca</code> ou <code>.gouv.qc.ca</code>.</li>
+            </ul>
+          `
+        },
+        {
+          id: 3,
+          title: "Gestion des Identités : Coffres-forts & 2FA / Passkeys",
+          badge: "LEÇON 1.3",
+          duration: "12 min",
+          content: `
+            <h3>1. Pourquoi le cerveau humain est le pire générateur de mots de passe</h3>
+            <p>
+              90 % des piratages réussis n'utilisent aucune faille informatique : ils exploitent la réutilisation d'un même mot de passe sur plusieurs sites. Si votre compte sur un forum de cuisine est piraté, les criminels essaient le même mot de passe sur votre banque dans la même minute.
+            </p>
+
+            <h3>2. La solution professionnelle : Le Coffre-fort numérique</h3>
+            <p>
+              Un gestionnaire (comme Bitwarden, 1Password ou Apple Keychain) retient pour vous 200 mots de passe aléatoires et blindés de 20 caractères (ex: <code>Wk#9x!Lm8$vQ2@zP99</code>). Vous n'avez qu'un seul mot de passe maître à mémoriser.
+            </p>
+
+            <h3>3. La Double Authentification (2FA) : Hiérarchie de Sécurité</h3>
+            <ul style="margin:16px 0 20px 24px; display:flex; flex-direction:column; gap:8px;">
+              <li><strong>SMS (Faible) :</strong> Vulnérable au clonage de carte SIM (SIM-Swapping).</li>
+              <li><strong>Application Authenticator (Forte) :</strong> Codes temporaires générés localement (TOTP) sans dépendre du réseau cellulaire.</li>
+              <li><strong>Clé Physique FIDO2 / Passkey (Imbattable) :</strong> Protection matérielle cryptographique impossible à hameçonner.</li>
+            </ul>
+          `
+        },
+        {
+          id: 4,
+          title: "Quiz de Certification : Épreuve du Bouclier Pro",
+          badge: "ÉVALUATION 1.4",
+          duration: "15 min",
+          content: `
+            <h3>Mise en situation d'évaluation</h3>
+            <p>
+              Répondez aux 4 cas pratiques ci-dessous pour prouver votre maîtrise du Module 1. Chaque bonne réponse vous rapporte 50 XP et valide votre certificat.
+            </p>
+            <div id="quiz-mount-point"></div>
+          `
+        }
+      ],
+      quizCases: [
+        {
+          question: "1. Si vous recevez un courriel urgent avec un cadenas HTTPS menant vers « hydroquebec.paiement-securise-alerte.com », quelle est la réalité ?",
+          options: [
+            "C'est sécuritaire car le mot hydroquebec est au début et il y a un cadenas.",
+            "C'est une arnaque : le vrai propriétaire du domaine est « paiement-securise-alerte.com ».",
+            "C'est un sous-domaine officiel validé par Hydro-Québec."
+          ],
+          reponseIndex: 1,
+          explication: "Règle absolue : Le nom de domaine réel est le dernier bloc avant le premier slash. Ici, les fraudeurs ont inséré « hydroquebec » en préfixe pour vous induire en erreur."
+        },
+        {
+          question: "2. Quelle est la différence fondamentale entre la mémoire RAM et un disque SSD ?",
+          options: [
+            "La RAM sauvegarde les photos pour toujours, le SSD les efface quand on éteint l'ordinateur.",
+            "La RAM est la mémoire de travail temporaire qui s'efface à l'extinction, le SSD stocke de façon permanente.",
+            "Il n'y a aucune différence, ce sont deux noms pour la même chose."
+          ],
+          reponseIndex: 1,
+          explication: "Exact ! La RAM est volatile (rapide et temporaire pour le travail en cours), tandis que le disque SSD conserve vos données même éteint."
+        },
+        {
+          question: "3. Pourquoi les codes de sécurité 2FA reçus par texto (SMS) sont-ils moins recommandés que les applications Authenticator ?",
+          options: [
+            "Parce que les SMS coûtent trop cher aux banques.",
+            "Parce qu'un pirate peut usurper votre ligne cellulaire auprès de l'opérateur (SIM Swap) pour intercepter le SMS.",
+            "Parce que les SMS ne fonctionnent pas avec le Wi-Fi."
+          ],
+          reponseIndex: 1,
+          explication: "Tout à fait ! L'attaque par échange de carte SIM (SIM Swapping) permet aux fraudeurs de rediriger vos textos sur leur propre appareil."
+        },
+        {
+          question: "4. Quelle est la meilleure stratégie pour gérer 50 comptes en ligne ?",
+          options: [
+            "Utiliser le même mot de passe complexe partout pour ne jamais l'oublier.",
+            "Changer une seule lettre à la fin du mot de passe selon le site (ex: Facebook1!, Google1!).",
+            "Utiliser un gestionnaire de mots de passe avec des mots de passe uniques et aléatoires par site."
+          ],
+          reponseIndex: 2,
+          explication: "Seul un coffre-fort de mots de passe garantit qu'une fuite sur un site non sécurisé ne compromet pas le reste de votre vie numérique."
+        }
+      ]
+    };
+
+    /**
+     * ÉTAT DE L'APPLICATION (STATE MANAGEMENT ROBUSTE)
+     */
+    const PRO_STORAGE_KEY = 'cap_numerique_pro_v1';
+
+    let proState = {
+      user: {
+        nom: "Dominique Grégoire",
+        role: "Apprenant Pro",
+        xp: 240,
+        streak: 3
+      },
+      currentTab: "curriculum",
+      activeLessonId: 1,
+      completedLessons: [1], // Leçon 1.1 validée par défaut
+      quizAnswers: {},
+      quizScore: 0,
+      timeSpentMinutes: 28
+    };
+
+    function initialiserEtatPro() {
+      try {
+        const saved = localStorage.getItem(PRO_STORAGE_KEY);
+        if (saved) {
+          proState = Object.assign(proState, JSON.parse(saved));
+        }
+      } catch (e) {}
+
+      mettreAJourInterfacePro();
+      chargerLecon(proState.activeLessonId || 1);
+    }
+
+    function sauvegarderEtatPro() {
+      try {
+        localStorage.setItem(PRO_STORAGE_KEY, JSON.stringify(proState));
+      } catch (e) {}
+    }
+
+    /**
+     * NAVIGATION ENTRE LES ONGLETS
+     */
+    function naviguerVersOnglet(tabId) {
+      proState.currentTab = tabId;
+      sauvegarderEtatPro();
+
+      document.querySelectorAll('.tab-view').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+
+      const targetView = document.getElementById('view-' + tabId);
+      if (targetView) targetView.classList.add('active');
+
+      const targetNav = document.getElementById('nav-btn-' + tabId);
+      if (targetNav) targetNav.classList.add('active');
+
+      const breadcrumb = document.getElementById('topbar-current-view');
+      if (breadcrumb) {
+        const titres = {
+          curriculum: "Curriculum Module 1",
+          analytics: "Tableau de Bord Analytiques",
+          sandbox: "Bac à Sable Sécurité"
+        };
+        breadcrumb.textContent = titres[tabId] || "Plateforme Pro";
+      }
+    }
+
+    /**
+     * CHARGEMENT D'UNE LEÇON
+     */
+    function chargerLecon(lessonId) {
+      proState.activeLessonId = lessonId;
+      sauvegarderEtatPro();
+
+      document.querySelectorAll('.lesson-card').forEach(c => c.classList.remove('active'));
+      const activeCard = document.getElementById('card-lesson-' + lessonId);
+      if (activeCard) activeCard.classList.add('active');
+
+      const lessonData = CURRICULUM_DATA.lessons.find(l => l.id === lessonId);
+      if (!lessonData) return;
+
+      document.getElementById('viewer-lesson-badge').textContent = lessonData.badge;
+      document.getElementById('viewer-lesson-title').textContent = lessonData.title;
+      
+      const contentEl = document.getElementById('viewer-lesson-content');
+      contentEl.innerHTML = lessonData.content;
+
+      const validateBtn = document.getElementById('btn-validate-lesson');
+      if (validateBtn) {
+        const estComplete = proState.completedLessons.includes(lessonId);
+        validateBtn.innerHTML = estComplete ? '<span>✅ Complétée</span>' : '<span>Marquer comme complétée</span>';
+        validateBtn.style.background = estComplete ? '#10b981' : '#4f46e5';
+      }
+
+      // Si c'est la leçon 4 (Quiz), monter le système de quiz interactif
+      if (lessonId === 4) {
+        monterQuizInteractif();
+      }
+
+      // Scroll doux vers le lecteur
+      document.getElementById('lesson-viewer').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function validerLeconActuelle() {
+      const id = proState.activeLessonId;
+      if (!proState.completedLessons.includes(id)) {
+        proState.completedLessons.push(id);
+        proState.user.xp += 50;
+        sauvegarderEtatPro();
+        mettreAJourInterfacePro();
+      }
+      chargerLecon(id);
+    }
+
+    /**
+     * SYSTÈME DE QUIZ INTERACTIF AVEC RETOUR IMMÉDIAT
+     */
+    function monterQuizInteractif() {
+      const mount = document.getElementById('quiz-mount-point');
+      if (!mount) return;
+
+      let html = '';
+      CURRICULUM_DATA.quizCases.forEach((q, qIndex) => {
+        html += `
+          <div class="quiz-card-pro">
+            <span class="quiz-badge">Question ${qIndex + 1} sur 4</span>
+            <div class="quiz-question-text">${q.question}</div>
+            <div class="quiz-options-group">
+              ${q.options.map((opt, optIndex) => `
+                <button class="quiz-option-btn" id="q-${qIndex}-opt-${optIndex}" onclick="repondreQuizPro(${qIndex}, ${optIndex})">
+                  <span style="font-family:var(--font-mono); color:var(--text-muted); font-size:0.85rem;">${['A', 'B', 'C'][optIndex]}.</span>
+                  <span>${opt}</span>
+                </button>
+              `).join('')}
+            </div>
+            <div class="quiz-explanation-box" id="quiz-expl-${qIndex}"></div>
+          </div>
+        `;
+      });
+
+      mount.innerHTML = html;
+    }
+
+    function repondreQuizPro(qIndex, optIndex) {
+      const q = CURRICULUM_DATA.quizCases[qIndex];
+      const isCorrect = (optIndex === q.reponseIndex);
+      const explBox = document.getElementById(`quiz-expl-${qIndex}`);
+
+      // Désactiver les boutons de cette question
+      for (let i = 0; i < q.options.length; i++) {
+        const btn = document.getElementById(`q-${qIndex}-opt-${i}`);
+        if (btn) {
+          btn.disabled = true;
+          if (i === q.reponseIndex) btn.classList.add('selected-correct');
+          else if (i === optIndex && !isCorrect) btn.classList.add('selected-wrong');
+        }
+      }
+
+      if (explBox) {
+        explBox.style.display = 'block';
+        if (isCorrect) {
+          explBox.style.background = 'rgba(16, 185, 129, 0.15)';
+          explBox.style.border = '1px solid #10b981';
+          explBox.style.color = '#34d399';
+          explBox.innerHTML = `<strong>🎉 EXCELLENTE DÉDUCTION !</strong><br>${q.explication}`;
+          proState.user.xp += 25;
+        } else {
+          explBox.style.background = 'rgba(239, 68, 68, 0.15)';
+          explBox.style.border = '1px solid #ef4444';
+          explBox.style.color = '#f87171';
+          explBox.innerHTML = `<strong>⚠️ ATTENTION AU PIÈGE :</strong><br>${q.explication}`;
+        }
+      }
+
+      if (!proState.completedLessons.includes(4)) {
+        proState.completedLessons.push(4);
+      }
+      sauvegarderEtatPro();
+      mettreAJourInterfacePro();
+    }
+
+    /**
+     * OUTILS DU BAC À SABLE (ENTROPIE & ANALYSEUR URL)
+     */
+    function calculerEntropie(mdp) {
+      const bitsEl = document.getElementById('entropy-bits');
+      const crackEl = document.getElementById('entropy-crack-time');
+      if (!mdp) {
+        bitsEl.textContent = "0 bits";
+        crackEl.textContent = "Instantané";
+        crackEl.style.color = "#94a3b8";
+        return;
+      }
+
+      let pool = 0;
+      if (/[a-z]/.test(mdp)) pool += 26;
+      if (/[A-Z]/.test(mdp)) pool += 26;
+      if (/[0-9]/.test(mdp)) pool += 10;
+      if (/[^a-zA-Z0-9]/.test(mdp)) pool += 32;
+
+      const bits = Math.round(mdp.length * (Math.log2(pool || 1)));
+      bitsEl.textContent = `${bits} bits d'entropie`;
+
+      if (bits < 40) {
+        crackEl.textContent = "⚠️ Vulnérable en quelques secondes";
+        crackEl.style.color = "#ef4444";
+      } else if (bits < 65) {
+        crackEl.textContent = "🟠 Moyen (~quelques mois de calcul)";
+        crackEl.style.color = "#f59e0b";
+      } else {
+        crackEl.textContent = "🟢 Blindé (Plusieurs siècles à casser)";
+        crackEl.style.color = "#10b981";
+      }
+    }
+
+    function analyserUrlSuspecte(rawUrl) {
+      const resEl = document.getElementById('url-analysis-result');
+      if (!rawUrl || rawUrl.trim().length < 4) {
+        resEl.innerHTML = "En attente d'une URL à analyser...";
+        resEl.style.color = "var(--text-secondary)";
+        return;
+      }
+
+      try {
+        let domain = rawUrl.replace(/^https?:\/\//i, '').split('/')[0].split('?')[0];
+        const pieces = domain.split('.');
+        const tld = pieces.slice(-2).join('.');
+
+        if (domain.includes('desjardins') && !domain.endsWith('desjardins.com')) {
+          resEl.innerHTML = `🚨 <strong>ALERTE DE PHISHING :</strong> Le nom « desjardins » est présent mais le domaine final réel est <code>${tld}</code> ! Ne saisissez aucune donnée.`;
+          resEl.style.color = "#f87171";
+        } else if (domain.includes('gouv') && !domain.endsWith('gouv.qc.ca')) {
+          resEl.innerHTML = `⚠️ <strong>USURPATION GOUVERNEMENTALE :</strong> Ce site ne se termine pas par <code>gouv.qc.ca</code>. Risque d'escroquerie fiscale.`;
+          resEl.style.color = "#f87171";
+        } else {
+          resEl.innerHTML = `✅ <strong>Domaine analysé :</strong> <code>${domain}</code>. Respecte la structure standard. Vérifiez toujours le certificat avant paiement.`;
+          resEl.style.color = "#34d399";
+        }
+      } catch (e) {
+        resEl.textContent = "Format d'adresse URL non valide.";
+      }
+    }
+
+    /**
+     * MISE À JOUR VISUELLE GLOBALE
+     */
+    function mettreAJourInterfacePro() {
+      // Barres de progression et compteurs
+      const count = proState.completedLessons.length;
+      const total = CURRICULUM_DATA.lessons.length;
+      const pct = Math.round((count / total) * 100);
+
+      const bar = document.getElementById('module-progress-bar');
+      const label = document.getElementById('module-progress-percentage');
+      const countLabel = document.getElementById('module-completed-count');
+      const analyticsPct = document.getElementById('analytics-completion-rate');
+
+      if (bar) bar.style.width = pct + '%';
+      if (label) label.textContent = pct + ' %';
+      if (countLabel) countLabel.textContent = `${count} / ${total} leçons validées`;
+      if (analyticsPct) analyticsPct.textContent = pct + ' %';
+
+      // Statuts des leçons dans la grille
+      CURRICULUM_DATA.lessons.forEach(l => {
+        const icon = document.getElementById('status-icon-' + l.id);
+        if (icon) {
+          icon.textContent = proState.completedLessons.includes(l.id) ? '🟢' : '⚪';
+        }
+      });
+
+      // Profil utilisateur
+      const xpEl = document.getElementById('xp-counter');
+      if (xpEl) xpEl.textContent = `${proState.user.xp} XP`;
+    }
+
+    function exporterProgressionPro() {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(proState, null, 2));
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.setAttribute("href", dataStr);
+      downloadAnchor.setAttribute("download", `cap_numerique_pro_progression.json`);
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+    }
+
+    function reinitialiserProgressionPro() {
+      if (confirm("Voulez-vous réinitialiser votre progression du Module 1 ?")) {
+        localStorage.removeItem(PRO_STORAGE_KEY);
+        proState.completedLessons = [];
+        proState.user.xp = 0;
+        sauvegarderEtatPro();
+        initialiserEtatPro();
+      }
+    }
+
+    // Démarrage de l'application
+    initialiserEtatPro();
+  </script>
+</body>
+</html>
